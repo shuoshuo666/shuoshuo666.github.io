@@ -125,6 +125,23 @@
 
 
 
+<script>
+	
+	window.onload = function(){
+		var path = 'https://shuoshuo666.github.io/'; //这里要改成你博客的地址
+		var localhostItem = String(window.location).split(path)[1];
+		var LiNode = document.querySelectorAll('#menu > li > a')
+		
+		for(var i = 0; i< LiNode.length;i++){
+			var item = String(LiNode[i].href).split(path)[1];
+			if(item == localhostItem && item != undefined){
+				LiNode[i].setAttribute('style','border-bottom:1px solid black');
+			}
+		}
+	};
+
+</script>
+
 
   <title>关于Linux系统下printf函数的输出问题 | 朔朔の博客</title>
   
@@ -161,7 +178,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">闷声发大财</p>
+        <p class="site-subtitle">记录生活中的点点滴滴</p>
       
   </div>
 
@@ -447,7 +464,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">shuoshuo</p>
-              <p class="site-description motion-element" itemprop="description">记录生活中的点点滴滴</p>
+              <p class="site-description motion-element" itemprop="description">闷声发大财</p>
           </div>
 
           <nav class="site-state motion-element">
