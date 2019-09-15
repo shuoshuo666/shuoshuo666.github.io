@@ -82,14 +82,14 @@
 <meta name="description" content="本文介绍了在ubuntu16.04中通过anaconda安装tensorflow(CPU)的操作流程">
 <meta name="keywords" content="linux,tensorflow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu16.04中通过Anaconda安装TensorFlow(CPU)的方法">
+<meta property="og:title" content="Ubuntu通过Anaconda安装TensorFlow(CPU)的方法">
 <meta property="og:url" content="http://shuoshuo666.github.io/2019/09/15/ubuntu-tensorflow/index.html">
 <meta property="og:site_name" content="朔朔の博客">
 <meta property="og:description" content="本文介绍了在ubuntu16.04中通过anaconda安装tensorflow(CPU)的操作流程">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-15T14:28:18.529Z">
+<meta property="og:updated_time" content="2019-09-15T14:31:37.013Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu16.04中通过Anaconda安装TensorFlow(CPU)的方法">
+<meta name="twitter:title" content="Ubuntu通过Anaconda安装TensorFlow(CPU)的方法">
 <meta name="twitter:description" content="本文介绍了在ubuntu16.04中通过anaconda安装tensorflow(CPU)的操作流程">
 
 
@@ -143,7 +143,7 @@
 </script>
 
 
-  <title>Ubuntu16.04中通过Anaconda安装TensorFlow(CPU)的方法 | 朔朔の博客</title>
+  <title>Ubuntu通过Anaconda安装TensorFlow(CPU)的方法 | 朔朔の博客</title>
   
 
 
@@ -287,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Ubuntu16.04中通过Anaconda安装TensorFlow(CPU)的方法</h1>
+          <h1 class="post-title" itemprop="name headline">Ubuntu通过Anaconda安装TensorFlow(CPU)的方法</h1>
         
 
         <div class="post-meta">
@@ -362,21 +362,24 @@
         <p>本文介绍了在ubuntu16.04中通过anaconda安装tensorflow(CPU)的操作流程</p>
 <a id="more"></a>
 
-<h3 id="1-安装anaconda-参考"><a href="#1-安装anaconda-参考" class="headerlink" title="1. 安装anaconda 参考"></a>1. 安装anaconda <a href="https://blog.csdn.net/u012318074/article/details/77074665" target="_blank" rel="noopener">参考</a></h3><p>（1）从清华镜像下载anaconda <a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="noopener">链接</a></p>
+<h3 id="1-安装anaconda"><a href="#1-安装anaconda" class="headerlink" title="1. 安装anaconda"></a>1. 安装anaconda</h3><p>（1）从清华镜像下载anaconda <a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="noopener">链接</a></p>
 <p>（2）在终端安装anaconda</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bash Anaconda3-5.2.0-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-从国内源建立虚拟环境tf-参考"><a href="#2-从国内源建立虚拟环境tf-参考" class="headerlink" title="2. 从国内源建立虚拟环境tf 参考"></a>2. 从国内源建立虚拟环境tf <a href="https://www.jianshu.com/p/6679cdeb3513" target="_blank" rel="noopener">参考</a></h3><p>（1）填加国内镜像源</p>
+<p><a href="https://blog.csdn.net/u012318074/article/details/77074665" target="_blank" rel="noopener">参考</a></p>
+<h3 id="2-从国内源建立虚拟环境tf"><a href="#2-从国内源建立虚拟环境tf" class="headerlink" title="2. 从国内源建立虚拟环境tf"></a>2. 从国内源建立虚拟环境tf</h3><p>（1）填加国内镜像源</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">$ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge </span><br><span class="line">$ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/</span><br><span class="line">$ conda config --<span class="built_in">set</span> show_channel_urls yes</span><br></pre></td></tr></table></figure>
 
 <p>（2）建立虚拟环境</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ conda create -n tf python=3.5</span><br></pre></td></tr></table></figure>
 
+<p><a href="https://www.jianshu.com/p/6679cdeb3513" target="_blank" rel="noopener">参考</a></p>
 <h3 id="3-激活tf环境"><a href="#3-激活tf环境" class="headerlink" title="3. 激活tf环境"></a>3. 激活tf环境</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> activate tf</span><br></pre></td></tr></table></figure>
 
 <p>conda使用方法：<a href="https://www.jianshu.com/p/eaee1fadc1e9" target="_blank" rel="noopener">参考</a></p>
-<h3 id="4-从国内源安装tensorflow-参考"><a href="#4-从国内源安装tensorflow-参考" class="headerlink" title="4. 从国内源安装tensorflow 参考"></a>4. 从国内源安装tensorflow <a href="https://blog.csdn.net/qq_17854471/article/details/89299311" target="_blank" rel="noopener">参考</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple tensorflow</span><br></pre></td></tr></table></figure>
+<h3 id="4-从国内源安装tensorflow"><a href="#4-从国内源安装tensorflow" class="headerlink" title="4. 从国内源安装tensorflow"></a>4. 从国内源安装tensorflow</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple tensorflow</span><br></pre></td></tr></table></figure>
 
+<p><a href="https://blog.csdn.net/qq_17854471/article/details/89299311" target="_blank" rel="noopener">参考</a></p>
 <h3 id="5-可能出现的问题"><a href="#5-可能出现的问题" class="headerlink" title="5. 可能出现的问题"></a>5. 可能出现的问题</h3><p><a href="https://blog.csdn.net/weixin_42081389/article/details/98185411" target="_blank" rel="noopener">参考</a></p>
 
       
@@ -568,7 +571,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装anaconda-参考"><span class="nav-text">1. 安装anaconda 参考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-从国内源建立虚拟环境tf-参考"><span class="nav-text">2. 从国内源建立虚拟环境tf 参考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-激活tf环境"><span class="nav-text">3. 激活tf环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-从国内源安装tensorflow-参考"><span class="nav-text">4. 从国内源安装tensorflow 参考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-可能出现的问题"><span class="nav-text">5. 可能出现的问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装anaconda"><span class="nav-text">1. 安装anaconda</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-从国内源建立虚拟环境tf"><span class="nav-text">2. 从国内源建立虚拟环境tf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-激活tf环境"><span class="nav-text">3. 激活tf环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-从国内源安装tensorflow"><span class="nav-text">4. 从国内源安装tensorflow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-可能出现的问题"><span class="nav-text">5. 可能出现的问题</span></a></li></ol></div>
             
 
           </div>
