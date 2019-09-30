@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="linux,">
+  <meta name="keywords" content="机器学习,集成学习,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="本文收集了一些在linux系统中常用的命令">
-<meta name="keywords" content="linux">
+<meta name="description" content="本文介绍了集成学习领域中基于boosting思想的Adaboost算法">
+<meta name="keywords" content="机器学习,集成学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux下常用命令">
-<meta property="og:url" content="http://shuoshuo666.github.io/2019/09/19/linux/index.html">
+<meta property="og:title" content="Adaboost算法">
+<meta property="og:url" content="http://shuoshuo666.github.io/2019/09/19/adaboost/index.html">
 <meta property="og:site_name" content="朔朔の博客">
-<meta property="og:description" content="本文收集了一些在linux系统中常用的命令">
+<meta property="og:description" content="本文介绍了集成学习领域中基于boosting思想的Adaboost算法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-19T09:18:55.925Z">
+<meta property="og:updated_time" content="2019-09-30T02:10:30.441Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux下常用命令">
-<meta name="twitter:description" content="本文收集了一些在linux系统中常用的命令">
+<meta name="twitter:title" content="Adaboost算法">
+<meta name="twitter:description" content="本文介绍了集成学习领域中基于boosting思想的Adaboost算法">
 
 
 
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://shuoshuo666.github.io/2019/09/19/linux/">
+  <link rel="canonical" href="http://shuoshuo666.github.io/2019/09/19/adaboost/">
 
 
 
@@ -143,7 +143,7 @@
 </script>
 
 
-  <title>Linux下常用命令 | 朔朔の博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Adaboost算法 | 朔朔の博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2019/09/19/linux/">
+    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2019/09/19/adaboost/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shuoshuo">
@@ -287,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux下常用命令</h1>
+          <h1 class="post-title" itemprop="name headline">Adaboost算法</h1>
         
 
         <div class="post-meta">
@@ -322,8 +322,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
                   </a>
                 </span>
 
@@ -359,14 +359,10 @@
       
 
       
-        <p>本文收集了一些在linux系统中常用的命令</p>
+        <p>本文介绍了集成学习领域中基于boosting思想的Adaboost算法</p>
 <a id="more"></a>
 
-<h3 id="1-查看文件"><a href="#1-查看文件" class="headerlink" title="1. 查看文件"></a>1. 查看文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ls        <span class="comment"># 查看文件，只显示文件名</span></span><br><span class="line">$ ls -a     <span class="comment"># 不忽略隐藏文件（以.开头）</span></span><br><span class="line">$ ls -l     <span class="comment"># 显示文件属性</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-终端控制符"><a href="#2-终端控制符" class="headerlink" title="2. 终端控制符"></a>2. 终端控制符</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ctrl + c  <span class="comment"># 强制中断程序的执行,进程已经终止</span></span><br><span class="line">$ ctrl + z  <span class="comment"># 将任务中止（暂停的意思）</span></span><br><span class="line">$ ctrl + d  <span class="comment"># 表示一个特殊的二进制值，表示 EOF；在shell中，ctrl-d表示推出当前shell</span></span><br></pre></td></tr></table></figure>
-
-<p>ctrl + z 表示此任务并没有结束,他仍然在进程中他只是维持挂起的状态,用户可以使用fg/bg操作继续前台或后台的任务,fg命令重新启动前台被中断的任务,bg命令把被中断的任务放在后台执行.<br>例如:当你vi一个文件时,如果需要用shell执行别的操作,但是你又不打算关闭vi,因为你得存盘推出,你可以简单的按下ctrl+z,shell会将vi进程挂起,当你结束了那个shell操作之后,你可以用fg命令继续vi你的文件。</p>
+<p>$x_mu$</p>
 
       
     </div>
@@ -384,7 +380,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux/" <i class="fa fa-tag"> linux</a>
+            <a href="/tags/机器学习/" <i class="fa fa-tag"> 机器学习</a>
+          
+            <a href="/tags/集成学习/" <i class="fa fa-tag"> 集成学习</a>
           
         </div>
       
@@ -397,8 +395,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/19/adaboost/" rel="next" title="Adaboost算法">
-                <i class="fa fa-chevron-left"></i> Adaboost算法
+              <a href="/2019/09/19/ubuntu-ssh/" rel="next" title="Ubuntu中连接远程服务器">
+                <i class="fa fa-chevron-left"></i> Ubuntu中连接远程服务器
               </a>
             
           </div>
@@ -406,6 +404,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/19/linux/" rel="prev" title="Linux下常用命令">
+                Linux下常用命令 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -457,17 +459,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -545,22 +538,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-查看文件"><span class="nav-text">1. 查看文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-终端控制符"><span class="nav-text">2. 终端控制符</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
