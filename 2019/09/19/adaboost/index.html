@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="朔朔の博客">
 <meta property="og:description" content="本文总结了集成学习领域中基于boosting思想的Adaboost算法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-01T13:05:10.209Z">
+<meta property="og:updated_time" content="2019-10-01T13:08:54.611Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Adaboost算法">
 <meta name="twitter:description" content="本文总结了集成学习领域中基于boosting思想的Adaboost算法">
@@ -363,7 +363,9 @@
 <a id="more"></a>
 
 <h3 id="1-基本思想"><a href="#1-基本思想" class="headerlink" title="1. 基本思想"></a>1. 基本思想</h3><p>在二分类问题中，通过采用 re-weighting 即更新权重的方式给每个基学习器的训练样本赋予不同的权重，以满足基学习器的多样性</p>
-<h3 id="2-表达形式"><a href="#2-表达形式" class="headerlink" title="2. 表达形式"></a>2. 表达形式</h3><p>(1)<br>$$<br>u_2^n =<br>\begin{cases}<br>u_1^n \cdot d_1,  &amp; f_{1}(x^n) \neq \hat y^n \<br>u_1^n / d_1, &amp; f_{1}(x^n) = \hat y^n<br>\end{cases}<br>$$<br>将更新后的权重应用于上一个基学习器的训练样本中时，其</p>
+<h3 id="2-表达形式"><a href="#2-表达形式" class="headerlink" title="2. 表达形式"></a>2. 表达形式</h3><p>(1)<br>$$<br>u_2^n =<br>\begin{cases}<br>u_1^n \cdot d_1,  &amp; \text{$f_{1}(x^n) \neq \hat y^n$} \<br>u_1^n / d_1, &amp; \text{$f_{1}(x^n) = \hat y^n$}<br>\end{cases}<br>$$</p>
+<p>(2)<br>$$<br>u_2^n =<br>\begin{cases}<br>u_1^n / \beta_1,  &amp; f_{1}(x^n) \neq \hat y^n \<br>u_1^n, &amp; f_{1}(x^n) = \hat y^n<br>\end{cases}<br>$$</p>
+<p>将更新后的权重应用于上一个基学习器的训练样本中时，其</p>
 <p>$$\epsilon_1 = \frac {\sum_{n}u_{1}^{n}\delta(f_{1}(x^n) \neq \hat y^n)}{Z_1}$$<br>$$\frac{\sum_{n}u_{2}^{n}\delta(f_{1}(x^n) \neq \hat y^n)}{Z_1} = \frac{1}{2}$$<br>$$Z_1 = \sum_{n}u_{1}^{n}$$<br>$$Z_2 = \sum_{n}u_{2}^{n}$$</p>
 
       
