@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="朔朔の博客">
 <meta property="og:description" content="本文总结了集成学习领域中基于boosting思想的Adaboost算法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-07T10:54:40.054Z">
+<meta property="og:updated_time" content="2019-10-07T10:56:24.931Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Adaboost算法">
 <meta name="twitter:description" content="本文总结了集成学习领域中基于boosting思想的Adaboost算法">
@@ -371,7 +371,7 @@
 <p>即：<br>$$d_t = \sqrt{\frac{1 - \epsilon_t}{\epsilon_t}}$$</p>
 <p>引入：<br>$$\alpha_t = ln\sqrt{\frac{1 - \epsilon_t}{\epsilon_t}}$$</p>
 <p>则有：<br>$$u_{t+1}^n = u_t^n \cdot exp(-\hat y^nf_t(x^n)\alpha_t)$$</p>
-<p>最终学习器：<br>$$H(x) = sign(\sum_{t=1}^T\alpha_tf_t(x))</p>
+<p>最终学习器：<br>$$H(x) = sign(\sum_{t=1}^T\alpha_tf_t(x))$$</p>
 <h3 id="3-表达形式2"><a href="#3-表达形式2" class="headerlink" title="3. 表达形式2"></a>3. 表达形式2</h3><p>(2)<br>$$<br>u_2^n =<br>\begin{cases}<br>u_1^n / \beta_1,  &amp; \text{if $f_{1}(x^n) \neq \hat y^n$} \\<br>u_1^n, &amp; \text{if $f_{1}(x^n) = \hat y^n$}<br>\end{cases}<br>$$</p>
 <h3 id="3-求权重更新系数-d-t-与-beta-t"><a href="#3-求权重更新系数-d-t-与-beta-t" class="headerlink" title="3. 求权重更新系数$d_t$与$\beta_t$"></a>3. 求权重更新系数$d_t$与$\beta_t$</h3><p>将更新后的权重应用于上一个基学习器的训练样本中时，其基学习器误差为0.5，即<br>已知：<br>$$\epsilon_1 = \frac {\sum_{n}u_{1}^{n}\delta(f_{1}(x^n) \neq \hat y^n)}{Z_1} \qquad (1)$$<br>$$\frac{\sum_{n}u_{2}^{n}\delta(f_{1}(x^n) \neq \hat y^n)}{Z_1} = \frac{1}{2} \qquad (2)$$<br>其中：<br>$$Z_1 = \sum_{n}u_{1}^{n}$$<br>$$Z_2 = \sum_{n}u_{2}^{n}$$<br>解得：<br>$$d_2 = \sqrt{\frac{1 - \epsilon_1}{\epsilon_1}}$$<br>$$\beta_2 = \frac{\epsilon_1}{1 - \epsilon_1}$$</p>
 <h3 id="4-基学习器生成过程"><a href="#4-基学习器生成过程" class="headerlink" title="4. 基学习器生成过程"></a>4. 基学习器生成过程</h3><p>$u_1 \to f_1 \to \epsilon_1 \to d_1 \to u_2 \to f_2 \to \epsilon_2 \to \cdots$</p>
