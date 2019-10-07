@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="朔朔の博客">
 <meta property="og:description" content="本文总结了集成学习领域中基于boosting思想的Adaboost算法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-07T11:37:15.476Z">
+<meta property="og:updated_time" content="2019-10-07T11:38:06.033Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Adaboost算法">
 <meta name="twitter:description" content="本文总结了集成学习领域中基于boosting思想的Adaboost算法">
@@ -376,7 +376,7 @@
 <p>(2) 权重更新方法：<br>$$<br>u_{t+1}^n =<br>\begin{cases}<br>u_t^n / \beta_t,  &amp; \text{if $f_{t}(x^n) \neq \hat y^n$} \\<br>u_t^n, &amp; \text{if $f_{t}(x^n) = \hat y^n$}<br>\end{cases}<br>\tag{6}<br>$$</p>
 <p>由(1)(2)(6)解得：<br>$$\beta_t = \frac{\epsilon_t}{1 - \epsilon_t} \tag{7}$$</p>
 <p>将(7)代入(6)中，则有：<br>$$u_{t+1}^n = u_t^n \cdot \beta_t^{-|f_t(x^n) - \hat y^n|}$$</p>
-<p>最终学习器：<br>$$<br>H(x) =<br>\begin{cases}<br>1,  &amp;\text{if $\sum_{t=1}^Tf_t(x)ln(1/\beta_t) \ge \frac12\cdot\sum_{t=1}^Tln(1/beta_t)$} \\[2ex]<br>0,  &amp;\text{otherwise}<br>\end{cases}<br>$$</p>
+<p>最终学习器：<br>$$<br>H(x) =<br>\begin{cases}<br>1,  &amp;\text{if $\sum_{t=1}^Tf_t(x)ln(1/\beta_t) \ge \frac12\cdot\sum_{t=1}^Tln(1/\beta_t)$} \\[2ex]<br>0,  &amp;\text{otherwise}<br>\end{cases}<br>$$</p>
 <h3 id="4-基学习器生成过程"><a href="#4-基学习器生成过程" class="headerlink" title="4. 基学习器生成过程"></a>4. 基学习器生成过程</h3><p>$u_1 \to f_1 \to \epsilon_1 \to d_1 \to u_2 \to f_2 \to \epsilon_2 \to \cdots$</p>
 
       
