@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="朔朔の博客">
 <meta property="og:description" content="本文总结了C++中的赋值运算符重载函数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-25T14:08:23.566Z">
+<meta property="og:updated_time" content="2019-11-25T14:09:26.999Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++中的赋值运算符重载函数">
 <meta name="twitter:description" content="本文总结了C++中的赋值运算符重载函数">
@@ -370,7 +370,7 @@
 </blockquote>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ClassExample obj1;</span><br><span class="line">ClassExample obj2;</span><br><span class="line">obj2 = obj1;  <span class="comment">//obj2已存在，用obj1向obj2赋值，调用赋值函数</span></span><br><span class="line"></span><br><span class="line">ClassExample obj3 = obj2;  <span class="comment">//obj3不存在，用obj2初始化obj3，调用拷贝构造函数</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="2-常见定义形式"><a href="#2-常见定义形式" class="headerlink" title="2. 常见定义形式"></a>2. 常见定义形式</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ClassExample&amp; <span class="keyword">operator</span>=（<span class="keyword">const</span> ClassExample&amp; obj)&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> != &amp;obj)&#123;</span><br><span class="line">        <span class="comment">// 赋值函数主体</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">return</span>* <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-常见定义形式"><a href="#2-常见定义形式" class="headerlink" title="2. 常见定义形式"></a>2. 常见定义形式</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ClassExample&amp; <span class="keyword">operator</span>=（<span class="keyword">const</span> ClassExample&amp; obj)&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> != &amp;obj)&#123;</span><br><span class="line">        <span class="comment">// 赋值函数主体</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="3-实现"><a href="#3-实现" class="headerlink" title="3. 实现"></a>3. 实现</h3><p>(1) 避免自赋值</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">this</span> != &amp;obj)&#123;</span><br><span class="line">    <span class="comment">// 赋值函数主体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
