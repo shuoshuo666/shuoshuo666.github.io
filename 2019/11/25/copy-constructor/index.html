@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="机器学习,集成学习,">
+  <meta name="keywords" content="C/C++,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="本文总结了集成学习领域中基于boosting思想的Adaboost算法">
-<meta name="keywords" content="机器学习,集成学习">
+<meta name="description" content="本文总结了C++中的拷贝构造函数">
+<meta name="keywords" content="C&#x2F;C++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Adaboost算法">
-<meta property="og:url" content="http://shuoshuo666.github.io/2019/09/19/adaboost/index.html">
+<meta property="og:title" content="C++中的拷贝构造函数">
+<meta property="og:url" content="http://shuoshuo666.github.io/2019/11/25/copy-constructor/index.html">
 <meta property="og:site_name" content="朔朔の博客">
-<meta property="og:description" content="本文总结了集成学习领域中基于boosting思想的Adaboost算法">
+<meta property="og:description" content="本文总结了C++中的拷贝构造函数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-08T00:26:51.980Z">
+<meta property="og:updated_time" content="2019-11-25T13:22:21.056Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Adaboost算法">
-<meta name="twitter:description" content="本文总结了集成学习领域中基于boosting思想的Adaboost算法">
+<meta name="twitter:title" content="C++中的拷贝构造函数">
+<meta name="twitter:description" content="本文总结了C++中的拷贝构造函数">
 
 
 
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://shuoshuo666.github.io/2019/09/19/adaboost/">
+  <link rel="canonical" href="http://shuoshuo666.github.io/2019/11/25/copy-constructor/">
 
 
 
@@ -143,7 +143,7 @@
 </script>
 
 
-  <title>Adaboost算法 | 朔朔の博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>C++中的拷贝构造函数 | 朔朔の博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2019/09/19/adaboost/">
+    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2019/11/25/copy-constructor/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shuoshuo">
@@ -287,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Adaboost算法</h1>
+          <h1 class="post-title" itemprop="name headline">C++中的拷贝构造函数</h1>
         
 
         <div class="post-meta">
@@ -299,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-19T16:54:58+08:00">
-                2019-09-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-25T21:00:00+08:00">
+                2019-11-25
               </time>
             
 
@@ -322,8 +322,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
                   </a>
                 </span>
 
@@ -360,27 +360,24 @@
 
       
         <blockquote>
-<p>本文总结了集成学习领域中基于boosting思想的Adaboost算法</p>
+<p>本文总结了C++中的拷贝构造函数</p>
 </blockquote>
 <a id="more"></a>
 
-<h3 id="1-基本思想"><a href="#1-基本思想" class="headerlink" title="1. 基本思想"></a>1. 基本思想</h3><p>在二分类问题中，通过采用 re-weighting 即更新权重的方式给每个基学习器的训练样本赋予不同的权重，以满足基学习器的多样性</p>
-<p>具体来说，将更新后的权重应用于上一个基学习器的训练样本中时，其基学习器误差为0.5，即<br>已知：<br>$$\epsilon_t = \frac {\sum_{n}u_{t}^{n}\delta(f_{t}(x^n) \neq \hat y^n)}{Z_t} \tag{1}$$<br>$$\frac{\sum_{n}u_{t+1}^{n}\delta(f_{t}(x^n) \neq \hat y^n)}{Z_{t+1}} = \frac{1}{2} \tag{2}$$<br>其中：<br>$$Z_t = \sum_{n}u_{t}^{n}$$<br>$$Z_{t+1} = \sum_{n}u_{t+1}^{n}$$</p>
-<h3 id="2-表达形式1"><a href="#2-表达形式1" class="headerlink" title="2. 表达形式1"></a>2. 表达形式1</h3><p>已知：</p>
-<p>(1) 分类标签：<br>$$Y \in \{1, -1\}$$</p>
-<p>(2) 权重更新方法：<br>$$<br>u_{t+1}^n =<br>\begin{cases}<br>u_t^n \cdot d_t,  &amp;\text{if $f_{t}(x^n) \neq \hat y^n$} \\<br>u_t^n / d_t,  &amp;\text{if $f_{t}(x^n) = \hat y^n$}<br>\end{cases}<br>\tag{3}<br>$$</p>
-<p>由(1)(2)(3)解得：<br>$$d_t = \sqrt{\frac{1 - \epsilon_t}{\epsilon_t}} \tag{4}$$</p>
-<p>引入：<br>$$\alpha_t = lnd_t \tag{5}$$</p>
-<p>将(4)(5)代入(3)中，则有：<br>$$u_{t+1}^n = u_t^n \cdot exp(-\hat y^nf_t(x^n)\alpha_t)$$</p>
-<p>最终学习器：<br>$$H(x) = sign(\sum_{t=1}^T\alpha_tf_t(x))$$</p>
-<h3 id="3-表达形式2"><a href="#3-表达形式2" class="headerlink" title="3. 表达形式2"></a>3. 表达形式2</h3><p>已知：</p>
-<p>(1) 分类标签：<br>$$Y \in \{1, 0\}$$</p>
-<p>(2) 权重更新方法：<br>$$<br>u_{t+1}^n =<br>\begin{cases}<br>u_t^n / \beta_t,  &amp; \text{if $f_{t}(x^n) \neq \hat y^n$} \\<br>u_t^n, &amp; \text{if $f_{t}(x^n) = \hat y^n$}<br>\end{cases}<br>\tag{6}<br>$$</p>
-<p>由(1)(2)(6)解得：<br>$$\beta_t = \frac{\epsilon_t}{1 - \epsilon_t} \tag{7}$$</p>
-<p>将(7)代入(6)中，则有：<br>$$u_{t+1}^n = u_t^n \cdot \beta_t^{-|f_t(x^n) - \hat y^n|}$$</p>
-<p>最终学习器：<br>$$<br>H(x) =<br>\begin{cases}<br>1,  &amp;\text{if $\sum_{t=1}^Tf_t(x)ln(1/\beta_t) \ge \frac12\cdot\sum_{t=1}^Tln(1/\beta_t)$} \\[2ex]<br>0,  &amp;\text{otherwise}<br>\end{cases}<br>$$</p>
-<h3 id="4-基学习器生成过程"><a href="#4-基学习器生成过程" class="headerlink" title="4. 基学习器生成过程"></a>4. 基学习器生成过程</h3><p>$u_1 \to f_1 \to \epsilon_1 \to d_1 \to u_2 \to f_2 \to \epsilon_2 \to \cdots$</p>
+<h3 id="1-什么时候调用拷贝构造函数"><a href="#1-什么时候调用拷贝构造函数" class="headerlink" title="1. 什么时候调用拷贝构造函数"></a>1. 什么时候调用拷贝构造函数</h3><p>(1) 复制对象，通过使用另一个同类型的对象来初始化新创建的对象</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassExample</span>&#123;</span>&#125;;  <span class="comment">//定义类ClassExample</span></span><br><span class="line">ClassExample B = A;  <span class="comment">//ClassExample B(A); 是一样的</span></span><br></pre></td></tr></table></figure>
 
+<p>(2) 复制对象，把它作为参数传递给函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ClassExample test;  <span class="comment">//类ClassExample实例化对象test</span></span><br><span class="line">g_Fun(test);  <span class="comment">//将对象test通过值传递，作为参数传递给函数g_Fun</span></span><br></pre></td></tr></table></figure>
+
+<p>(3) 复制对象，并从函数返回这个对象</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">CExample <span class="title">g_Fun</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="function">CExample <span class="title">temp</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line"><span class="keyword">return</span> temp;  <span class="comment">//函数g_Fun将对象temp返回</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-什么时候必须自定义拷贝构造函数"><a href="#2-什么时候必须自定义拷贝构造函数" class="headerlink" title="2. 什么时候必须自定义拷贝构造函数"></a>2. 什么时候必须自定义拷贝构造函数</h3><p>(1) 类中带有指针变量<br>(2) 并且，类中有动态内存分配</p>
+<blockquote>
+<p>此时，自定义拷贝构造函数应使用深拷贝，而默认拷贝构造函数使用的浅拷贝</p>
+</blockquote>
+<h3 id="3-拷贝构造函数的常见定义形式"><a href="#3-拷贝构造函数的常见定义形式" class="headerlink" title="3. 拷贝构造函数的常见定义形式"></a>3. 拷贝构造函数的常见定义形式</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">classname (<span class="keyword">const</span> classname &amp;obj)&#123;</span><br><span class="line">    <span class="comment">//拷贝构造函数主体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -397,9 +394,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/机器学习/" <i class="fa fa-tag"> 机器学习</a>
-          
-            <a href="/tags/集成学习/" <i class="fa fa-tag"> 集成学习</a>
+            <a href="/tags/C-C/" <i class="fa fa-tag"> C/C++</a>
           
         </div>
       
@@ -412,8 +407,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/19/linux/" rel="next" title="Linux下常用命令">
-                <i class="fa fa-chevron-left"></i> Linux下常用命令
+              <a href="/2019/11/25/new-array/" rel="next" title="C++动态申请内存">
+                <i class="fa fa-chevron-left"></i> C++动态申请内存
               </a>
             
           </div>
@@ -421,10 +416,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/25/new-array/" rel="prev" title="C++动态申请内存">
-                C++动态申请内存 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -573,7 +564,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基本思想"><span class="nav-text">1. 基本思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-表达形式1"><span class="nav-text">2. 表达形式1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-表达形式2"><span class="nav-text">3. 表达形式2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-基学习器生成过程"><span class="nav-text">4. 基学习器生成过程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-什么时候调用拷贝构造函数"><span class="nav-text">1. 什么时候调用拷贝构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-什么时候必须自定义拷贝构造函数"><span class="nav-text">2. 什么时候必须自定义拷贝构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-拷贝构造函数的常见定义形式"><span class="nav-text">3. 拷贝构造函数的常见定义形式</span></a></li></ol></div>
             
 
           </div>
