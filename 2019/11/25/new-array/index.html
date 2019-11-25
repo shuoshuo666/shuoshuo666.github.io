@@ -87,10 +87,12 @@
 <meta property="og:site_name" content="朔朔の博客">
 <meta property="og:description" content="本文总结了C++中动态申请内存的方法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-25T12:39:06.172Z">
+<meta property="og:image" content="http://shuoshuo666.github.io/2019/11/25/new-array/二维数组.jpg">
+<meta property="og:updated_time" content="2019-11-25T12:41:42.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++动态申请内存">
 <meta name="twitter:description" content="本文总结了C++中动态申请内存的方法">
+<meta name="twitter:image" content="http://shuoshuo666.github.io/2019/11/25/new-array/二维数组.jpg">
 
 
 
@@ -370,7 +372,7 @@
 
 <h3 id="3-动态申请一个二维数组的内存"><a href="#3-动态申请一个二维数组的内存" class="headerlink" title="3. 动态申请一个二维数组的内存"></a>3. 动态申请一个二维数组的内存</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>** ptr = <span class="keyword">new</span> <span class="keyword">int</span>* [row];  <span class="comment">//先申请一个一维数组，用来存放指针</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; row; i++) &#123;</span><br><span class="line">    *(ptr + i) = <span class="keyword">new</span> <span class="keyword">int</span>[col];  <span class="comment">//为一维数组中的每个指针再次分配空间</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
+<img src="/2019/11/25/new-array/二维数组.jpg">
       
     </div>
     
