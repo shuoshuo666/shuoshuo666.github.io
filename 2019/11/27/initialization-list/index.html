@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="朔朔の博客">
 <meta property="og:description" content="本文总结了C++中的初始化列表">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-27T14:16:32.671Z">
+<meta property="og:updated_time" content="2019-11-27T14:19:06.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++中的初始化列表">
 <meta name="twitter:description" content="本文总结了C++中的初始化列表">
@@ -365,7 +365,7 @@
 </blockquote>
 <h3 id="1-什么是初始化列表"><a href="#1-什么是初始化列表" class="headerlink" title="1.什么是初始化列表"></a>1.什么是初始化列表</h3><p>(1) 构造函数除了有名字，参数列表外，还可以有初始化列表；</p>
 <p>(2) 初始化列表在构造函数头之后、大括号之前，以冒号开头，后面跟一系列以逗号分隔的初始化字段。</p>
-<p>下面的代码定义了CExample类，使用了初始化列表</p>
+<p>看一个例子，下面的代码定义了CExample类，使用了初始化列表</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CExample</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    <span class="keyword">int</span> b;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//构造函数</span></span><br><span class="line">    CExample() : a(<span class="number">6</span>), b(<span class="number">6</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//a = 6;</span></span><br><span class="line">        <span class="comment">//b = 6;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-构造函数的两个执行阶段"><a href="#2-构造函数的两个执行阶段" class="headerlink" title="2.构造函数的两个执行阶段"></a>2.构造函数的两个执行阶段</h3><blockquote>
