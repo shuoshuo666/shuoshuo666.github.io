@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="linux,">
+  <meta name="keywords" content="C/C++,LeetCode,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="本文收集了一些在linux系统中常用的命令">
-<meta name="keywords" content="linux">
+<meta name="description" content="LeetCode#13–罗马数字转整数">
+<meta name="keywords" content="C&#x2F;C++,LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux下常用命令">
-<meta property="og:url" content="http://shuoshuo666.github.io/2019/09/19/linux/index.html">
+<meta property="og:title" content="LeetCode#13--罗马数字转整数">
+<meta property="og:url" content="http://shuoshuo666.github.io/2020/02/22/leetcode13/index.html">
 <meta property="og:site_name" content="朔朔の博客">
-<meta property="og:description" content="本文收集了一些在linux系统中常用的命令">
+<meta property="og:description" content="LeetCode#13–罗马数字转整数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-07T11:52:06.363Z">
+<meta property="og:updated_time" content="2020-02-22T12:30:58.061Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux下常用命令">
-<meta name="twitter:description" content="本文收集了一些在linux系统中常用的命令">
+<meta name="twitter:title" content="LeetCode#13--罗马数字转整数">
+<meta name="twitter:description" content="LeetCode#13–罗马数字转整数">
 
 
 
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://shuoshuo666.github.io/2019/09/19/linux/">
+  <link rel="canonical" href="http://shuoshuo666.github.io/2020/02/22/leetcode13/">
 
 
 
@@ -143,7 +143,7 @@
 </script>
 
 
-  <title>Linux下常用命令 | 朔朔の博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>LeetCode#13--罗马数字转整数 | 朔朔の博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2019/09/19/linux/">
+    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2020/02/22/leetcode13/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shuoshuo">
@@ -287,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux下常用命令</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode#13--罗马数字转整数</h1>
         
 
         <div class="post-meta">
@@ -299,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-19T16:54:58+08:00">
-                2019-09-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-22T20:22:11+08:00">
+                2020-02-22
               </time>
             
 
@@ -322,8 +322,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
 
@@ -360,15 +360,32 @@
 
       
         <blockquote>
-<p>本文收集了一些在linux系统中常用的命令</p>
+<p>LeetCode#13–罗马数字转整数</p>
 </blockquote>
 <a id="more"></a>
 
-<h3 id="1-查看文件"><a href="#1-查看文件" class="headerlink" title="1. 查看文件"></a>1. 查看文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ls        <span class="comment"># 查看文件，只显示文件名</span></span><br><span class="line">$ ls -a     <span class="comment"># 不忽略隐藏文件（以.开头）</span></span><br><span class="line">$ ls -l     <span class="comment"># 显示文件属性</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-题目：罗马数字转整数（简单）"><a href="#1-题目：罗马数字转整数（简单）" class="headerlink" title="1.题目：罗马数字转整数（简单）"></a>1.题目：罗马数字转整数（简单）</h3><p>罗马数字包含以下七种字符: I， V， X， L，C，D 和 M。</p>
+<blockquote>
+<p>字符          数值<br>I             1<br>V             5<br>X             10<br>L             50<br>C             100<br>D             500<br>M             1000</p>
+</blockquote>
+<p>例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做  XXVII, 即为 XX + V + II 。</p>
+<p>通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况：</p>
+<ul>
+<li>I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。</li>
+<li>X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。</li>
+<li>C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。</li>
+</ul>
+<p>给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内。</p>
+<p><strong>示例:</strong></p>
+<blockquote>
+<p>输入: “III”<br>输出: 3</p>
+<p>输入: “IV”<br>输出: 4</p>
+<p>输入: “IX”<br>输出: 9</p>
+<p>输入: “LVIII”<br>输出: 58<br>解释: L = 50, V= 5, III = 3</p>
+<p>输入: “MCMXCIV”<br>输出: 1994<br>解释: M = 1000, CM = 900, XC = 90, IV = 4</p>
+</blockquote>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">romanToInt</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; tras = &#123;&#123;<span class="string">'I'</span>, <span class="number">1</span>&#125;, &#123;<span class="string">'V'</span>, <span class="number">5</span>&#125;, &#123;<span class="string">'X'</span>, <span class="number">10</span>&#125;,</span><br><span class="line">            &#123;<span class="string">'L'</span>, <span class="number">50</span>&#125;, &#123;<span class="string">'C'</span>, <span class="number">100</span>&#125;, &#123;<span class="string">'D'</span>, <span class="number">500</span>&#125;, &#123;<span class="string">'M'</span>, <span class="number">1000</span>&#125;&#125;;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.size(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; s.size() - <span class="number">1</span> &amp;&amp; tras[s[i]] &lt; tras[s[i + <span class="number">1</span>]])</span><br><span class="line">            &#123;</span><br><span class="line">                res -= tras[s[i]];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                res += tras[s[i]];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-终端控制符"><a href="#2-终端控制符" class="headerlink" title="2. 终端控制符"></a>2. 终端控制符</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ctrl + c  <span class="comment"># 强制中断程序的执行,进程已经终止</span></span><br><span class="line">$ ctrl + z  <span class="comment"># 将任务中止（暂停的意思）</span></span><br><span class="line">$ ctrl + d  <span class="comment"># 表示一个特殊的二进制值，表示 EOF；在shell中，ctrl-d表示推出当前shell</span></span><br></pre></td></tr></table></figure>
-
-<p>ctrl + z 表示此任务并没有结束,他仍然在进程中他只是维持挂起的状态,用户可以使用fg/bg操作继续前台或后台的任务,fg命令重新启动前台被中断的任务,bg命令把被中断的任务放在后台执行.<br>例如:当你vi一个文件时,如果需要用shell执行别的操作,但是你又不打算关闭vi,因为你得存盘推出,你可以简单的按下ctrl+z,shell会将vi进程挂起,当你结束了那个shell操作之后,你可以用fg命令继续vi你的文件。</p>
 
       
     </div>
@@ -386,7 +403,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux/" <i class="fa fa-tag"> linux</a>
+            <a href="/tags/C-C/" <i class="fa fa-tag"> C/C++</a>
+          
+            <a href="/tags/LeetCode/" <i class="fa fa-tag"> LeetCode</a>
           
         </div>
       
@@ -399,8 +418,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/19/adaboost/" rel="next" title="Adaboost算法">
-                <i class="fa fa-chevron-left"></i> Adaboost算法
+              <a href="/2020/02/22/leetcode9/" rel="next" title="LeetCode#9--回文数">
+                <i class="fa fa-chevron-left"></i> LeetCode#9--回文数
               </a>
             
           </div>
@@ -408,10 +427,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/25/new-array/" rel="prev" title="C++动态申请内存">
-                C++动态申请内存 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -560,7 +575,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-查看文件"><span class="nav-text">1. 查看文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-终端控制符"><span class="nav-text">2. 终端控制符</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目：罗马数字转整数（简单）"><span class="nav-text">1.题目：罗马数字转整数（简单）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-题解"><span class="nav-text">2.题解</span></a></li></ol></div>
             
 
           </div>
