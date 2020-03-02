@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="LeetCode#1–两数之和题解">
+<meta name="description" content="LeetCode#53–最大子序和">
 <meta name="keywords" content="C&#x2F;C++,LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode#1--两数之和">
-<meta property="og:url" content="http://shuoshuo666.github.io/2020/02/21/leetcode1/index.html">
+<meta property="og:title" content="LeetCode#53--最大子序和">
+<meta property="og:url" content="http://shuoshuo666.github.io/2020/03/02/leetcode53/index.html">
 <meta property="og:site_name" content="朔朔の博客">
-<meta property="og:description" content="LeetCode#1–两数之和题解">
+<meta property="og:description" content="LeetCode#53–最大子序和">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-22T10:58:11.893Z">
+<meta property="og:updated_time" content="2020-03-02T05:04:01.371Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode#1--两数之和">
-<meta name="twitter:description" content="LeetCode#1–两数之和题解">
+<meta name="twitter:title" content="LeetCode#53--最大子序和">
+<meta name="twitter:description" content="LeetCode#53–最大子序和">
 
 
 
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://shuoshuo666.github.io/2020/02/21/leetcode1/">
+  <link rel="canonical" href="http://shuoshuo666.github.io/2020/03/02/leetcode53/">
 
 
 
@@ -143,7 +143,7 @@
 </script>
 
 
-  <title>LeetCode#1--两数之和 | 朔朔の博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>LeetCode#53--最大子序和 | 朔朔の博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2020/02/21/leetcode1/">
+    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2020/03/02/leetcode53/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shuoshuo">
@@ -287,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode#1--两数之和</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode#53--最大子序和</h1>
         
 
         <div class="post-meta">
@@ -299,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-21T10:28:48+08:00">
-                2020-02-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-02T12:09:19+08:00">
+                2020-03-02
               </time>
             
 
@@ -360,21 +360,21 @@
 
       
         <blockquote>
-<p>LeetCode#1–两数之和题解</p>
+<p>LeetCode#53–最大子序和</p>
 </blockquote>
 <a id="more"></a>
 
-<h3 id="1-题目：两数之和（简单）"><a href="#1-题目：两数之和（简单）" class="headerlink" title="1.题目：两数之和（简单）"></a>1.题目：两数之和（简单）</h3><p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那两个整数，并返回他们的数组下标。<br>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p>
+<h3 id="1-题目：最大子序和（简单）"><a href="#1-题目：最大子序和（简单）" class="headerlink" title="1.题目：最大子序和（简单）"></a>1.题目：最大子序和（简单）</h3><p>给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
 <p><strong>示例:</strong></p>
 <blockquote>
-<p>给定 nums = [2, 7, 11, 15], target = 9<br>因为 nums[0] + nums[1] = 2 + 7 = 9<br>所以返回 [0, 1]</p>
+<p>输入: [-2,1,-3,4,-1,2,1,-5,4],<br>输出: 6<br>解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。</p>
 </blockquote>
-<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><h4 id="1-暴力解法"><a href="#1-暴力解法" class="headerlink" title="(1)暴力解法"></a>(1)暴力解法</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size() - <span class="number">1</span>; ++i ) &#123;</span><br><span class="line">            <span class="keyword">for</span> ( <span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.size(); ++j ) &#123;</span><br><span class="line">                <span class="keyword">if</span> ( nums[i] + nums[j] == target ) &#123;</span><br><span class="line">                    res.push_back(i);</span><br><span class="line">                    res.push_back(j);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><h4 id="1-暴力双循环-不好"><a href="#1-暴力双循环-不好" class="headerlink" title="(1)暴力双循环(不好)"></a>(1)暴力双循环(不好)</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;nums)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//类似寻找最大最小值的题目，初始值一定要定义成理论上的最小最大值</span></span><br><span class="line">        <span class="keyword">int</span> max = INT32_MIN;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; nums.size(); j++)</span><br><span class="line">            &#123;</span><br><span class="line">                sum += nums[j];</span><br><span class="line">                <span class="keyword">if</span> (sum &gt; max)</span><br><span class="line">                &#123;</span><br><span class="line">                    max = sum;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>执行用时：452ms<br>消耗内存：9.4M</p>
-<h4 id="2-使用哈希表"><a href="#2-使用哈希表" class="headerlink" title="(2)使用哈希表"></a>(2)使用哈希表</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; hash;</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i )</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = target - nums[i];</span><br><span class="line">            <span class="keyword">if</span>( hash.find(temp) != hash.end() )</span><br><span class="line">            &#123;</span><br><span class="line">                res.push_back(hash[temp]);</span><br><span class="line">                res.push_back(i);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                hash[nums[i]] = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="2-动态规划"><a href="#2-动态规划" class="headerlink" title="(2)动态规划"></a>(2)动态规划</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;nums)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//类似寻找最大最小值的题目，初始值一定要定义成理论上的最小最大值</span></span><br><span class="line">        <span class="keyword">int</span> result = INT32_MIN;</span><br><span class="line">        <span class="comment">//dp[i]表示nums中以nums[i]结尾的最大子序和</span></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; dp(nums.size());</span><br><span class="line">        dp[<span class="number">0</span>] = nums[<span class="number">0</span>];</span><br><span class="line">        result = dp[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.size(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            dp[i] = max(dp[i - <span class="number">1</span>] + nums[i], nums[i]);</span><br><span class="line">            result = max(result, dp[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>执行用时：8ms<br>消耗内存：12.5M</p>
+<h4 id="3-贪心算法"><a href="#3-贪心算法" class="headerlink" title="(3)贪心算法"></a>(3)贪心算法</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;nums)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//类似寻找最大最小值的题目，初始值一定要定义成理论上的最小最大值</span></span><br><span class="line">        <span class="keyword">int</span> result = INT32_MIN;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sum += nums[i];</span><br><span class="line">            result = max(result, sum);</span><br><span class="line">            <span class="comment">//如果sum &lt; 0，重新开始找子序串</span></span><br><span class="line">            <span class="keyword">if</span> (sum &lt; <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -407,8 +407,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/13/init-var/" rel="next" title="C++中变量的默认初始化">
-                <i class="fa fa-chevron-left"></i> C++中变量的默认初始化
+              <a href="/2020/02/28/git/" rel="next" title="git的常用命令">
+                <i class="fa fa-chevron-left"></i> git的常用命令
               </a>
             
           </div>
@@ -416,10 +416,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/02/22/leetcode7/" rel="prev" title="LeetCode#7--整数反转">
-                LeetCode#7--整数反转 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -568,7 +564,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目：两数之和（简单）"><span class="nav-text">1.题目：两数之和（简单）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-题解"><span class="nav-text">2.题解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-暴力解法"><span class="nav-text">(1)暴力解法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-使用哈希表"><span class="nav-text">(2)使用哈希表</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目：最大子序和（简单）"><span class="nav-text">1.题目：最大子序和（简单）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-题解"><span class="nav-text">2.题解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-暴力双循环-不好"><span class="nav-text">(1)暴力双循环(不好)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-动态规划"><span class="nav-text">(2)动态规划</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-贪心算法"><span class="nav-text">(3)贪心算法</span></a></li></ol></li></ol></div>
             
 
           </div>
