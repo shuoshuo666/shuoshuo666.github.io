@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="LeetCode#67–二进制求和">
+<meta name="description" content="LeetCode#110–平衡二叉树">
 <meta name="keywords" content="C&#x2F;C++,LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode#67--二进制求和">
-<meta property="og:url" content="http://shuoshuo666.github.io/2020/03/02/leetcode67/index.html">
+<meta property="og:title" content="LeetCode#110--平衡二叉树">
+<meta property="og:url" content="http://shuoshuo666.github.io/2020/03/12/leetcode110/index.html">
 <meta property="og:site_name" content="朔朔の博客">
-<meta property="og:description" content="LeetCode#67–二进制求和">
+<meta property="og:description" content="LeetCode#110–平衡二叉树">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-02T12:51:21.911Z">
+<meta property="og:updated_time" content="2020-03-12T11:07:42.946Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode#67--二进制求和">
-<meta name="twitter:description" content="LeetCode#67–二进制求和">
+<meta name="twitter:title" content="LeetCode#110--平衡二叉树">
+<meta name="twitter:description" content="LeetCode#110–平衡二叉树">
 
 
 
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://shuoshuo666.github.io/2020/03/02/leetcode67/">
+  <link rel="canonical" href="http://shuoshuo666.github.io/2020/03/12/leetcode110/">
 
 
 
@@ -143,7 +143,7 @@
 </script>
 
 
-  <title>LeetCode#67--二进制求和 | 朔朔の博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>LeetCode#110--平衡二叉树 | 朔朔の博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2020/03/02/leetcode67/">
+    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2020/03/12/leetcode110/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shuoshuo">
@@ -287,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode#67--二进制求和</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode#110--平衡二叉树</h1>
         
 
         <div class="post-meta">
@@ -299,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-02T20:27:52+08:00">
-                2020-03-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-12T19:02:52+08:00">
+                2020-03-12
               </time>
             
 
@@ -360,18 +360,16 @@
 
       
         <blockquote>
-<p>LeetCode#67–二进制求和</p>
+<p>LeetCode#110–平衡二叉树</p>
 </blockquote>
 <a id="more"></a>
 
-<h3 id="1-题目：二进制求和（简单）"><a href="#1-题目：二进制求和（简单）" class="headerlink" title="1.题目：二进制求和（简单）"></a>1.题目：二进制求和（简单）</h3><p>给定两个二进制字符串，返回他们的和（用二进制表示）。</p>
-<p>输入为非空字符串且只包含数字 1 和 0。</p>
-<p><strong>示例:</strong></p>
-<blockquote>
-<p>输入: a = “11”, b = “1”<br>输出: “100”</p>
-<p>输入: a = “1010”, b = “1011”<br>输出: “10101”</p>
-</blockquote>
-<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">addBinary</span><span class="params">(<span class="built_in">string</span> a, <span class="built_in">string</span> b)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> res;</span><br><span class="line">        <span class="keyword">int</span> temp = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="keyword">int</span>(a.size() - <span class="number">1</span>), j = <span class="keyword">int</span>(b.size() - <span class="number">1</span>); i &gt;= <span class="number">0</span> || j &gt;= <span class="number">0</span>; --i, --j )</span><br><span class="line">        &#123;</span><br><span class="line">            temp += i &gt;= <span class="number">0</span> ? a[i] - <span class="string">'0'</span> : <span class="number">0</span>;</span><br><span class="line">            temp += j &gt;= <span class="number">0</span> ? b[j] - <span class="string">'0'</span> : <span class="number">0</span>;</span><br><span class="line">            res.push_back( temp % <span class="number">2</span> + <span class="string">'0'</span>);</span><br><span class="line">            temp = temp / <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ( temp == <span class="number">1</span> ) res.push_back(<span class="string">'1'</span>);</span><br><span class="line">        reverse( res.begin(), res.end() );</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="1-题目：平衡二叉树（简单）"><a href="#1-题目：平衡二叉树（简单）" class="headerlink" title="1.题目：平衡二叉树（简单）"></a>1.题目：平衡二叉树（简单）</h3><p>给定一个二叉树，判断它是否是高度平衡的二叉树。</p>
+<p>本题中，一棵高度平衡二叉树定义为：</p>
+<p>一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过1。</p>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><h4 id="1-自顶向下"><a href="#1-自顶向下" class="headerlink" title="(1)自顶向下"></a>(1)自顶向下</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isBalanced</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> ( <span class="built_in">abs</span>(depth(root-&gt;left) - depth(root-&gt;right)) &gt; <span class="number">1</span> ) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> isBalanced(root-&gt;left) &amp;&amp; isBalanced(root-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">depth</span><span class="params">(TreeNode* root)</span> </span>&#123;  <span class="comment">//返回子树高度</span></span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> max(depth(root-&gt;left), depth(root-&gt;right)) + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-自底向上"><a href="#2-自底向上" class="headerlink" title="(2)自底向上"></a>(2)自底向上</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isBalanced</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> depth(root) != <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">depth</span><span class="params">(TreeNode* root)</span> </span>&#123;  <span class="comment">//返回子树高度，若不平衡，返回-1</span></span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> left = depth(root-&gt;left);</span><br><span class="line">        <span class="keyword">if</span> ( left == <span class="number">-1</span> ) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> right = depth(root-&gt;right);</span><br><span class="line">        <span class="keyword">if</span> ( right == <span class="number">-1</span> ) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">abs</span>(left - right) &lt; <span class="number">2</span> ? max(left, right) + <span class="number">1</span> : <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -405,8 +403,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/02/leetcode66/" rel="next" title="LeetCode#66--加1">
-                <i class="fa fa-chevron-left"></i> LeetCode#66--加1
+              <a href="/2020/03/12/leetcode108/" rel="next" title="LeetCode#108--将有序数组转化为二叉搜索树">
+                <i class="fa fa-chevron-left"></i> LeetCode#108--将有序数组转化为二叉搜索树
               </a>
             
           </div>
@@ -414,10 +412,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/02/leetcode69/" rel="prev" title="LeetCode#69--x的平方根">
-                LeetCode#69--x的平方根 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -566,7 +560,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目：二进制求和（简单）"><span class="nav-text">1.题目：二进制求和（简单）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-题解"><span class="nav-text">2.题解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目：平衡二叉树（简单）"><span class="nav-text">1.题目：平衡二叉树（简单）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-题解"><span class="nav-text">2.题解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-自顶向下"><span class="nav-text">(1)自顶向下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-自底向上"><span class="nav-text">(2)自底向上</span></a></li></ol></li></ol></div>
             
 
           </div>
