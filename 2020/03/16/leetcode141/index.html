@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="C/C++,LeetCode,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="闷声发大财">
+<meta name="description" content="LeetCode#141–环形链表">
+<meta name="keywords" content="C&#x2F;C++,LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode141">
+<meta property="og:title" content="LeetCode#141--环形链表">
 <meta property="og:url" content="http://shuoshuo666.github.io/2020/03/16/leetcode141/index.html">
 <meta property="og:site_name" content="朔朔の博客">
-<meta property="og:description" content="闷声发大财">
+<meta property="og:description" content="LeetCode#141–环形链表">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-16T11:24:01.087Z">
+<meta property="og:updated_time" content="2020-03-16T11:27:36.660Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode141">
-<meta name="twitter:description" content="闷声发大财">
+<meta name="twitter:title" content="LeetCode#141--环形链表">
+<meta name="twitter:description" content="LeetCode#141–环形链表">
 
 
 
@@ -142,7 +143,7 @@
 </script>
 
 
-  <title>leetcode141 | 朔朔の博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>LeetCode#141--环形链表 | 朔朔の博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -286,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">leetcode141</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode#141--环形链表</h1>
         
 
         <div class="post-meta">
@@ -308,6 +309,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -336,7 +359,18 @@
       
 
       
-        
+        <blockquote>
+<p>LeetCode#141–环形链表</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：环形链表（简单）"><a href="#1-题目：环形链表（简单）" class="headerlink" title="1.题目：环形链表（简单）"></a>1.题目：环形链表（简单）</h3><p>给定一个链表，判断链表中是否有环。</p>
+<p>为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。</p>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><h4 id="1-使用集合"><a href="#1-使用集合" class="headerlink" title="(1)使用集合"></a>(1)使用集合</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">hasCycle</span><span class="params">(ListNode *head)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">set</span>&lt;ListNode*&gt; save;</span><br><span class="line">        <span class="keyword">auto</span> ptr = head;</span><br><span class="line">        <span class="keyword">while</span> ( ptr != <span class="literal">nullptr</span> ) &#123;</span><br><span class="line">            <span class="keyword">if</span> ( save.find(ptr) != save.end() ) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            save.insert(ptr);</span><br><span class="line">            ptr = ptr-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-快慢指针"><a href="#2-快慢指针" class="headerlink" title="(2)快慢指针"></a>(2)快慢指针</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">hasCycle</span><span class="params">(ListNode *head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> fast = head;</span><br><span class="line">        <span class="keyword">auto</span> slow = head;</span><br><span class="line">        <span class="keyword">while</span> ( fast != <span class="literal">nullptr</span> &amp;&amp; fast-&gt;next != <span class="literal">nullptr</span> ) &#123;</span><br><span class="line">            fast = fast-&gt;next-&gt;next;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            <span class="keyword">if</span> ( fast == slow ) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -350,6 +384,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C-C/" <i class="fa fa-tag"> C/C++</a>
+          
+            <a href="/tags/LeetCode/" <i class="fa fa-tag"> LeetCode</a>
+          
+        </div>
       
 
       
@@ -420,8 +462,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -498,6 +549,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目：环形链表（简单）"><span class="nav-text">1.题目：环形链表（简单）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-题解"><span class="nav-text">2.题解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-使用集合"><span class="nav-text">(1)使用集合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-快慢指针"><span class="nav-text">(2)快慢指针</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
