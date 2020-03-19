@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="LeetCode#58–最后一个单词的长度">
+<meta name="description" content="LeetCode#172–阶乘后的0">
 <meta name="keywords" content="C&#x2F;C++,LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode#58--最后一个单词的长度">
-<meta property="og:url" content="http://shuoshuo666.github.io/2020/03/02/leetcode58/index.html">
+<meta property="og:title" content="LeetCode#172--阶乘后的0">
+<meta property="og:url" content="http://shuoshuo666.github.io/2020/03/19/leetcode172/index.html">
 <meta property="og:site_name" content="朔朔の博客">
-<meta property="og:description" content="LeetCode#58–最后一个单词的长度">
+<meta property="og:description" content="LeetCode#172–阶乘后的0">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-02T05:37:42.440Z">
+<meta property="og:updated_time" content="2020-03-19T10:39:07.308Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode#58--最后一个单词的长度">
-<meta name="twitter:description" content="LeetCode#58–最后一个单词的长度">
+<meta name="twitter:title" content="LeetCode#172--阶乘后的0">
+<meta name="twitter:description" content="LeetCode#172–阶乘后的0">
 
 
 
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://shuoshuo666.github.io/2020/03/02/leetcode58/">
+  <link rel="canonical" href="http://shuoshuo666.github.io/2020/03/19/leetcode172/">
 
 
 
@@ -143,7 +143,7 @@
 </script>
 
 
-  <title>LeetCode#58--最后一个单词的长度 | 朔朔の博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>LeetCode#172--阶乘后的0 | 朔朔の博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2020/03/02/leetcode58/">
+    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2020/03/19/leetcode172/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shuoshuo">
@@ -287,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode#58--最后一个单词的长度</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode#172--阶乘后的0</h1>
         
 
         <div class="post-meta">
@@ -299,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-02T13:33:33+08:00">
-                2020-03-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-19T18:37:23+08:00">
+                2020-03-19
               </time>
             
 
@@ -360,21 +360,12 @@
 
       
         <blockquote>
-<p>LeetCode#58–最后一个单词的长度</p>
+<p>LeetCode#172–阶乘后的0</p>
 </blockquote>
 <a id="more"></a>
 
-<h3 id="1-题目：外观数列（简单）"><a href="#1-题目：外观数列（简单）" class="headerlink" title="1.题目：外观数列（简单）"></a>1.题目：外观数列（简单）</h3><p>给定一个仅包含大小写字母和空格 ‘ ‘ 的字符串 s，返回其最后一个单词的长度。</p>
-<p>如果字符串从左向右滚动显示，那么最后一个单词就是最后出现的单词。</p>
-<p>如果不存在最后一个单词，请返回 0 。</p>
-<p>说明：一个单词是指仅由字母组成、不包含任何空格的 最大子字符串。</p>
-<p><strong>示例:</strong></p>
-<blockquote>
-<p>输入: “Hello World”<br>输出: 5</p>
-</blockquote>
-<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><h4 id="1-使用sstream正序遍历-不好"><a href="#1-使用sstream正序遍历-不好" class="headerlink" title="(1)使用sstream正序遍历(不好)"></a>(1)使用sstream正序遍历(不好)</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lengthOfLastWord</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.empty()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">string</span> res;</span><br><span class="line">        <span class="function"><span class="built_in">stringstream</span> <span class="title">in</span><span class="params">(s)</span></span>;</span><br><span class="line">        <span class="keyword">while</span> (in &gt;&gt; res)&#123;&#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-逆序遍历"><a href="#2-逆序遍历" class="headerlink" title="(2)逆序遍历"></a>(2)逆序遍历</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lengthOfLastWord</span><span class="params">(<span class="built_in">string</span> s)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = s.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> ( s[i] == <span class="string">' '</span> )</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> ( count == <span class="number">0</span> ) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> ( count &gt; <span class="number">0</span> ) <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            ++count;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="1-题目：阶乘后的0（简单）"><a href="#1-题目：阶乘后的0（简单）" class="headerlink" title="1.题目：阶乘后的0（简单）"></a>1.题目：阶乘后的0（简单）</h3><p>给定一个整数 n，返回 n! 结果尾数中零的数量。</p>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">trailingZeroes</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            count += n / <span class="number">5</span>;</span><br><span class="line">            n = n / <span class="number">5</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -408,8 +399,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/02/leetcode53/" rel="next" title="LeetCode#53--最大子序和">
-                <i class="fa fa-chevron-left"></i> LeetCode#53--最大子序和
+              <a href="/2020/03/19/leetcode171/" rel="next" title="LeetCode#171--excel表列序号">
+                <i class="fa fa-chevron-left"></i> LeetCode#171--excel表列序号
               </a>
             
           </div>
@@ -417,10 +408,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/02/leetcode66/" rel="prev" title="LeetCode#66--加1">
-                LeetCode#66--加1 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -569,7 +556,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目：外观数列（简单）"><span class="nav-text">1.题目：外观数列（简单）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-题解"><span class="nav-text">2.题解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-使用sstream正序遍历-不好"><span class="nav-text">(1)使用sstream正序遍历(不好)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-逆序遍历"><span class="nav-text">(2)逆序遍历</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目：阶乘后的0（简单）"><span class="nav-text">1.题目：阶乘后的0（简单）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-题解"><span class="nav-text">2.题解</span></a></li></ol></div>
             
 
           </div>
