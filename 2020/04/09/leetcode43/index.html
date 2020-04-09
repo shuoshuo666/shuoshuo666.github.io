@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="LeetCode#36–有效的数独">
+<meta name="description" content="LeetCode#43–字符串相乘">
 <meta name="keywords" content="C&#x2F;C++,LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode#36--有效的数独">
-<meta property="og:url" content="http://shuoshuo666.github.io/2020/04/08/leetcode36/index.html">
+<meta property="og:title" content="LeetCode#43--字符串相乘">
+<meta property="og:url" content="http://shuoshuo666.github.io/2020/04/09/leetcode43/index.html">
 <meta property="og:site_name" content="朔朔の博客">
-<meta property="og:description" content="LeetCode#36–有效的数独">
+<meta property="og:description" content="LeetCode#43–字符串相乘">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-08T09:37:47.591Z">
+<meta property="og:updated_time" content="2020-04-09T12:56:22.117Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode#36--有效的数独">
-<meta name="twitter:description" content="LeetCode#36–有效的数独">
+<meta name="twitter:title" content="LeetCode#43--字符串相乘">
+<meta name="twitter:description" content="LeetCode#43–字符串相乘">
 
 
 
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://shuoshuo666.github.io/2020/04/08/leetcode36/">
+  <link rel="canonical" href="http://shuoshuo666.github.io/2020/04/09/leetcode43/">
 
 
 
@@ -143,7 +143,7 @@
 </script>
 
 
-  <title>LeetCode#36--有效的数独 | 朔朔の博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>LeetCode#43--字符串相乘 | 朔朔の博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2020/04/08/leetcode36/">
+    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2020/04/09/leetcode43/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shuoshuo">
@@ -287,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode#36--有效的数独</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode#43--字符串相乘</h1>
         
 
         <div class="post-meta">
@@ -299,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-08T17:32:41+08:00">
-                2020-04-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-09T20:54:11+08:00">
+                2020-04-09
               </time>
             
 
@@ -360,15 +360,14 @@
 
       
         <blockquote>
-<p>LeetCode#36–有效的数独</p>
+<p>LeetCode#43–字符串相乘</p>
 </blockquote>
 <a id="more"></a>
 
-<h3 id="1-题目：有效的数独（中等）"><a href="#1-题目：有效的数独（中等）" class="headerlink" title="1.题目：有效的数独（中等）"></a>1.题目：有效的数独（中等）</h3><p>判断一个 9x9 的数独是否有效。只需要根据以下规则，验证已经填入的数字是否有效即可。</p>
-<p>数字 1-9 在每一行只能出现一次。<br>数字 1-9 在每一列只能出现一次。<br>数字 1-9 在每一个以粗实线分隔的 3x3 宫内只能出现一次。</p>
+<h3 id="1-题目：字符串相乘（中等）"><a href="#1-题目：字符串相乘（中等）" class="headerlink" title="1.题目：字符串相乘（中等）"></a>1.题目：字符串相乘（中等）</h3><p>给定两个以字符串形式表示的非负整数 num1 和 num2，返回 num1 和 num2 的乘积，它们的乘积也表示为字符串形式。</p>
 <p><strong>示例:</strong></p>
-<p>输入:<br>[<br>  [“5”,”3”,”.”,”.”,”7”,”.”,”.”,”.”,”.”],<br>  [“6”,”.”,”.”,”1”,”9”,”5”,”.”,”.”,”.”],<br>  [“.”,”9”,”8”,”.”,”.”,”.”,”.”,”6”,”.”],<br>  [“8”,”.”,”.”,”.”,”6”,”.”,”.”,”.”,”3”],<br>  [“4”,”.”,”.”,”8”,”.”,”3”,”.”,”.”,”1”],<br>  [“7”,”.”,”.”,”.”,”2”,”.”,”.”,”.”,”6”],<br>  [“.”,”6”,”.”,”.”,”.”,”.”,”2”,”8”,”.”],<br>  [“.”,”.”,”.”,”4”,”1”,”9”,”.”,”.”,”5”],<br>  [“.”,”.”,”.”,”.”,”8”,”.”,”.”,”7”,”9”]<br>]<br>输出: true</p>
-<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValidSudoku</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt;&gt; &amp;board)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 整个board有9行，第二维的维数10是为了让下标有9，和数独中的数字9对应。</span></span><br><span class="line">        <span class="keyword">int</span> row[<span class="number">9</span>][<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 哈希表存储每一行的每个数是否出现过，默认初始情况下，每一行每一个数都没有出现过</span></span><br><span class="line">        <span class="keyword">int</span> col[<span class="number">9</span>][<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 存储每一列的每个数是否出现过，默认初始情况下，每一列的每一个数都没有出现过</span></span><br><span class="line">        <span class="keyword">int</span> box[<span class="number">9</span>][<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 存储每一个box的每个数是否出现过，默认初始情况下，在每个box中，每个数都没有出现过。整个board有9个box。</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>; j++) &#123;</span><br><span class="line">                <span class="comment">// 遍历到第i行第j列的那个数,我们要判断这个数在其所在的行有没有出现过，</span></span><br><span class="line">                <span class="comment">// 同时判断这个数在其所在的列有没有出现过</span></span><br><span class="line">                <span class="comment">// 同时判断这个数在其所在的box中有没有出现过</span></span><br><span class="line">                <span class="keyword">if</span> (board[i][j] == <span class="string">'.'</span>) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">int</span> curNumber = board[i][j] - <span class="string">'0'</span>;</span><br><span class="line">                <span class="keyword">if</span> (row[i][curNumber]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">if</span> (col[j][curNumber]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">if</span> (box[j / <span class="number">3</span> + (i / <span class="number">3</span>) * <span class="number">3</span>][curNumber]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                <span class="comment">// 之前都没出现过，现在出现了，就给它置为1，下次再遇见就能够直接返回false了。</span></span><br><span class="line">                row[i][curNumber] = <span class="number">1</span>;</span><br><span class="line">                col[j][curNumber] = <span class="number">1</span>;</span><br><span class="line">                box[j / <span class="number">3</span> + (i / <span class="number">3</span>) * <span class="number">3</span>][curNumber] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>输入: num1 = “123”, num2 = “456”<br>输出: “56088”</p>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">multiply</span><span class="params">(<span class="built_in">string</span> num1, <span class="built_in">string</span> num2)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> res = <span class="string">"0"</span>;</span><br><span class="line">        <span class="keyword">if</span> ( num1 == <span class="string">"0"</span> || num2 == <span class="string">"0"</span> ) <span class="keyword">return</span> res;</span><br><span class="line">        reverse(num2.begin(), num2.end());</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num2.size(); ++i ) &#123;</span><br><span class="line">            <span class="built_in">string</span> temp = mul(num1, num2[i]);</span><br><span class="line">            <span class="keyword">for</span> ( <span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; ++j ) temp.push_back(<span class="string">'0'</span>);</span><br><span class="line">            res = add(res, temp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">mul</span><span class="params">(<span class="built_in">string</span> num, <span class="keyword">char</span> c)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> res;</span><br><span class="line">        <span class="keyword">int</span> x = c - <span class="string">'0'</span>;</span><br><span class="line">        <span class="keyword">int</span> temp = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = num.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i ) &#123;</span><br><span class="line">            <span class="keyword">int</span> y = num[i] - <span class="string">'0'</span>;</span><br><span class="line">            temp += x * y;</span><br><span class="line">            res.push_back(temp % <span class="number">10</span> + <span class="string">'0'</span>);</span><br><span class="line">            temp /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ( temp != <span class="number">0</span> ) res.push_back(temp + <span class="string">'0'</span>);</span><br><span class="line">        reverse(res.begin(), res.end());</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">add</span><span class="params">(<span class="built_in">string</span> num1, <span class="built_in">string</span> num2)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> res;</span><br><span class="line">        <span class="keyword">int</span> temp = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = num1.size() - <span class="number">1</span>, j = num2.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span> || j &gt;= <span class="number">0</span>; --i, --j ) &#123;</span><br><span class="line">            <span class="keyword">if</span> ( i &gt;= <span class="number">0</span> ) temp += num1[i] - <span class="string">'0'</span>;</span><br><span class="line">            <span class="keyword">if</span> ( j &gt;= <span class="number">0</span> ) temp += num2[j] - <span class="string">'0'</span>;</span><br><span class="line">            res.push_back(temp % <span class="number">10</span> + <span class="string">'0'</span>);</span><br><span class="line">            temp /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ( temp != <span class="number">0</span> ) res.push_back(temp + <span class="string">'0'</span>);</span><br><span class="line">        reverse(res.begin(), res.end());</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -402,8 +401,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/31/leetcode34/" rel="next" title="LeetCode#34--在排序数组中查找元素的第一个和最后一个位置">
-                <i class="fa fa-chevron-left"></i> LeetCode#34--在排序数组中查找元素的第一个和最后一个位置
+              <a href="/2020/04/09/leetcode40/" rel="next" title="LeetCode#40--组合总和2">
+                <i class="fa fa-chevron-left"></i> LeetCode#40--组合总和2
               </a>
             
           </div>
@@ -411,10 +410,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/09/leetcode39/" rel="prev" title="LeetCode#39--组合总和">
-                LeetCode#39--组合总和 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -563,7 +558,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目：有效的数独（中等）"><span class="nav-text">1.题目：有效的数独（中等）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-题解"><span class="nav-text">2.题解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目：字符串相乘（中等）"><span class="nav-text">1.题目：字符串相乘（中等）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-题解"><span class="nav-text">2.题解</span></a></li></ol></div>
             
 
           </div>

@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="LeetCode#36–有效的数独">
+<meta name="description" content="LeetCode#40–组合总和2">
 <meta name="keywords" content="C&#x2F;C++,LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode#36--有效的数独">
-<meta property="og:url" content="http://shuoshuo666.github.io/2020/04/08/leetcode36/index.html">
+<meta property="og:title" content="LeetCode#40--组合总和2">
+<meta property="og:url" content="http://shuoshuo666.github.io/2020/04/09/leetcode40/index.html">
 <meta property="og:site_name" content="朔朔の博客">
-<meta property="og:description" content="LeetCode#36–有效的数独">
+<meta property="og:description" content="LeetCode#40–组合总和2">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-08T09:37:47.591Z">
+<meta property="og:updated_time" content="2020-04-09T09:54:07.579Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode#36--有效的数独">
-<meta name="twitter:description" content="LeetCode#36–有效的数独">
+<meta name="twitter:title" content="LeetCode#40--组合总和2">
+<meta name="twitter:description" content="LeetCode#40–组合总和2">
 
 
 
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://shuoshuo666.github.io/2020/04/08/leetcode36/">
+  <link rel="canonical" href="http://shuoshuo666.github.io/2020/04/09/leetcode40/">
 
 
 
@@ -143,7 +143,7 @@
 </script>
 
 
-  <title>LeetCode#36--有效的数独 | 朔朔の博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>LeetCode#40--组合总和2 | 朔朔の博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2020/04/08/leetcode36/">
+    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2020/04/09/leetcode40/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shuoshuo">
@@ -287,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode#36--有效的数独</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode#40--组合总和2</h1>
         
 
         <div class="post-meta">
@@ -299,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-08T17:32:41+08:00">
-                2020-04-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-09T17:52:38+08:00">
+                2020-04-09
               </time>
             
 
@@ -360,15 +360,17 @@
 
       
         <blockquote>
-<p>LeetCode#36–有效的数独</p>
+<p>LeetCode#40–组合总和2</p>
 </blockquote>
 <a id="more"></a>
 
-<h3 id="1-题目：有效的数独（中等）"><a href="#1-题目：有效的数独（中等）" class="headerlink" title="1.题目：有效的数独（中等）"></a>1.题目：有效的数独（中等）</h3><p>判断一个 9x9 的数独是否有效。只需要根据以下规则，验证已经填入的数字是否有效即可。</p>
-<p>数字 1-9 在每一行只能出现一次。<br>数字 1-9 在每一列只能出现一次。<br>数字 1-9 在每一个以粗实线分隔的 3x3 宫内只能出现一次。</p>
+<h3 id="1-题目：组合总和（中等）"><a href="#1-题目：组合总和（中等）" class="headerlink" title="1.题目：组合总和（中等）"></a>1.题目：组合总和（中等）</h3><p>给定一个数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。</p>
+<p>candidates 中的每个数字在每个组合中只能使用一次。</p>
+<p>说明：</p>
+<p>所有数字（包括目标数）都是正整数。<br>解集不能包含重复的组合。</p>
 <p><strong>示例:</strong></p>
-<p>输入:<br>[<br>  [“5”,”3”,”.”,”.”,”7”,”.”,”.”,”.”,”.”],<br>  [“6”,”.”,”.”,”1”,”9”,”5”,”.”,”.”,”.”],<br>  [“.”,”9”,”8”,”.”,”.”,”.”,”.”,”6”,”.”],<br>  [“8”,”.”,”.”,”.”,”6”,”.”,”.”,”.”,”3”],<br>  [“4”,”.”,”.”,”8”,”.”,”3”,”.”,”.”,”1”],<br>  [“7”,”.”,”.”,”.”,”2”,”.”,”.”,”.”,”6”],<br>  [“.”,”6”,”.”,”.”,”.”,”.”,”2”,”8”,”.”],<br>  [“.”,”.”,”.”,”4”,”1”,”9”,”.”,”.”,”5”],<br>  [“.”,”.”,”.”,”.”,”8”,”.”,”.”,”7”,”9”]<br>]<br>输出: true</p>
-<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValidSudoku</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt;&gt; &amp;board)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 整个board有9行，第二维的维数10是为了让下标有9，和数独中的数字9对应。</span></span><br><span class="line">        <span class="keyword">int</span> row[<span class="number">9</span>][<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 哈希表存储每一行的每个数是否出现过，默认初始情况下，每一行每一个数都没有出现过</span></span><br><span class="line">        <span class="keyword">int</span> col[<span class="number">9</span>][<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 存储每一列的每个数是否出现过，默认初始情况下，每一列的每一个数都没有出现过</span></span><br><span class="line">        <span class="keyword">int</span> box[<span class="number">9</span>][<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 存储每一个box的每个数是否出现过，默认初始情况下，在每个box中，每个数都没有出现过。整个board有9个box。</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>; j++) &#123;</span><br><span class="line">                <span class="comment">// 遍历到第i行第j列的那个数,我们要判断这个数在其所在的行有没有出现过，</span></span><br><span class="line">                <span class="comment">// 同时判断这个数在其所在的列有没有出现过</span></span><br><span class="line">                <span class="comment">// 同时判断这个数在其所在的box中有没有出现过</span></span><br><span class="line">                <span class="keyword">if</span> (board[i][j] == <span class="string">'.'</span>) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">int</span> curNumber = board[i][j] - <span class="string">'0'</span>;</span><br><span class="line">                <span class="keyword">if</span> (row[i][curNumber]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">if</span> (col[j][curNumber]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">if</span> (box[j / <span class="number">3</span> + (i / <span class="number">3</span>) * <span class="number">3</span>][curNumber]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                <span class="comment">// 之前都没出现过，现在出现了，就给它置为1，下次再遇见就能够直接返回false了。</span></span><br><span class="line">                row[i][curNumber] = <span class="number">1</span>;</span><br><span class="line">                col[j][curNumber] = <span class="number">1</span>;</span><br><span class="line">                box[j / <span class="number">3</span> + (i / <span class="number">3</span>) * <span class="number">3</span>][curNumber] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>输入: candidates = [10,1,2,7,6,1,5], target = 8,<br>所求解集为:<br>[<br>  [1, 7],<br>  [1, 2, 5],<br>  [2, 6],<br>  [1, 1, 6]<br>]</p>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; combinationSum2(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; candidates, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        sort(candidates.begin(), candidates.end());</span><br><span class="line">        <span class="keyword">this</span>-&gt;candidates = candidates;</span><br><span class="line">        DFS(<span class="number">0</span>, target);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; candidates;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; path;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (target == <span class="number">0</span>) &#123;</span><br><span class="line">            res.push_back(path);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt; candidates.size() &amp;&amp; target - candidates[i] &gt;= <span class="number">0</span>; ++i) &#123;</span><br><span class="line">            path.push_back(candidates[i]);</span><br><span class="line">            DFS(i + <span class="number">1</span>, target - candidates[i]);</span><br><span class="line">            path.pop_back();</span><br><span class="line">            <span class="keyword">while</span> (i &lt; candidates.size() - <span class="number">1</span> &amp;&amp; candidates[i] == candidates[i + <span class="number">1</span>]) ++i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -402,8 +404,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/31/leetcode34/" rel="next" title="LeetCode#34--在排序数组中查找元素的第一个和最后一个位置">
-                <i class="fa fa-chevron-left"></i> LeetCode#34--在排序数组中查找元素的第一个和最后一个位置
+              <a href="/2020/04/09/leetcode39/" rel="next" title="LeetCode#39--组合总和">
+                <i class="fa fa-chevron-left"></i> LeetCode#39--组合总和
               </a>
             
           </div>
@@ -412,8 +414,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/04/09/leetcode39/" rel="prev" title="LeetCode#39--组合总和">
-                LeetCode#39--组合总和 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/04/09/leetcode43/" rel="prev" title="LeetCode#43--字符串相乘">
+                LeetCode#43--字符串相乘 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -563,7 +565,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目：有效的数独（中等）"><span class="nav-text">1.题目：有效的数独（中等）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-题解"><span class="nav-text">2.题解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目：组合总和（中等）"><span class="nav-text">1.题目：组合总和（中等）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-题解"><span class="nav-text">2.题解</span></a></li></ol></div>
             
 
           </div>
