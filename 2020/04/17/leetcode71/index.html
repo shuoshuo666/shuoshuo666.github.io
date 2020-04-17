@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="linux,">
+  <meta name="keywords" content="C/C++,LeetCode,">
 
 
 
@@ -79,22 +79,18 @@
 
 
 
-<meta name="description" content="本文介绍了在ubuntu16.04中连接远程服务器的方法">
-<meta name="keywords" content="linux">
+<meta name="description" content="LeetCode#71–简化路径">
+<meta name="keywords" content="C&#x2F;C++,LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu中连接远程服务器">
-<meta property="og:url" content="http://shuoshuo666.github.io/2019/09/19/ubuntu-ssh/index.html">
+<meta property="og:title" content="LeetCode#71--简化路径">
+<meta property="og:url" content="http://shuoshuo666.github.io/2020/04/17/leetcode71/index.html">
 <meta property="og:site_name" content="朔朔の博客">
-<meta property="og:description" content="本文介绍了在ubuntu16.04中连接远程服务器的方法">
+<meta property="og:description" content="LeetCode#71–简化路径">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://shuoshuo666.github.io/2019/09/19/ubuntu-ssh/ubuntu_ssh1.png">
-<meta property="og:image" content="http://shuoshuo666.github.io/2019/09/19/ubuntu-ssh/ubuntu_ssh2.png">
-<meta property="og:image" content="http://shuoshuo666.github.io/2019/09/19/ubuntu-ssh/ubuntu_ssh3.png">
-<meta property="og:updated_time" content="2019-10-07T11:52:05.492Z">
+<meta property="og:updated_time" content="2020-04-17T10:31:25.116Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu中连接远程服务器">
-<meta name="twitter:description" content="本文介绍了在ubuntu16.04中连接远程服务器的方法">
-<meta name="twitter:image" content="http://shuoshuo666.github.io/2019/09/19/ubuntu-ssh/ubuntu_ssh1.png">
+<meta name="twitter:title" content="LeetCode#71--简化路径">
+<meta name="twitter:description" content="LeetCode#71–简化路径">
 
 
 
@@ -124,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://shuoshuo666.github.io/2019/09/19/ubuntu-ssh/">
+  <link rel="canonical" href="http://shuoshuo666.github.io/2020/04/17/leetcode71/">
 
 
 
@@ -147,7 +143,7 @@
 </script>
 
 
-  <title>Ubuntu中连接远程服务器 | 朔朔の博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>LeetCode#71--简化路径 | 朔朔の博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -274,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2019/09/19/ubuntu-ssh/">
+    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2020/04/17/leetcode71/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shuoshuo">
@@ -291,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Ubuntu中连接远程服务器</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode#71--简化路径</h1>
         
 
         <div class="post-meta">
@@ -303,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-19T16:22:44+08:00">
-                2019-09-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T18:27:19+08:00">
+                2020-04-17
               </time>
             
 
@@ -326,8 +322,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
 
@@ -364,26 +360,18 @@
 
       
         <blockquote>
-<p>本文介绍了在ubuntu16.04中连接远程服务器的方法</p>
-</blockquote>
+<p>LeetCode#71–简化路径</p>
 <a id="more"></a>
-<h3 id="1-使用Remmina连接远程服务器"><a href="#1-使用Remmina连接远程服务器" class="headerlink" title="1. 使用Remmina连接远程服务器"></a>1. 使用Remmina连接远程服务器</h3><p>（1）打开ubuntu16.04自带的Remmina远程桌面客户端，点击新建；</p>
-<img src="/2019/09/19/ubuntu-ssh/ubuntu_ssh1.png">
+</blockquote>
+<h3 id="1-题目：简化路径（中等）"><a href="#1-题目：简化路径（中等）" class="headerlink" title="1.题目：简化路径（中等）"></a>1.题目：简化路径（中等）</h3><p>以 Unix 风格给出一个文件的绝对路径，你需要简化它。或者换句话说，将其转换为规范路径。</p>
+<p>在 Unix 风格的文件系统中，一个点（.）表示当前目录本身；此外，两个点 （..） 表示将目录切换到上一级（指向父目录）；两者都可以是复杂相对路径的组成部分。</p>
+<p>请注意，返回的规范路径必须始终以斜杠 / 开头，并且两个目录名之间必须只有一个斜杠 /。最后一个目录名（如果存在）不能以 / 结尾。此外，规范路径必须是表示绝对路径的最短字符串。</p>
+<p><strong>示例:</strong></p>
+<blockquote>
+<p>输入：”/a/../../b/../c//.//“<br>输出：”/c”</p>
+</blockquote>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">simplifyPath</span><span class="params">(<span class="built_in">string</span> path)</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="built_in">stringstream</span> <span class="title">is</span><span class="params">(path)</span></span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; strs;</span><br><span class="line">        <span class="built_in">string</span> res, tmp;</span><br><span class="line">        <span class="keyword">while</span> ( getline(is, tmp, <span class="string">'/'</span>) ) &#123;</span><br><span class="line">            <span class="keyword">if</span> ( tmp == <span class="string">""</span> || tmp == <span class="string">"."</span> )</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> ( tmp == <span class="string">".."</span> &amp;&amp; !strs.empty() )</span><br><span class="line">                strs.pop_back();</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> ( tmp != <span class="string">".."</span> )</span><br><span class="line">                strs.push_back(tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> ( <span class="built_in">string</span> str : strs )</span><br><span class="line">            res +=  <span class="string">"/"</span> + str;</span><br><span class="line">        <span class="keyword">if</span> ( res.empty() )</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"/"</span>;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>（2）协议选择SSH-安全Shell连接，填入服务器地址及用户名，并验证密码；</p>
-<img src="/2019/09/19/ubuntu-ssh/ubuntu_ssh2.png">
-
-<p>（3）成功连接服务器</p>
-<img src="/2019/09/19/ubuntu-ssh/ubuntu_ssh3.png">
-
-<h3 id="2-使用ssh连接远程服务器"><a href="#2-使用ssh连接远程服务器" class="headerlink" title="2. 使用ssh连接远程服务器"></a>2. 使用ssh连接远程服务器</h3><p>连接服务器：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh zhangshuo@192.168.200.66</span><br></pre></td></tr></table></figure>
-
-<p>其中，zhangshuo为192.168.200.66机器上的用户，需要输入密码。</p>
-<p>断开连接：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
-
-<p><a href="https://blog.csdn.net/jackghq/article/details/54974141" target="_blank" rel="noopener">参考</a></p>
 
       
     </div>
@@ -401,7 +389,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux/" <i class="fa fa-tag"> linux</a>
+            <a href="/tags/C-C/" <i class="fa fa-tag"> C/C++</a>
+          
+            <a href="/tags/LeetCode/" <i class="fa fa-tag"> LeetCode</a>
           
         </div>
       
@@ -414,8 +404,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/18/ubuntu-zjunet/" rel="next" title="Ubuntu中用zjunet连接浙大有线网">
-                <i class="fa fa-chevron-left"></i> Ubuntu中用zjunet连接浙大有线网
+              <a href="/2020/04/16/leetcode64/" rel="next" title="LeetCode#64--最小路径和">
+                <i class="fa fa-chevron-left"></i> LeetCode#64--最小路径和
               </a>
             
           </div>
@@ -424,8 +414,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/19/adaboost/" rel="prev" title="Adaboost算法">
-                Adaboost算法 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/04/17/leetcode73/" rel="prev" title="LeetCode#73--矩阵置0">
+                LeetCode#73--矩阵置0 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -575,7 +565,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-使用Remmina连接远程服务器"><span class="nav-text">1. 使用Remmina连接远程服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-使用ssh连接远程服务器"><span class="nav-text">2. 使用ssh连接远程服务器</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目：简化路径（中等）"><span class="nav-text">1.题目：简化路径（中等）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-题解"><span class="nav-text">2.题解</span></a></li></ol></div>
             
 
           </div>
