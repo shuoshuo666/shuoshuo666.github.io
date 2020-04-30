@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="LeetCode#121–买卖股票的最佳时机">
+<meta name="description" content="LeetCode#94–二叉树的中序遍历">
 <meta name="keywords" content="C&#x2F;C++,LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode#121--买卖股票的最佳时机">
-<meta property="og:url" content="http://shuoshuo666.github.io/2020/03/14/leetcode121/index.html">
+<meta property="og:title" content="LeetCode#94--二叉树的中序遍历">
+<meta property="og:url" content="http://shuoshuo666.github.io/2020/04/30/leetcode94/index.html">
 <meta property="og:site_name" content="朔朔の博客">
-<meta property="og:description" content="LeetCode#121–买卖股票的最佳时机">
+<meta property="og:description" content="LeetCode#94–二叉树的中序遍历">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-25T10:18:18.768Z">
+<meta property="og:updated_time" content="2020-04-30T04:40:31.922Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode#121--买卖股票的最佳时机">
-<meta name="twitter:description" content="LeetCode#121–买卖股票的最佳时机">
+<meta name="twitter:title" content="LeetCode#94--二叉树的中序遍历">
+<meta name="twitter:description" content="LeetCode#94–二叉树的中序遍历">
 
 
 
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://shuoshuo666.github.io/2020/03/14/leetcode121/">
+  <link rel="canonical" href="http://shuoshuo666.github.io/2020/04/30/leetcode94/">
 
 
 
@@ -143,7 +143,7 @@
 </script>
 
 
-  <title>LeetCode#121--买卖股票的最佳时机 | 朔朔の博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>LeetCode#94--二叉树的中序遍历 | 朔朔の博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2020/03/14/leetcode121/">
+    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2020/04/30/leetcode94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shuoshuo">
@@ -287,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode#121--买卖股票的最佳时机</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode#94--二叉树的中序遍历</h1>
         
 
         <div class="post-meta">
@@ -299,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-14T20:34:41+08:00">
-                2020-03-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-30T12:35:46+08:00">
+                2020-04-30
               </time>
             
 
@@ -360,19 +360,15 @@
 
       
         <blockquote>
-<p>LeetCode#121–买卖股票的最佳时机</p>
+<p>LeetCode#94–二叉树的中序遍历</p>
 <a id="more"></a>
 </blockquote>
-<h3 id="1-题目：买卖股票的最佳时机（简单）"><a href="#1-题目：买卖股票的最佳时机（简单）" class="headerlink" title="1.题目：买卖股票的最佳时机（简单）"></a>1.题目：买卖股票的最佳时机（简单）</h3><p>给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。</p>
-<p>如果你最多只允许完成一笔交易（即买入和卖出一支股票），设计一个算法来计算你所能获取的最大利润。</p>
-<p>注意你不能在买入股票前卖出股票。</p>
-<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><h4 id="1-暴力双循环"><a href="#1-暴力双循环" class="headerlink" title="(1)暴力双循环"></a>(1)暴力双循环</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; prices.size(); ++i )&#123;</span><br><span class="line">            <span class="keyword">for</span> ( <span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; prices.size(); ++j ) &#123;</span><br><span class="line">                ans = max(ans, prices[j] - prices[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="1-题目：二叉树的中序遍历（中等）"><a href="#1-题目：二叉树的中序遍历（中等）" class="headerlink" title="1.题目：二叉树的中序遍历（中等）"></a>1.题目：二叉树的中序遍历（中等）</h3><p>给定一个二叉树，返回它的中序遍历。</p>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><h4 id="1-递归"><a href="#1-递归" class="headerlink" title="(1) 递归"></a>(1) 递归</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; inorderTraversal(TreeNode* root) &#123;</span><br><span class="line">		<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">		helper(root, res);</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(TreeNode* root, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; res)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> ( root-&gt;left != <span class="literal">nullptr</span> ) helper(root-&gt;left, res);</span><br><span class="line">		res.push_back(root-&gt;val);</span><br><span class="line">		<span class="keyword">if</span> ( root-&gt;right != <span class="literal">nullptr</span> ) helper(root-&gt;right, res);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h4 id="2-动态规划"><a href="#2-动态规划" class="headerlink" title="(2)动态规划"></a>(2)动态规划</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( prices.empty() ) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> minPrice = prices[<span class="number">0</span>];</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; dp(prices.size(), <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.size(); ++i )&#123;</span><br><span class="line">            minPrice = min(minPrice, prices[i]);</span><br><span class="line">            dp[i] = max(dp[i - <span class="number">1</span>], prices[i] - minPrice);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[prices.size() - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="2-迭代"><a href="#2-迭代" class="headerlink" title="(2) 迭代"></a>(2) 迭代</h4><h5 id="a-模拟递归调用栈"><a href="#a-模拟递归调用栈" class="headerlink" title="(a) 模拟递归调用栈"></a>(a) 模拟递归调用栈</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; inorderTraversal(TreeNode* root) &#123;</span><br><span class="line">		<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">		<span class="built_in">stack</span>&lt;TreeNode*&gt; auxStack;</span><br><span class="line">		TreeNode* node = root;</span><br><span class="line">		<span class="keyword">while</span> ( !auxStack.empty() || node != <span class="literal">nullptr</span> ) &#123;</span><br><span class="line">			<span class="keyword">if</span> ( node != <span class="literal">nullptr</span> ) &#123;</span><br><span class="line">				auxStack.push(node);</span><br><span class="line">				node = node-&gt;left;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				node = auxStack.top();</span><br><span class="line">				auxStack.pop();</span><br><span class="line">				res.push_back(node-&gt;val);</span><br><span class="line">				node = node-&gt;right;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h4 id="3-动态规划-转化为最大子列和"><a href="#3-动态规划-转化为最大子列和" class="headerlink" title="(3)动态规划(转化为最大子列和)"></a>(3)动态规划(转化为最大子列和)</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//转化为最大子列和问题</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( prices.size() &lt;= <span class="number">1</span> ) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//构造相邻元素求差数组</span></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; diff(prices.size() - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; prices.size() - <span class="number">1</span>; ++i ) &#123;</span><br><span class="line">            diff[i] = prices[i+<span class="number">1</span>] - prices[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//构造DP数组</span></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; dp(diff.size());</span><br><span class="line">        dp[<span class="number">0</span>] = max(<span class="number">0</span>, diff[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">int</span> profit = dp[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span>; i &lt; diff.size(); ++i ) &#123;</span><br><span class="line">            dp[i] = max(<span class="number">0</span>, dp[i<span class="number">-1</span>] + diff[i]);</span><br><span class="line">            profit = max(profit, dp[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> profit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
+<h5 id="b-颜色标记法"><a href="#b-颜色标记法" class="headerlink" title="(b) 颜色标记法"></a>(b) 颜色标记法</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; inorderTraversal(TreeNode* root) &#123;</span><br><span class="line">		<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">		<span class="keyword">int</span> WHITE = <span class="number">0</span>, GRAY = <span class="number">1</span>;  <span class="comment">//白色代表遍历过0次，灰色代表遍历过1次</span></span><br><span class="line">		<span class="built_in">stack</span>&lt;pair&lt;<span class="keyword">int</span>, TreeNode*&gt;&gt; auxStack;  <span class="comment">//辅助栈</span></span><br><span class="line">		auxStack.push(make_pair(WHITE, root));</span><br><span class="line">		<span class="keyword">while</span> ( !auxStack.empty() )</span><br><span class="line">        &#123;</span><br><span class="line">			<span class="keyword">int</span> color = auxStack.top().first;</span><br><span class="line">			TreeNode* node = auxStack.top().second;</span><br><span class="line">			auxStack.pop();</span><br><span class="line">			<span class="keyword">if</span> ( node == <span class="literal">nullptr</span> ) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span> ( color == WHITE )</span><br><span class="line">			&#123;</span><br><span class="line">				auxStack.push(make_pair(WHITE, node-&gt;right));</span><br><span class="line">				auxStack.push(make_pair(GRAY, node));</span><br><span class="line">				auxStack.push(make_pair(WHITE, node-&gt;left));</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> res.push_back(node-&gt;val);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -404,8 +400,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/14/leetcode119/" rel="next" title="LeetCode#119--杨辉三角2">
-                <i class="fa fa-chevron-left"></i> LeetCode#119--杨辉三角2
+              <a href="/2020/04/29/shortcut/" rel="next" title="Linux下常用快捷键">
+                <i class="fa fa-chevron-left"></i> Linux下常用快捷键
               </a>
             
           </div>
@@ -413,10 +409,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/15/leetcode122/" rel="prev" title="LeetCode#122--买卖股票的最佳时机2">
-                LeetCode#122--买卖股票的最佳时机2 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -565,7 +557,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目：买卖股票的最佳时机（简单）"><span class="nav-text">1.题目：买卖股票的最佳时机（简单）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-题解"><span class="nav-text">2.题解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-暴力双循环"><span class="nav-text">(1)暴力双循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-动态规划"><span class="nav-text">(2)动态规划</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-动态规划-转化为最大子列和"><span class="nav-text">(3)动态规划(转化为最大子列和)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目：二叉树的中序遍历（中等）"><span class="nav-text">1.题目：二叉树的中序遍历（中等）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-题解"><span class="nav-text">2.题解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-递归"><span class="nav-text">(1) 递归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-迭代"><span class="nav-text">(2) 迭代</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#a-模拟递归调用栈"><span class="nav-text">(a) 模拟递归调用栈</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#b-颜色标记法"><span class="nav-text">(b) 颜色标记法</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
