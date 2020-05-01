@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="C/C++,LeetCode,">
+  <meta name="keywords" content="二分法,C/C++,LeetCode,">
 
 
 
@@ -80,14 +80,14 @@
 
 
 <meta name="description" content="LeetCode#74–搜索二维矩阵">
-<meta name="keywords" content="C&#x2F;C++,LeetCode">
+<meta name="keywords" content="二分法,C&#x2F;C++,LeetCode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode#74--搜索二维矩阵">
 <meta property="og:url" content="http://shuoshuo666.github.io/2020/04/19/leetcode74/index.html">
 <meta property="og:site_name" content="朔朔の博客">
 <meta property="og:description" content="LeetCode#74–搜索二维矩阵">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-19T09:40:44.100Z">
+<meta property="og:updated_time" content="2020-05-01T09:47:04.624Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode#74--搜索二维矩阵">
 <meta name="twitter:description" content="LeetCode#74–搜索二维矩阵">
@@ -369,7 +369,7 @@
 <blockquote>
 <p>输入:<br>matrix = [<br>  [1,   3,  5,  7],<br>  [10, 11, 16, 20],<br>  [23, 30, 34, 50]<br>]<br>target = 3<br>输出: true</p>
 </blockquote>
-<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">searchMatrix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( matrix.empty() || matrix[<span class="number">0</span>].empty() ) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">int</span> up = <span class="number">0</span>, down = matrix.size() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> ( up &lt; down ) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = up + ( down - up ) / <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> ( matrix[mid][<span class="number">0</span>] &gt; target ) down = mid - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> up = mid;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = matrix[<span class="number">0</span>].size() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> ( left &lt; right ) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = left + ( right - left ) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> ( matrix[up][mid] &lt; target ) left = mid + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> right = mid;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> matrix[up][left] == target;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="2-题解-二分法"><a href="#2-题解-二分法" class="headerlink" title="2.题解(二分法)"></a>2.题解(二分法)</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">searchMatrix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( matrix.empty() || matrix[<span class="number">0</span>].empty() ) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = matrix.size() * matrix[<span class="number">0</span>].size() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> ( left &lt;= right ) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">int</span> num = matrix[mid / matrix[<span class="number">0</span>].size()][mid % matrix[<span class="number">0</span>].size()];</span><br><span class="line">            <span class="keyword">if</span> ( num == target ) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> ( num &lt; target ) left = mid + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> ( target &lt; num ) right = mid - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -387,6 +387,8 @@
     <footer class="post-footer">
       
         <div class="post-tags">
+          
+            <a href="/tags/二分法/" <i class="fa fa-tag"> 二分法</a>
           
             <a href="/tags/C-C/" <i class="fa fa-tag"> C/C++</a>
           
@@ -492,7 +494,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">114</span>
+                  <span class="site-state-item-count">115</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -514,7 +516,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -564,7 +566,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目：搜索二维矩阵（中等）"><span class="nav-text">1.题目：搜索二维矩阵（中等）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-题解"><span class="nav-text">2.题解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目：搜索二维矩阵（中等）"><span class="nav-text">1.题目：搜索二维矩阵（中等）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-题解-二分法"><span class="nav-text">2.题解(二分法)</span></a></li></ol></div>
             
 
           </div>
