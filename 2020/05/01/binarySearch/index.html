@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="朔朔の博客">
 <meta property="og:description" content="本文总结了二分查找法的基本框架以及leetcode上的有关习题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-01T10:41:09.556Z">
+<meta property="og:updated_time" content="2020-05-01T10:44:29.776Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二分查找法总结">
 <meta name="twitter:description" content="本文总结了二分查找法的基本框架以及leetcode上的有关习题">
@@ -374,9 +374,55 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">right_bound</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> right = nums.size(); <span class="comment">// 这里为左闭右开区间</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> ( left &lt; right ) &#123; <span class="comment">// 这里为小于号；等于时，区间为空(左闭右开)，所以不用检查</span></span><br><span class="line">        <span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (nums[mid] == target) left = mid + <span class="number">1</span>; <span class="comment">// 关键</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) left = mid + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; target) right = mid; <span class="comment">// 注意</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 检查越界</span></span><br><span class="line">    <span class="comment">// left 的取值范围为[0, nums.size()]</span></span><br><span class="line">    <span class="comment">// 当left == 0时，返回值 left - 1 越界</span></span><br><span class="line">    <span class="keyword">if</span> ( left == <span class="number">0</span> ) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> nums[left<span class="number">-1</span>] == target ? (left - <span class="number">1</span>) : <span class="number">-1</span>; <span class="comment">// 注意！返回 left - 1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-leetcode上的相关题目"><a href="#2-leetcode上的相关题目" class="headerlink" title="2.leetcode上的相关题目"></a>2.leetcode上的相关题目</h3><p>(1) 寻找一个数</p>
-<p>| 题号 | 题目 | 难度 |<br>| 35 | <a href="https://shuoshuo666.github.io/2020/02/28/leetcode35/">搜索插入位置</a> | 简单 |<br>| 69 | <a href="https://shuoshuo666.github.io/2020/03/02/leetcode69/">x的平方根</a> | 简单 |<br>| 33 | <a href="https://shuoshuo666.github.io/2020/03/31/leetcode33/">搜索旋转排序数组</a> | 中等 |<br>| 74 | <a href="https://shuoshuo666.github.io/2020/04/19/leetcode74/">搜索二维矩阵</a> | 中等 |<br>| 81 | <a href="https://shuoshuo666.github.io/2020/04/22/leetcode81/">搜索旋转排序数组II</a> | 中等 |</p>
+<table>
+<thead>
+<tr>
+<th>题号</th>
+<th>题目</th>
+<th>难度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>35</td>
+<td><a href="https://shuoshuo666.github.io/2020/02/28/leetcode35/">搜索插入位置</a></td>
+<td>简单</td>
+</tr>
+<tr>
+<td>69</td>
+<td><a href="https://shuoshuo666.github.io/2020/03/02/leetcode69/">x的平方根</a></td>
+<td>简单</td>
+</tr>
+<tr>
+<td>33</td>
+<td><a href="https://shuoshuo666.github.io/2020/03/31/leetcode33/">搜索旋转排序数组</a></td>
+<td>中等</td>
+</tr>
+<tr>
+<td>74</td>
+<td><a href="https://shuoshuo666.github.io/2020/04/19/leetcode74/">搜索二维矩阵</a></td>
+<td>中等</td>
+</tr>
+<tr>
+<td>81</td>
+<td><a href="https://shuoshuo666.github.io/2020/04/22/leetcode81/">搜索旋转排序数组II</a></td>
+<td>中等</td>
+</tr>
+</tbody></table>
 <p>(2) 寻找左右边界</p>
-<p>| 题号 | 题目 | 难度 |<br>| 34 | <a href="https://shuoshuo666.github.io/2020/03/31/leetcode34/">在排序数组中查找元素的第一个和最后一个位置</a> | 中等 |</p>
+<table>
+<thead>
+<tr>
+<th>题号</th>
+<th>题目</th>
+<th>难度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>34</td>
+<td><a href="https://shuoshuo666.github.io/2020/03/31/leetcode34/">在排序数组中查找元素的第一个和最后一个位置</a></td>
+<td>中等</td>
+</tr>
+</tbody></table>
 
       
     </div>
