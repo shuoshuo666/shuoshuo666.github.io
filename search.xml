@@ -3226,4 +3226,47 @@ table th:nth-of-type(2) {
         <tag>LeetCode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Ubuntu中kworker占用CPU过高的问题</title>
+    <url>/2020/05/02/ubuntu-kworker/</url>
+    <content><![CDATA[<blockquote>
+<p>本文介绍了在ubuntu20.04中解决kworker占用CPU过高问题的方法</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="1-问题"><a href="#1-问题" class="headerlink" title="1. 问题"></a>1. 问题</h3><p>(1) 配置</p>
+<p>电脑： HUAWEI matebook x pro 2019 (集显版本)<br>CPU： Intel® Core™ i5-8265U CPU @ 1.60GHz × 8 (64位)<br>显卡： Mesa Intel® UHD Graphics 620 (WHL GT2)<br>内存： 8G<br>硬盘： 512G SSD<br>系统： Windows 10 / Ubuntu 20.04 LTS 双系统</p>
+<p>（2）问题</p>
+<p>在安装ubuntu20.04双系统后出现电脑发热，风扇一直转。即使不运行任何程序也是如此</p>
+<p>（3）原因</p>
+<p>在终端中输入 <code>top</code> 命令检查各个进程的资源占用情况，发现，一个叫做<strong>kworker</strong>的进程占用了80%的CPU资源</p>
+<h3 id="2-解决方案"><a href="#2-解决方案" class="headerlink" title="2. 解决方案"></a>2. 解决方案</h3><p>在终端中输入 su 并输入密码进入root权限之后，输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">"disable"</span> &gt; /sys/firmware/acpi/interrupts/gpe6F</span><br></pre></td></tr></table></figure>
+
+<p>即可解决问题，再使用 <code>top</code> 命令查看发现，<strong>kworker</strong>进程已经消失了</p>
+<h3 id="3-设置开机自启动"><a href="#3-设置开机自启动" class="headerlink" title="3. 设置开机自启动"></a>3. 设置开机自启动</h3><p>为了避免每次开机都要进行上述的操作来kill掉<strong>kworker</strong>进程，可以通过将上述的命令设置为开机自启动命令<br>这样每次开机，系统就会自动帮我们执行上述命令，而无需手动操作</p>
+<h4 id="1-建立-rc-local-service-文件"><a href="#1-建立-rc-local-service-文件" class="headerlink" title="(1) 建立 rc-local.service 文件"></a>(1) 建立 rc-local.service 文件</h4><p>在终端中输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo vi /etc/systemd/system/rc-local.service</span><br></pre></td></tr></table></figure>
+
+<p>然后，复制以下内容到该文件中</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=/etc/rc.local Compatibility</span><br><span class="line">ConditionPathExists=/etc/rc.local</span><br><span class="line"> </span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">ExecStart=/etc/rc.local start</span><br><span class="line">TimeoutSec=0</span><br><span class="line">StandardOutput=tty</span><br><span class="line">RemainAfterExit=yes</span><br><span class="line">SysVStartPriority=99</span><br><span class="line"> </span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-创建我们自定义的启动脚本"><a href="#2-创建我们自定义的启动脚本" class="headerlink" title="(2) 创建我们自定义的启动脚本"></a>(2) 创建我们自定义的启动脚本</h4><p>在终端中输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo vi /etc/rc.local</span><br></pre></td></tr></table></figure>
+
+<p>在文件中写入需要自启动的命令<br><strong>注意：</strong> 所有的自启动命令都需要写在 <code>exit 0</code> 之前</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/bin/sh -e</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># rc.local</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># This script is executed at the end of each multiuser runlevel.</span></span><br><span class="line"><span class="comment"># Make sure that the script will "exit 0" on success or any other</span></span><br><span class="line"><span class="comment"># value on error.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># In order to enable or disable this script just change the execution</span></span><br><span class="line"><span class="comment"># bits.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># By default this script does nothing.</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"看到这行字，说明添加自启动脚本成功。"</span> &gt; /usr/<span class="built_in">local</span>/test.log <span class="comment"># 用于测试</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"disable"</span> &gt; /sys/firmware/acpi/interrupts/gpe6F</span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-使启动脚本有效"><a href="#3-使启动脚本有效" class="headerlink" title="(3) 使启动脚本有效"></a>(3) 使启动脚本有效</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo chmod +x /etc/rc.local &amp;&amp; sudo systemctl <span class="built_in">enable</span> rc-local</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动服务并检查服务</span></span><br><span class="line">$ sudo systemctl start rc-local.service</span><br><span class="line">$ sudo systemctl status rc-local.service</span><br></pre></td></tr></table></figure>
+
+<p>若出现绿色字样，则设置成功</p>
+<p>重新启动，再次用 <code>top</code> 命令检查CPU占用情况，发现<strong>kworker</strong>进程已经没有了，问题解决！</p>
+<h3 id="4-参考"><a href="#4-参考" class="headerlink" title="4. 参考"></a>4. 参考</h3><p><a href="https://blog.csdn.net/qq_35868811/article/details/99679185" target="_blank" rel="noopener">结束kworker进程</a><br><a href="https://www.cnblogs.com/schips/p/10318078.html" target="_blank" rel="noopener">设置开机自启动</a></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
 </search>
