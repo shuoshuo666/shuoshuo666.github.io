@@ -3233,12 +3233,9 @@ table th:nth-of-type(2) {
 <p>本文介绍了在ubuntu20.04中解决kworker占用CPU过高问题的方法</p>
 </blockquote>
 <a id="more"></a>
-<h3 id="1-问题"><a href="#1-问题" class="headerlink" title="1. 问题"></a>1. 问题</h3><p>(1) 配置</p>
-<p>电脑： HUAWEI matebook x pro 2019 (集显版本)<br>CPU： Intel® Core™ i5-8265U CPU @ 1.60GHz × 8 (64位)<br>显卡： Mesa Intel® UHD Graphics 620 (WHL GT2)<br>内存： 8G<br>硬盘： 512G SSD<br>系统： Windows 10 / Ubuntu 20.04 LTS 双系统</p>
-<p>（2）问题</p>
-<p>在安装ubuntu20.04双系统后出现电脑发热，风扇一直转。即使不运行任何程序也是如此</p>
-<p>（3）原因</p>
-<p>在终端中输入 <code>top</code> 命令检查各个进程的资源占用情况，发现，一个叫做<strong>kworker</strong>的进程占用了80%的CPU资源</p>
+<h3 id="1-问题"><a href="#1-问题" class="headerlink" title="1. 问题"></a>1. 问题</h3><h4 id="1-配置"><a href="#1-配置" class="headerlink" title="(1) 配置"></a>(1) 配置</h4><p>电脑： HUAWEI matebook x pro 2019 (集显版本)<br>CPU： Intel® Core™ i5-8265U CPU @ 1.60GHz × 8 (64位)<br>显卡： Mesa Intel® UHD Graphics 620 (WHL GT2)<br>内存： 8G<br>硬盘： 512G SSD<br>系统： Windows 10 / Ubuntu 20.04 LTS 双系统</p>
+<h4 id="2-问题"><a href="#2-问题" class="headerlink" title="(2)问题"></a>(2)问题</h4><p>在安装ubuntu20.04双系统后出现电脑发热，风扇一直转。即使不运行任何程序也是如此</p>
+<h4 id="3-原因"><a href="#3-原因" class="headerlink" title="(3)原因"></a>(3)原因</h4><p>在终端中输入 <code>top</code> 命令检查各个进程的资源占用情况，发现，一个叫做<strong>kworker</strong>的进程占用了80%的CPU资源</p>
 <h3 id="2-解决方案"><a href="#2-解决方案" class="headerlink" title="2. 解决方案"></a>2. 解决方案</h3><p>在终端中输入 su 并输入密码进入root权限之后，输入</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">"disable"</span> &gt; /sys/firmware/acpi/interrupts/gpe6F</span><br></pre></td></tr></table></figure>
 
