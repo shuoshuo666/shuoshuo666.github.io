@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="C/C++,LeetCode," />
+  <meta name="keywords" content="C/C++,LeetCode,BFS," />
 
 
 
@@ -86,10 +86,11 @@
 <meta property="og:site_name" content="朔朔の博客">
 <meta property="og:description" content="LeetCode#103–二叉树的锯齿形层次遍历">
 <meta property="article:published_time" content="2020-04-30T10:42:19.000Z">
-<meta property="article:modified_time" content="2020-04-30T10:44:39.716Z">
+<meta property="article:modified_time" content="2020-05-04T03:20:41.380Z">
 <meta property="article:author" content="shuoshuo">
 <meta property="article:tag" content="C&#x2F;C++">
 <meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="BFS">
 <meta name="twitter:card" content="summary">
 
 
@@ -398,8 +399,7 @@
 <a id="more"></a>
 </blockquote>
 <h3 id="1-题目：二叉树的锯齿形层次遍历（中等）"><a href="#1-题目：二叉树的锯齿形层次遍历（中等）" class="headerlink" title="1.题目：二叉树的锯齿形层次遍历（中等）"></a>1.题目：二叉树的锯齿形层次遍历（中等）</h3><p>给定一个二叉树，返回其节点值的锯齿形层次遍历。（即先从左往右，再从右往左进行下一层遍历，以此类推，层与层之间交替进行）。</p>
-<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; zigzagLevelOrder(TreeNode* root) &#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeNode*&gt; order;</span><br><span class="line">        order.push(root);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> ( !order.empty() ) &#123;</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; save;</span><br><span class="line">            <span class="keyword">size_t</span> count = order.size();</span><br><span class="line">            <span class="keyword">for</span> ( <span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; count; ++i ) &#123;</span><br><span class="line">                <span class="keyword">if</span> ( order.front()-&gt;left != <span class="literal">nullptr</span> ) order.push(order.front()-&gt;left);</span><br><span class="line">                <span class="keyword">if</span> ( order.front()-&gt;right != <span class="literal">nullptr</span> ) order.push(order.front()-&gt;right);</span><br><span class="line">                save.push_back(order.front()-&gt;val);</span><br><span class="line">                order.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//奇翻偶不翻</span></span><br><span class="line">            <span class="keyword">if</span> ( res.size() % <span class="number">2</span> == <span class="number">1</span> ) reverse(save.begin(), save.end());</span><br><span class="line">            res.push_back(save);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
+<h3 id="2-题解-BFS"><a href="#2-题解-BFS" class="headerlink" title="2.题解(BFS)"></a>2.题解(BFS)</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">zigzagLevelOrder</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeNode*&gt; order;</span><br><span class="line">        order.push(root);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> ( !order.empty() ) &#123;</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; save;</span><br><span class="line">            <span class="keyword">size_t</span> count = order.<span class="built_in">size</span>();</span><br><span class="line">            <span class="keyword">for</span> ( <span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; count; ++i ) &#123;</span><br><span class="line">                TreeNode* node = order.front();</span><br><span class="line">                order.pop();</span><br><span class="line">                <span class="keyword">if</span> ( node-&gt;left != <span class="literal">nullptr</span> ) order.push(node-&gt;left);</span><br><span class="line">                <span class="keyword">if</span> ( node-&gt;right != <span class="literal">nullptr</span> ) order.push(node-&gt;right);</span><br><span class="line">                save.push_back(node-&gt;val);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> ( res.<span class="built_in">size</span>() % <span class="number">2</span> == <span class="number">1</span> ) reverse(save.<span class="built_in">begin</span>(), save.<span class="built_in">end</span>());</span><br><span class="line">            res.push_back(save);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -420,6 +420,8 @@
             <a href="/tags/C-C/" <i class="fa fa-tag"></i> C/C++</a>
           
             <a href="/tags/LeetCode/" <i class="fa fa-tag"></i> LeetCode</a>
+          
+            <a href="/tags/BFS/" <i class="fa fa-tag"></i> BFS</a>
           
         </div>
       
@@ -521,7 +523,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">118</span>
+                  <span class="site-state-item-count">119</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -543,7 +545,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -593,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目：二叉树的锯齿形层次遍历（中等）"><span class="nav-text">1.题目：二叉树的锯齿形层次遍历（中等）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-题解"><span class="nav-text">2.题解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目：二叉树的锯齿形层次遍历（中等）"><span class="nav-text">1.题目：二叉树的锯齿形层次遍历（中等）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-题解-BFS"><span class="nav-text">2.题解(BFS)</span></a></li></ol></div>
             
 
           </div>
