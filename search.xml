@@ -3416,6 +3416,11 @@ table th:nth-of-type(2) {
 <td><a href="https://shuoshuo666.github.io/2020/04/25/leetcode93/">复原IP地址</a></td>
 <td>中等</td>
 </tr>
+<tr>
+<td>113</td>
+<td><a href="https://shuoshuo666.github.io/2020/05/09/leetcode113/">路径总和II</a></td>
+<td>中等</td>
+</tr>
 </tbody></table>
 ]]></content>
       <categories>
@@ -3536,6 +3541,27 @@ table th:nth-of-type(2) {
       <tags>
         <tag>C/C++</tag>
         <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode#113--路径总和II</title>
+    <url>/2020/05/09/leetcode113/</url>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#113–路径总和II</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：路径总和II（简单）"><a href="#1-题目：路径总和II（简单）" class="headerlink" title="1.题目：路径总和II（简单）"></a>1.题目：路径总和II（简单）</h3><p>给定一个二叉树和一个目标和，找到所有从根节点到叶子节点路径总和等于给定目标和的路径。</p>
+<p>说明: 叶子节点是指没有子节点的节点。</p>
+<h3 id="2-题解-回溯"><a href="#2-题解-回溯" class="headerlink" title="2.题解(回溯)"></a>2.题解(回溯)</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">pathSum</span><span class="params">(TreeNode* root, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; path;</span><br><span class="line">        dfs(res, path, root, sum);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; res, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; path, TreeNode* root, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root-&gt;left == <span class="literal">nullptr</span> &amp;&amp; root-&gt;right == <span class="literal">nullptr</span> &amp;&amp; sum == root-&gt;val ) &#123;</span><br><span class="line">            path.push_back(root-&gt;val);</span><br><span class="line">            res.push_back(path);</span><br><span class="line">            path.pop_back();</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        path.push_back(root-&gt;val);</span><br><span class="line">        <span class="keyword">if</span> (root-&gt;left != <span class="literal">nullptr</span> ) dfs(res, path, root-&gt;left, sum - root-&gt;val);</span><br><span class="line">        <span class="keyword">if</span> (root-&gt;right != <span class="literal">nullptr</span> ) dfs(res, path, root-&gt;right, sum - root-&gt;val);</span><br><span class="line">        path.pop_back();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>LeetCode</tag>
+        <tag>回溯</tag>
       </tags>
   </entry>
 </search>
