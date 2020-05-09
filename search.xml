@@ -3519,4 +3519,23 @@ table th:nth-of-type(2) {
         <tag>LeetCode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>LeetCode#106--从中序与后序遍历序列构造二叉树</title>
+    <url>/2020/05/09/leetcode106/</url>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#106–从中序与后序遍历序列构造二叉树</p>
+<a id="more"></a>
+</blockquote>
+<h3 id="1-题目：从中序与后序遍历序列构造二叉树（中等）"><a href="#1-题目：从中序与后序遍历序列构造二叉树（中等）" class="headerlink" title="1.题目：从中序与后序遍历序列构造二叉树（中等）"></a>1.题目：从中序与后序遍历序列构造二叉树（中等）</h3><p>根据一棵树的中序遍历与后序遍历构造二叉树。</p>
+<p>注意:<br>你可以假设树中没有重复的元素。</p>
+<h3 id="2-题解-递归"><a href="#2-题解-递归" class="headerlink" title="2.题解(递归)"></a>2.题解(递归)</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; postorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> helper(inorder.cbegin(), inorder.cend(), postorder.cbegin(), postorder.cend());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">using</span> citer = <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::const_iterator;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">helper</span><span class="params">(citer inStart, citer inEnd, citer postStart, citer postEnd)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( inStart == inEnd ) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> rootValue = *(postEnd - <span class="number">1</span>); <span class="comment">// 根节点的值</span></span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> TreeNode(rootValue); <span class="comment">// 建立根节点</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 在中序遍历中找到根节点的位置</span></span><br><span class="line">        citer iter = inStart;</span><br><span class="line">        <span class="keyword">while</span> ( *iter != rootValue ) ++iter;</span><br><span class="line">        <span class="keyword">int</span> leftCount = iter - inStart;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 递归建立左子树与右子树</span></span><br><span class="line">        root-&gt;left = helper(inStart, iter, postStart, postStart + leftCount);</span><br><span class="line">        root-&gt;right = helper(iter + <span class="number">1</span>, inEnd, postStart + leftCount, postEnd - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
 </search>
