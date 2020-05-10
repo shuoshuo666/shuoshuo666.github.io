@@ -3564,4 +3564,44 @@ table th:nth-of-type(2) {
         <tag>回溯</tag>
       </tags>
   </entry>
+  <entry>
+    <title>LeetCode#114--二叉树展开为链表</title>
+    <url>/2020/05/10/leetcode114/</url>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#114–二叉树展开为链表</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：二叉树展开为链表（中等）"><a href="#1-题目：二叉树展开为链表（中等）" class="headerlink" title="1.题目：二叉树展开为链表（中等）"></a>1.题目：二叉树展开为链表（中等）</h3><p>给定一个二叉树，原地将它展开为链表。</p>
+<h3 id="2-题解-前序遍历"><a href="#2-题解-前序遍历" class="headerlink" title="2.题解(前序遍历)"></a>2.题解(前序遍历)</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">flatten</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span>;</span><br><span class="line">        <span class="built_in">stack</span>&lt;TreeNode*&gt; auxStack;</span><br><span class="line"></span><br><span class="line">        TreeNode* preBegin = <span class="keyword">new</span> TreeNode(<span class="number">-1</span>);</span><br><span class="line">        preBegin-&gt;right = root;</span><br><span class="line"></span><br><span class="line">        TreeNode* node = root;</span><br><span class="line">        TreeNode* ptr = preBegin;</span><br><span class="line">        <span class="keyword">while</span> ( node != <span class="literal">nullptr</span> || !auxStack.empty() ) &#123;</span><br><span class="line">            <span class="keyword">while</span> ( node != <span class="literal">nullptr</span> ) &#123;</span><br><span class="line">                auxStack.push(node-&gt;right);</span><br><span class="line">                <span class="comment">// ****操作****</span></span><br><span class="line">                ptr-&gt;right = node;</span><br><span class="line">                ptr = ptr-&gt;right;</span><br><span class="line">                <span class="comment">// ***********</span></span><br><span class="line">                TreeNode* temp = node-&gt;left;</span><br><span class="line">                node-&gt;left = <span class="literal">nullptr</span>;</span><br><span class="line">                node = temp;</span><br><span class="line">            &#125;</span><br><span class="line">            node = auxStack.top();</span><br><span class="line">            auxStack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>LeetCode</tag>
+        <tag>回溯</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode#116--填充每个节点的下一个右侧节点指针</title>
+    <url>/2020/05/10/leetcode116/</url>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#116–填充每个节点的下一个右侧节点指针</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：填充每个节点的下一个右侧节点指针（中等）"><a href="#1-题目：填充每个节点的下一个右侧节点指针（中等）" class="headerlink" title="1.题目：填充每个节点的下一个右侧节点指针（中等）"></a>1.题目：填充每个节点的下一个右侧节点指针（中等）</h3><p>给定一个完美二叉树，其所有叶子节点都在同一层，每个父节点都有两个子节点。<br>填充它的每个 next 指针，让这个指针指向其下一个右侧节点。如果找不到下一个右侧节点，则将 next 指针设置为 NULL。<br>初始状态下，所有 next 指针都被设置为 NULL。</p>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function">Node* <span class="title">connect</span><span class="params">(Node* root)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> root;</span><br><span class="line">		Node* pre = root; <span class="comment">// 每一层的左边第一个节点</span></span><br><span class="line">		<span class="comment">// 循环条件是当前节点的left不为空，当只有根节点</span></span><br><span class="line">		<span class="comment">// 或所有叶子节点都出串联完后循环就退出了</span></span><br><span class="line">		<span class="keyword">while</span> ( pre-&gt;left != <span class="literal">nullptr</span> ) &#123;</span><br><span class="line">			Node* tmp = pre; <span class="comment">// 该层的每一个节点</span></span><br><span class="line">			<span class="keyword">while</span> ( tmp != <span class="literal">nullptr</span> ) &#123;</span><br><span class="line">				<span class="comment">// 将tmp的左右节点都串联起来</span></span><br><span class="line">				<span class="comment">// 注:外层循环已经判断了当前节点的left不为空</span></span><br><span class="line">				tmp-&gt;left-&gt;next = tmp-&gt;right;</span><br><span class="line">				<span class="comment">// 下一个不为空说明上一层已经帮我们完成串联了</span></span><br><span class="line">				<span class="keyword">if</span> ( tmp-&gt;next != <span class="literal">nullptr</span> ) &#123;</span><br><span class="line">					tmp-&gt;right-&gt;next = tmp-&gt;next-&gt;left;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">// 继续右边遍历</span></span><br><span class="line">				tmp = tmp-&gt;next;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// 从下一层的最左边开始遍历</span></span><br><span class="line">			pre = pre-&gt;left;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> root;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>LeetCode</tag>
+        <tag>回溯</tag>
+      </tags>
+  </entry>
 </search>
