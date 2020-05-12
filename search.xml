@@ -3421,6 +3421,11 @@ table th:nth-of-type(2) {
 <td><a href="https://shuoshuo666.github.io/2020/05/09/leetcode113/">路径总和II</a></td>
 <td>中等</td>
 </tr>
+<tr>
+<td>129</td>
+<td><a href="https://shuoshuo666.github.io/2020/05/12/leetcode129/">求根到叶子节点数字之和</a></td>
+<td>中等</td>
+</tr>
 </tbody></table>
 ]]></content>
       <categories>
@@ -3581,7 +3586,6 @@ table th:nth-of-type(2) {
       <tags>
         <tag>C/C++</tag>
         <tag>LeetCode</tag>
-        <tag>回溯</tag>
       </tags>
   </entry>
   <entry>
@@ -3601,7 +3605,6 @@ table th:nth-of-type(2) {
       <tags>
         <tag>C/C++</tag>
         <tag>LeetCode</tag>
-        <tag>回溯</tag>
       </tags>
   </entry>
   <entry>
@@ -3621,7 +3624,6 @@ table th:nth-of-type(2) {
       <tags>
         <tag>C/C++</tag>
         <tag>LeetCode</tag>
-        <tag>回溯</tag>
       </tags>
   </entry>
   <entry>
@@ -3635,6 +3637,28 @@ table th:nth-of-type(2) {
 <h3 id="1-题目：二叉树中的最大路径和（困难）"><a href="#1-题目：二叉树中的最大路径和（困难）" class="headerlink" title="1.题目：二叉树中的最大路径和（困难）"></a>1.题目：二叉树中的最大路径和（困难）</h3><p>给定一个非空二叉树，返回其最大路径和。</p>
 <p>本题中，路径被定义为一条从树中任意节点出发，达到任意节点的序列。该路径至少包含一个节点，且不一定经过根节点。</p>
 <h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxPathSum</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        dfs(root);</span><br><span class="line">        <span class="keyword">return</span> maxValue;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">int</span> maxValue = INT32_MIN;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 返回经过root的单边分支最大和， 即Math.max(root, root+left, root+right)</span></span><br><span class="line"><span class="comment">     * @param root</span></span><br><span class="line"><span class="comment">     * @return</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//计算左边分支最大值，左边分支如果为负数还不如不选择</span></span><br><span class="line">        <span class="keyword">int</span> leftMax = <span class="built_in">max</span>(<span class="number">0</span>, dfs(root-&gt;left));</span><br><span class="line">        <span class="comment">//计算右边分支最大值，右边分支如果为负数还不如不选择</span></span><br><span class="line">        <span class="keyword">int</span> rightMax = <span class="built_in">max</span>(<span class="number">0</span>, dfs(root-&gt;right));</span><br><span class="line">        <span class="comment">//left-&gt;root-&gt;right 作为路径与历史最大值做比较</span></span><br><span class="line">        maxValue = <span class="built_in">max</span>(maxValue, root-&gt;val + leftMax + rightMax);</span><br><span class="line">        <span class="comment">// 返回经过root的单边最大分支给上游</span></span><br><span class="line">        <span class="keyword">return</span> root-&gt;val + <span class="built_in">max</span>(leftMax, rightMax);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode#129--求根到叶子节点数字之和</title>
+    <url>/2020/05/12/leetcode129/</url>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#129–求根到叶子节点数字之和</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：求根到叶子节点数字之和（中等）"><a href="#1-题目：求根到叶子节点数字之和（中等）" class="headerlink" title="1.题目：求根到叶子节点数字之和（中等）"></a>1.题目：求根到叶子节点数字之和（中等）</h3><p>给定一个二叉树，它的每个结点都存放一个 0-9 的数字，每条从根到叶子节点的路径都代表一个数字。</p>
+<p>例如，从根到叶子节点路径 1-&gt;2-&gt;3 代表数字 123。</p>
+<p>计算从根到叶子节点生成的所有数字之和。</p>
+<p>说明: 叶子节点是指没有子节点的节点。</p>
+<h3 id="2-题解-回溯"><a href="#2-题解-回溯" class="headerlink" title="2.题解(回溯)"></a>2.题解(回溯)</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">sumNumbers</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        dfs(root, res, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> accumulate(res.cbegin(), res.cend(), <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(TreeNode* node, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; res, <span class="keyword">int</span> pathSum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( node-&gt;left == <span class="literal">nullptr</span> &amp;&amp; node-&gt;right == <span class="literal">nullptr</span> ) &#123;</span><br><span class="line">            res.push_back(<span class="number">10</span> * pathSum + node-&gt;val);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ( node-&gt;left != <span class="literal">nullptr</span> ) dfs(node-&gt;left, res, <span class="number">10</span> * pathSum + node-&gt;val);</span><br><span class="line">        <span class="keyword">if</span> ( node-&gt;right != <span class="literal">nullptr</span> ) dfs(node-&gt;right, res, <span class="number">10</span> * pathSum + node-&gt;val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>LeetCode</category>
