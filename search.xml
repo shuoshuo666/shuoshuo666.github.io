@@ -3669,4 +3669,23 @@ table th:nth-of-type(2) {
         <tag>回溯</tag>
       </tags>
   </entry>
+  <entry>
+    <title>LeetCode#144--二叉树的前序遍历</title>
+    <url>/2020/05/13/leetcode144/</url>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#144–二叉树的前序遍历</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：二叉树的前序遍历（中等）"><a href="#1-题目：二叉树的前序遍历（中等）" class="headerlink" title="1.题目：二叉树的前序遍历（中等）"></a>1.题目：二叉树的前序遍历（中等）</h3><p>给定一个二叉树，返回它的 前序 遍历。</p>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="built_in">stack</span>&lt;TreeNode*&gt; auxStack;</span><br><span class="line">        TreeNode* node = root;</span><br><span class="line">        <span class="keyword">while</span> ( node != <span class="literal">nullptr</span> || !auxStack.empty() ) &#123;</span><br><span class="line">            <span class="keyword">while</span> ( node != <span class="literal">nullptr</span> ) &#123;</span><br><span class="line">                auxStack.push(node-&gt;right);</span><br><span class="line">                res.push_back(node-&gt;val);</span><br><span class="line">                node = node-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line">            node = auxStack.top();</span><br><span class="line">            auxStack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
 </search>
