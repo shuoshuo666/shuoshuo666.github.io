@@ -3728,4 +3728,25 @@ table th:nth-of-type(2) {
         <tag>LeetCode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>LeetCode#199--二叉树的右视图</title>
+    <url>/2020/05/16/leetcode199/</url>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#199–二叉树的右视图</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：二叉树的右视图（中等）"><a href="#1-题目：二叉树的右视图（中等）" class="headerlink" title="1.题目：二叉树的右视图（中等）"></a>1.题目：二叉树的右视图（中等）</h3><p>给定一棵二叉树，想象自己站在它的右侧，按照从顶部到底部的顺序，返回从右侧所能看到的节点值。</p>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><h4 id="1-BFS"><a href="#1-BFS" class="headerlink" title="(1) BFS"></a>(1) BFS</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">rightSideView</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        TreeNode* node = root;</span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeNode*&gt; q;</span><br><span class="line">        q.push(node);</span><br><span class="line">        <span class="keyword">while</span> ( !q.empty() ) &#123;</span><br><span class="line">            <span class="keyword">size_t</span> sz = q.<span class="built_in">size</span>();</span><br><span class="line">            <span class="keyword">for</span> ( <span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; sz; ++i ) &#123;</span><br><span class="line">                TreeNode* tmp = q.front();</span><br><span class="line">                q.pop();</span><br><span class="line">                <span class="keyword">if</span> ( tmp-&gt;left != <span class="literal">nullptr</span> ) q.push(tmp-&gt;left);</span><br><span class="line">                <span class="keyword">if</span> ( tmp-&gt;right != <span class="literal">nullptr</span> ) q.push(tmp-&gt;right);</span><br><span class="line">                <span class="keyword">if</span> ( i == sz - <span class="number">1</span> ) res.push_back(tmp-&gt;val);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-DFS"><a href="#2-DFS" class="headerlink" title="(2) DFS"></a>(2) DFS</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">rightSideView</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        dfs(root, <span class="number">0</span>, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(TreeNode* node, <span class="keyword">int</span> depth, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; res)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( node == <span class="literal">nullptr</span> ) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span> ( depth == res.<span class="built_in">size</span>() ) res.push_back(node-&gt;val);</span><br><span class="line">        ++depth;</span><br><span class="line">        dfs(node-&gt;right, depth, res);</span><br><span class="line">        dfs(node-&gt;left, depth, res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
 </search>
