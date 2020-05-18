@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="C/C++," />
+  <meta name="keywords" content="C/C++,LeetCode," />
 
 
 
@@ -79,16 +79,17 @@
 
 
 
-<meta name="description" content="本文总结了C++中内置类型、数组类型、标准库类型等类型变量的默认初始化">
+<meta name="description" content="LeetCode#226–翻转二叉树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++中变量的默认初始化">
-<meta property="og:url" content="http://shuoshuo666.github.io/2020/02/13/init-var/index.html">
+<meta property="og:title" content="LeetCode#226--翻转二叉树">
+<meta property="og:url" content="http://shuoshuo666.github.io/2020/05/18/leetcode226/index.html">
 <meta property="og:site_name" content="朔朔の博客">
-<meta property="og:description" content="本文总结了C++中内置类型、数组类型、标准库类型等类型变量的默认初始化">
-<meta property="article:published_time" content="2020-02-13T02:28:48.000Z">
-<meta property="article:modified_time" content="2020-02-13T03:02:30.773Z">
+<meta property="og:description" content="LeetCode#226–翻转二叉树">
+<meta property="article:published_time" content="2020-05-18T01:05:43.000Z">
+<meta property="article:modified_time" content="2020-05-18T01:08:05.897Z">
 <meta property="article:author" content="shuoshuo">
 <meta property="article:tag" content="C&#x2F;C++">
+<meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
 
 
@@ -119,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://shuoshuo666.github.io/2020/02/13/init-var/"/>
+  <link rel="canonical" href="http://shuoshuo666.github.io/2020/05/18/leetcode226/"/>
 
 
 
@@ -142,7 +143,7 @@
 </script>
 
 
-  <title>C++中变量的默认初始化 | 朔朔の博客</title>
+  <title>LeetCode#226--翻转二叉树 | 朔朔の博客</title>
   
 
 
@@ -303,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2020/02/13/init-var/">
+    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2020/05/18/leetcode226/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shuoshuo">
@@ -320,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C++中变量的默认初始化</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode#226--翻转二叉树</h1>
         
 
         <div class="post-meta">
@@ -332,8 +333,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-13T10:28:48+08:00">
-                2020-02-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-18T09:05:43+08:00">
+                2020-05-18
               </time>
             
 
@@ -348,8 +349,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-13T11:02:30+08:00">
-                2020-02-13
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-18T09:08:05+08:00">
+                2020-05-18
               </time>
             
           </span>
@@ -367,8 +368,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C-C/" itemprop="url" rel="index">
-                    <span itemprop="name">C/C++</span>
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
 
@@ -405,13 +406,14 @@
 
       
         <blockquote>
-<p>本文总结了C++中内置类型、数组类型、标准库类型等类型变量的默认初始化</p>
-<a id="more"></a>
+<p>LeetCode#226–翻转二叉树</p>
 </blockquote>
-<h3 id="1-内置类型"><a href="#1-内置类型" class="headerlink" title="1.内置类型"></a>1.内置类型</h3><p>(1)函数体外定义的变量初始成0；<br>(2)函数体内定义的变量不进行自动初始化；<br>(3)局部静态变量若没有显式初始值，它将执行值初始化，内置类型的局部静态变量初始化为0。</p>
-<h3 id="2-数组类型"><a href="#2-数组类型" class="headerlink" title="2.数组类型"></a>2.数组类型</h3><p>(1)若没有提供初始化列表，其自动初始化规则与内置类型一样：函数体外初始化为0；函数体内不进行自动初始化；<br>(2)若提供了部分初始化列表，剩下的数组元素，若为内置类型不论在哪定义，均初始化为0；若为类类型，则调用默认构造函数进行初始化</p>
-<h3 id="3-vector类型"><a href="#3-vector类型" class="headerlink" title="3.vector类型"></a>3.vector类型</h3><p>若仅提供元素数量而没有提供初始值，若为内置类型则值初始化为0；若为类类型，调用默认构造函数进行初始化。</p>
+<a id="more"></a>
 
+<h3 id="1-题目：翻转二叉树（简单）"><a href="#1-题目：翻转二叉树（简单）" class="headerlink" title="1.题目：翻转二叉树（简单）"></a>1.题目：翻转二叉树（简单）</h3><p>翻转一棵二叉树。</p>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><h4 id="1-递归"><a href="#1-递归" class="headerlink" title="(1) 递归"></a>(1) 递归</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">invertTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        invertTree(root-&gt;left);</span><br><span class="line">        invertTree(root-&gt;right);</span><br><span class="line">        TreeNode* tmp = root-&gt;left;</span><br><span class="line">        root-&gt;left = root-&gt;right;</span><br><span class="line">        root-&gt;right = tmp;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-BFS"><a href="#2-BFS" class="headerlink" title="(2) BFS"></a>(2) BFS</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">invertTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeNode*&gt; q;</span><br><span class="line">        q.push(root);</span><br><span class="line">        <span class="keyword">while</span> ( !q.empty() ) &#123;</span><br><span class="line">            TreeNode* node = q.front();</span><br><span class="line">            q.pop();</span><br><span class="line">            TreeNode* tmp = node-&gt;left;</span><br><span class="line">            node-&gt;left = node-&gt;right;</span><br><span class="line">            node-&gt;right = tmp;</span><br><span class="line">            <span class="keyword">if</span> ( node-&gt;left != <span class="literal">nullptr</span> ) q.push(node-&gt;left);</span><br><span class="line">            <span class="keyword">if</span> ( node-&gt;right != <span class="literal">nullptr</span> ) q.push(node-&gt;right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -430,6 +432,8 @@
           
             <a href="/tags/C-C/" <i class="fa fa-tag"></i> C/C++</a>
           
+            <a href="/tags/LeetCode/" <i class="fa fa-tag"></i> LeetCode</a>
+          
         </div>
       
 
@@ -441,8 +445,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/27/initialization-list/" rel="next" title="C++中的初始化列表">
-                <i class="fa fa-chevron-left"></i> C++中的初始化列表
+              <a href="/2020/05/17/leetcode222/" rel="next" title="LeetCode#222--完全二叉树的节点个数">
+                <i class="fa fa-chevron-left"></i> LeetCode#222--完全二叉树的节点个数
               </a>
             
           </div>
@@ -450,10 +454,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/02/21/leetcode1/" rel="prev" title="LeetCode#1--两数之和">
-                LeetCode#1--两数之和 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -602,7 +602,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-内置类型"><span class="nav-text">1.内置类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-数组类型"><span class="nav-text">2.数组类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-vector类型"><span class="nav-text">3.vector类型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目：翻转二叉树（简单）"><span class="nav-text">1.题目：翻转二叉树（简单）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-题解"><span class="nav-text">2.题解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-递归"><span class="nav-text">(1) 递归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-BFS"><span class="nav-text">(2) BFS</span></a></li></ol></li></ol></div>
             
 
           </div>
