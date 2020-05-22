@@ -2762,27 +2762,6 @@ table th:nth-of-type(2) {
       </tags>
   </entry>
   <entry>
-    <title>Linux下常用命令</title>
-    <url>/2019/09/19/linux/</url>
-    <content><![CDATA[<blockquote>
-<p>本文收集了一些在linux系统中常用的命令</p>
-</blockquote>
-<a id="more"></a>
-
-<h3 id="1-查看文件"><a href="#1-查看文件" class="headerlink" title="1. 查看文件"></a>1. 查看文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ls        <span class="comment"># 查看文件，只显示文件名</span></span><br><span class="line">$ ls -a     <span class="comment"># 不忽略隐藏文件（以.开头）</span></span><br><span class="line">$ ls -l     <span class="comment"># 显示文件属性</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-终端控制符"><a href="#2-终端控制符" class="headerlink" title="2. 终端控制符"></a>2. 终端控制符</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ctrl + c  <span class="comment"># 强制中断程序的执行,进程已经终止</span></span><br><span class="line">$ ctrl + z  <span class="comment"># 将任务中止（暂停的意思）</span></span><br><span class="line">$ ctrl + d  <span class="comment"># 表示一个特殊的二进制值，表示 EOF；在shell中，ctrl-d表示推出当前shell</span></span><br></pre></td></tr></table></figure>
-
-<p>ctrl + z 表示此任务并没有结束,他仍然在进程中他只是维持挂起的状态,用户可以使用fg/bg操作继续前台或后台的任务,fg命令重新启动前台被中断的任务,bg命令把被中断的任务放在后台执行.<br>例如:当你vi一个文件时,如果需要用shell执行别的操作,但是你又不打算关闭vi,因为你得存盘推出,你可以简单的按下ctrl+z,shell会将vi进程挂起,当你结束了那个shell操作之后,你可以用fg命令继续vi你的文件。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C++动态申请内存</title>
     <url>/2019/11/25/new-array/</url>
     <content><![CDATA[<blockquote>
@@ -2846,7 +2825,9 @@ table th:nth-of-type(2) {
 </blockquote>
 <a id="more"></a>
 
-<h3 id="1-终端常用快捷键"><a href="#1-终端常用快捷键" class="headerlink" title="1. 终端常用快捷键"></a>1. 终端常用快捷键</h3><table>
+<h3 id="1-终端控制符"><a href="#1-终端控制符" class="headerlink" title="1. 终端控制符"></a>1. 终端控制符</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ctrl + c  <span class="comment"># 强制中断程序的执行,进程已经终止</span></span><br><span class="line">$ ctrl + z  <span class="comment"># 将任务中止（暂停的意思）</span></span><br><span class="line">$ ctrl + d  <span class="comment"># 表示一个特殊的二进制值，表示 EOF；在shell中，ctrl-d表示推出当前shell</span></span><br></pre></td></tr></table></figure>
+<p>ctrl + z 表示此任务并没有结束,他仍然在进程中他只是维持挂起的状态,用户可以使用fg/bg操作继续前台或后台的任务,fg命令重新启动前台被中断的任务,bg命令把被中断的任务放在后台执行.<br>例如:当你vi一个文件时,如果需要用shell执行别的操作,但是你又不打算关闭vi,因为你得存盘推出,你可以简单的按下ctrl+z,shell会将vi进程挂起,当你结束了那个shell操作之后,你可以用fg命令继续vi你的文件。</p>
+<h3 id="2-终端常用快捷键"><a href="#2-终端常用快捷键" class="headerlink" title="2. 终端常用快捷键"></a>2. 终端常用快捷键</h3><table>
 <thead>
 <tr>
 <th>快捷键</th>
@@ -2906,7 +2887,7 @@ table th:nth-of-type(2) {
 <td>清屏</td>
 </tr>
 </tbody></table>
-<h3 id="2-vim常用快捷键"><a href="#2-vim常用快捷键" class="headerlink" title="2. vim常用快捷键"></a>2. vim常用快捷键</h3><h4 id="1-删除命令"><a href="#1-删除命令" class="headerlink" title="(1) 删除命令"></a>(1) 删除命令</h4><table>
+<h3 id="3-vim常用快捷键"><a href="#3-vim常用快捷键" class="headerlink" title="3. vim常用快捷键"></a>3. vim常用快捷键</h3><h4 id="1-删除命令"><a href="#1-删除命令" class="headerlink" title="(1) 删除命令"></a>(1) 删除命令</h4><table>
 <thead>
 <tr>
 <th>快捷键</th>
@@ -2989,6 +2970,14 @@ table th:nth-of-type(2) {
 <td>N</td>
 <td>查找上一处</td>
 </tr>
+<tr>
+<td>:%s/word1/word2/g</td>
+<td>替换每一行的每个word1为word2</td>
+</tr>
+<tr>
+<td>:%s#word1#word2#g</td>
+<td>同上</td>
+</tr>
 </tbody></table>
 <h4 id="4-光标操作"><a href="#4-光标操作" class="headerlink" title="(4) 光标操作"></a>(4) 光标操作</h4><table>
 <thead>
@@ -3050,6 +3039,7 @@ table th:nth-of-type(2) {
 <td>粘贴</td>
 </tr>
 </tbody></table>
+<h4 id="6-代码自动补全"><a href="#6-代码自动补全" class="headerlink" title="(6) 代码自动补全"></a>(6) 代码自动补全</h4><p>ctrl + n</p>
 ]]></content>
       <categories>
         <category>Linux</category>
