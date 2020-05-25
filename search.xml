@@ -4031,4 +4031,23 @@ table th:nth-of-type(2) {
         <tag>LeetCode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>LeetCode#337--打家劫舍 III</title>
+    <url>/2020/05/25/leetcode337/</url>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#337–打家劫舍 III</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：打家劫舍-III（中等）"><a href="#1-题目：打家劫舍-III（中等）" class="headerlink" title="1.题目：打家劫舍 III（中等）"></a>1.题目：打家劫舍 III（中等）</h3><p>在上次打劫完一条街道之后和一圈房屋后，小偷又发现了一个新的可行窃的地区。这个地区只有一个入口，我们称之为“根”。 除了“根”之外，每栋房子有且只有一个“父“房子与之相连。一番侦察之后，聪明的小偷意识到“这个地方的所有房屋的排列类似于一棵二叉树”。 如果两个直接相连的房子在同一天晚上被打劫，房屋将自动报警。</p>
+<p>计算在不触动警报的情况下，小偷一晚能够盗取的最高金额。</p>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// first : 自己不偷</span></span><br><span class="line">    <span class="comment">// second : 自己偷</span></span><br><span class="line">    <span class="comment">// 类似后续遍历 === 自底向上</span></span><br><span class="line">    pair&lt;int, int&gt; helper(TreeNode* root) &#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> make_pair(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; left = helper(root-&gt;left);</span><br><span class="line">        pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; right = helper(root-&gt;right);</span><br><span class="line">        <span class="keyword">return</span> make_pair(<span class="built_in">max</span>(left.first, left.second) + <span class="built_in">max</span>(right.first, right.second),</span><br><span class="line">                         left.first + right.first + root-&gt;val);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">rob</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; res = helper(root);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(res.first, res.second);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
 </search>
