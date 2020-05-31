@@ -4148,4 +4148,24 @@ table th:nth-of-type(2) {
         <tag>LeetCode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>LeetCode#501--二叉搜索树中的众数</title>
+    <url>/2020/05/31/leetcode501/</url>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#501–二叉搜索树中的众数</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：二叉搜索树中的众数（简单）"><a href="#1-题目：二叉搜索树中的众数（简单）" class="headerlink" title="1.题目：二叉搜索树中的众数（简单）"></a>1.题目：二叉搜索树中的众数（简单）</h3><p>给定一个有相同值的二叉搜索树（BST），找出 BST 中的所有众数（出现频率最高的元素）。</p>
+<p>假定 BST 有如下定义：</p>
+<p>结点左子树中所含结点的值小于等于当前结点的值<br>结点右子树中所含结点的值大于等于当前结点的值<br>左子树和右子树都是二叉搜索树</p>
+<h3 id="2-题解-中序遍历"><a href="#2-题解-中序遍历" class="headerlink" title="2.题解(中序遍历)"></a>2.题解(中序遍历)</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">inOrder</span><span class="params">(TreeNode* root, TreeNode*&amp; pre, <span class="keyword">int</span>&amp; curTimes, <span class="keyword">int</span>&amp; maxTimes, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; res)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span>;</span><br><span class="line">        inOrder(root-&gt;left, pre, curTimes, maxTimes, res);</span><br><span class="line">        <span class="keyword">if</span> ( pre != <span class="literal">nullptr</span> )</span><br><span class="line">            curTimes = (root-&gt;val == pre-&gt;val) ? curTimes + <span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> ( curTimes == maxTimes )</span><br><span class="line">            res.push_back(root-&gt;val);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ( curTimes &gt; maxTimes ) &#123;</span><br><span class="line">            res.<span class="built_in">clear</span>();</span><br><span class="line">            res.push_back(root-&gt;val);</span><br><span class="line">            maxTimes = curTimes;</span><br><span class="line">        &#125;</span><br><span class="line">        pre = root;</span><br><span class="line">        inOrder(root-&gt;right, pre, curTimes, maxTimes, res);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">findMode</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> res;</span><br><span class="line">        TreeNode* pre = <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">int</span> curTimes = <span class="number">1</span>, maxTimes = <span class="number">0</span>;</span><br><span class="line">        inOrder(root, pre, curTimes, maxTimes, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
 </search>
