@@ -4168,4 +4168,23 @@ table th:nth-of-type(2) {
         <tag>LeetCode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>LeetCode#508--出现次数最多的子树元素和</title>
+    <url>/2020/06/01/leetcode508/</url>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#508–出现次数最多的子树元素和</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：出现次数最多的子树元素和（中等）"><a href="#1-题目：出现次数最多的子树元素和（中等）" class="headerlink" title="1.题目：出现次数最多的子树元素和（中等）"></a>1.题目：出现次数最多的子树元素和（中等）</h3><p>给你一个二叉树的根结点，请你找出出现次数最多的子树元素和。一个结点的「子树元素和」定义为以该结点为根的二叉树上所有结点的元素之和（包括结点本身）。</p>
+<p>你需要返回出现次数最多的子树元素和。如果有多个元素出现的次数相同，返回所有出现次数最多的子树元素和（不限顺序）。</p>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">findFrequentTreeSum</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;</span><br><span class="line">        findFrequentTreeSum(root, vec);</span><br><span class="line">        sort(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>());</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        res.push_back(vec[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">int</span> maxCount = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span>; i &lt; vec.<span class="built_in">size</span>(); ++i ) &#123;</span><br><span class="line">            count = (vec[i] == vec[i - <span class="number">1</span>]) ? count + <span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> ( count &gt; maxCount ) &#123;</span><br><span class="line">                res.<span class="built_in">clear</span>();</span><br><span class="line">                res.push_back(vec[i]);</span><br><span class="line">                maxCount = count;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> ( count == maxCount ) res.push_back(vec[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findFrequentTreeSum</span><span class="params">(TreeNode* root, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; vec)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> left = findFrequentTreeSum(root-&gt;left, vec);</span><br><span class="line">        <span class="keyword">int</span> right = findFrequentTreeSum(root-&gt;right, vec);</span><br><span class="line">        <span class="keyword">int</span> sum = left + right + root-&gt;val;</span><br><span class="line">        vec.push_back(sum);</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
 </search>
