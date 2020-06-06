@@ -4259,4 +4259,22 @@ table th:nth-of-type(2) {
         <tag>LeetCode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>LeetCode#543--二叉树的直径</title>
+    <url>/2020/06/06/leetcode543/</url>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#543–二叉树的直径</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：二叉树的直径（简单）"><a href="#1-题目：二叉树的直径（简单）" class="headerlink" title="1.题目：二叉树的直径（简单）"></a>1.题目：二叉树的直径（简单）</h3><p>给定一棵二叉树，你需要计算它的直径长度。一棵二叉树的直径长度是任意两个结点路径长度中的最大值。这条路径可能穿过也可能不穿过根结点。</p>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">diameterOfBinaryTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> maxLength = <span class="number">0</span>;</span><br><span class="line">        diameterOfBinaryTree(root, maxLength);</span><br><span class="line">        <span class="keyword">return</span> maxLength;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">diameterOfBinaryTree</span><span class="params">(TreeNode* node, <span class="keyword">int</span>&amp; maxLength)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( node-&gt;left == <span class="literal">nullptr</span> &amp;&amp; node-&gt;right == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> length = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> leftMaxLength = <span class="number">0</span>, rightMaxLength = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> ( node-&gt;left != <span class="literal">nullptr</span> ) leftMaxLength = diameterOfBinaryTree(node-&gt;left, maxLength) + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> ( node-&gt;right != <span class="literal">nullptr</span> ) rightMaxLength = diameterOfBinaryTree(node-&gt;right, maxLength) + <span class="number">1</span>;</span><br><span class="line">        length = leftMaxLength + rightMaxLength;</span><br><span class="line">        <span class="keyword">if</span> ( length &gt; maxLength ) maxLength = length;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(leftMaxLength, rightMaxLength);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
 </search>
