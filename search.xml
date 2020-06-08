@@ -4277,4 +4277,43 @@ table th:nth-of-type(2) {
         <tag>LeetCode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>LeetCode#559--N叉树的最大深度</title>
+    <url>/2020/06/07/leetcode559/</url>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#559–N叉树的最大深度</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：N叉树的最大深度（简单）"><a href="#1-题目：N叉树的最大深度（简单）" class="headerlink" title="1.题目：N叉树的最大深度（简单）"></a>1.题目：N叉树的最大深度（简单）</h3><p>给定一个 N 叉树，找到其最大深度。</p>
+<p>最大深度是指从根节点到最远叶子节点的最长路径上的节点总数。</p>
+<h3 id="2-题解-回溯"><a href="#2-题解-回溯" class="headerlink" title="2.题解(回溯)"></a>2.题解(回溯)</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(Node* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> maxDepthValue = <span class="number">0</span>;</span><br><span class="line">        dfs(root, maxDepthValue, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> maxDepthValue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Node* root, <span class="keyword">int</span>&amp; maxDepthValue, <span class="keyword">int</span> depth)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root-&gt;children.empty() ) &#123;</span><br><span class="line">            ++depth;</span><br><span class="line">            <span class="keyword">if</span> ( depth &gt; maxDepthValue ) maxDepthValue = depth;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> ( Node* node : root-&gt;children ) &#123;</span><br><span class="line">            dfs(node, maxDepthValue, depth + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode#563--二叉树的坡度</title>
+    <url>/2020/06/08/leetcode563/</url>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#563–二叉树的坡度</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：二叉树的坡度（简单）"><a href="#1-题目：二叉树的坡度（简单）" class="headerlink" title="1.题目：二叉树的坡度（简单）"></a>1.题目：二叉树的坡度（简单）</h3><p>给定一个二叉树，计算整个树的坡度。</p>
+<p>一个树的节点的坡度定义即为，该节点左子树的结点之和和右子树结点之和的差的绝对值。空结点的的坡度是0。</p>
+<p>整个树的坡度就是其所有节点的坡度之和。</p>
+<h3 id="2-题解-递归"><a href="#2-题解-递归" class="headerlink" title="2.题解(递归)"></a>2.题解(递归)</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findTilt</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        helper(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">helper</span><span class="params">(TreeNode* root, <span class="keyword">int</span>&amp; res)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> left = helper(root-&gt;left, res);</span><br><span class="line">        <span class="keyword">int</span> right = helper(root-&gt;right, res);</span><br><span class="line">        res += <span class="built_in">abs</span>(left - right);</span><br><span class="line">        <span class="keyword">return</span> root-&gt;val + left + right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
 </search>
