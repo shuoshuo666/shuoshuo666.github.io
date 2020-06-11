@@ -4352,4 +4352,22 @@ table th:nth-of-type(2) {
         <tag>LeetCode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>LeetCode#590--N叉树的后序遍历</title>
+    <url>/2020/06/11/leetcode590/</url>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#590–N叉树的后序遍历</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：N叉树的后序遍历（简单）"><a href="#1-题目：N叉树的后序遍历（简单）" class="headerlink" title="1.题目：N叉树的后序遍历（简单）"></a>1.题目：N叉树的后序遍历（简单）</h3><p>给定一个 N 叉树，返回其节点值的后序遍历。</p>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">postorder</span><span class="params">(Node* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="built_in">stack</span>&lt;Node*&gt; stk;</span><br><span class="line">        stk.push(root);</span><br><span class="line">        <span class="keyword">while</span> ( !stk.empty() ) &#123;</span><br><span class="line">            Node* node = stk.top();</span><br><span class="line">            <span class="keyword">if</span> ( node == <span class="literal">nullptr</span> ) &#123;</span><br><span class="line">                stk.pop();</span><br><span class="line">                Node* tmp = stk.top();</span><br><span class="line">                res.push_back(tmp-&gt;val);</span><br><span class="line">                stk.pop();</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            stk.push(<span class="literal">nullptr</span>);</span><br><span class="line">            <span class="keyword">if</span> ( !node-&gt;children.empty() ) &#123;</span><br><span class="line">                <span class="keyword">int</span> sz = node-&gt;children.<span class="built_in">size</span>();</span><br><span class="line">                <span class="keyword">for</span> ( <span class="keyword">int</span> i = sz - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i ) stk.push(node-&gt;children[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
 </search>
