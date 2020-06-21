@@ -4389,4 +4389,23 @@ table th:nth-of-type(2) {
         <tag>LeetCode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>LeetCode#617--合并二叉树</title>
+    <url>/2020/06/21/leetcode617/</url>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#617–合并二叉树</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：合并二叉树（简单）"><a href="#1-题目：合并二叉树（简单）" class="headerlink" title="1.题目：合并二叉树（简单）"></a>1.题目：合并二叉树（简单）</h3><p>给定两个二叉树，想象当你将它们中的一个覆盖到另一个上时，两个二叉树的一些节点便会重叠。</p>
+<p>你需要将他们合并为一个新的二叉树。合并的规则是如果两个节点重叠，那么将他们的值相加作为节点合并后的新值，否则不为 NULL 的节点将直接作为新二叉树的节点。</p>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">mergeTrees</span><span class="params">(TreeNode* t1, TreeNode* t2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( t1 == <span class="literal">nullptr</span> &amp;&amp; t2 == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> TreeNode(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span> ( t1 != <span class="literal">nullptr</span> ) root-&gt;val += t1-&gt;val;</span><br><span class="line">        <span class="keyword">if</span> ( t2 != <span class="literal">nullptr</span> ) root-&gt;val += t2-&gt;val;</span><br><span class="line">        root-&gt;left = mergeTrees(t1 != <span class="literal">nullptr</span> ? t1-&gt;left : <span class="literal">nullptr</span>, t2 != <span class="literal">nullptr</span> ? t2-&gt;left : <span class="literal">nullptr</span>);</span><br><span class="line">        root-&gt;right = mergeTrees(t1 != <span class="literal">nullptr</span> ? t1-&gt;right : <span class="literal">nullptr</span>, t2 != <span class="literal">nullptr</span> ? t2-&gt;right : <span class="literal">nullptr</span>);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
 </search>
