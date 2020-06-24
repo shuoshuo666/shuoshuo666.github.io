@@ -4447,4 +4447,23 @@ table th:nth-of-type(2) {
         <tag>LeetCode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>LeetCode#652--寻找重复的子树</title>
+    <url>/2020/06/24/leetcode652/</url>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#652–寻找重复的子树</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：寻找重复的子树（简单）"><a href="#1-题目：寻找重复的子树（简单）" class="headerlink" title="1.题目：寻找重复的子树（简单）"></a>1.题目：寻找重复的子树（简单）</h3><p>给定一棵二叉树，返回所有重复的子树。对于同一类的重复子树，你只需要返回其中任意一棵的根结点即可。</p>
+<p>两棵树重复是指它们具有相同的结构以及相同的结点值。</p>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;TreeNode*&gt; <span class="title">findDuplicateSubtrees</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;TreeNode*&gt; res;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt; mp;</span><br><span class="line">        dfs(root, res, mp);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">dfs</span><span class="params">(TreeNode* root, <span class="built_in">vector</span>&lt;TreeNode*&gt;&amp; res, <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt;&amp; mp)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="number">0</span>) <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        <span class="comment">//二叉树先序序列化</span></span><br><span class="line">        <span class="built_in">string</span> str = to_string(root-&gt;val) + <span class="string">","</span> + dfs(root-&gt;left, res, mp) + <span class="string">","</span> + dfs(root-&gt;right, res, mp);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(mp[str]==<span class="number">1</span>)&#123;</span><br><span class="line">            res.push_back(root);</span><br><span class="line">        &#125; </span><br><span class="line">        mp[str]++;</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
 </search>
