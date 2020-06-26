@@ -4484,4 +4484,23 @@ table th:nth-of-type(2) {
         <tag>LeetCode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>LeetCode#654--最大二叉树</title>
+    <url>/2020/06/26/leetcode654/</url>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#654–最大二叉树</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：最大二叉树（中等）"><a href="#1-题目：最大二叉树（中等）" class="headerlink" title="1.题目：最大二叉树（中等）"></a>1.题目：最大二叉树（中等）</h3><p>给定一个不含重复元素的整数数组。一个以此数组构建的最大二叉树定义如下：</p>
+<p>二叉树的根是数组中的最大元素。<br>左子树是通过数组中最大值左边部分构造出的最大二叉树。<br>右子树是通过数组中最大值右边部分构造出的最大二叉树。<br>通过给定的数组构建最大二叉树，并且输出这个树的根节点。</p>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">constructMaximumBinaryTree</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> constructMaximumBinaryTree(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">using</span> viter = <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">constructMaximumBinaryTree</span><span class="params">(viter left, viter right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( left == right ) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        viter rootPos = max_element(left, right);</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> TreeNode(*rootPos);</span><br><span class="line">        root-&gt;left = constructMaximumBinaryTree(left, rootPos);</span><br><span class="line">        root-&gt;right = constructMaximumBinaryTree(rootPos + <span class="number">1</span>, right);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
 </search>
