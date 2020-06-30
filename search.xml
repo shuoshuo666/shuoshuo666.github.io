@@ -4559,4 +4559,23 @@ table th:nth-of-type(2) {
         <tag>LeetCode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>LeetCode#671--二叉树中第二小的节点</title>
+    <url>/2020/06/30/leetcode671/</url>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#671–二叉树中第二小的节点</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：二叉树中第二小的节点（简单）"><a href="#1-题目：二叉树中第二小的节点（简单）" class="headerlink" title="1.题目：二叉树中第二小的节点（简单）"></a>1.题目：二叉树中第二小的节点（简单）</h3><p>给定一个非空特殊的二叉树，每个节点都是正数，并且每个节点的子节点数量只能为 2 或 0。如果一个节点有两个子节点的话，那么该节点的值等于两个子节点中较小的一个。</p>
+<p>给出这样的一个二叉树，你需要输出所有节点中的第二小的值。如果第二小的值不存在的话，输出 -1 。</p>
+<h3 id="2-题解-递归"><a href="#2-题解-递归" class="headerlink" title="2.题解(递归)"></a>2.题解(递归)</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findSecondMinimumValue</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root-&gt;left == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> left = root-&gt;left-&gt;val;</span><br><span class="line">        <span class="keyword">int</span> right = root-&gt;right-&gt;val;</span><br><span class="line">        <span class="keyword">if</span> ( left == root-&gt;val ) left = findSecondMinimumValue(root-&gt;left);</span><br><span class="line">        <span class="keyword">if</span> ( right == root-&gt;val ) right = findSecondMinimumValue(root-&gt;right);</span><br><span class="line">        <span class="keyword">if</span> ( left != <span class="number">-1</span> &amp;&amp; right != <span class="number">-1</span> ) <span class="keyword">return</span> <span class="built_in">min</span>(left, right);</span><br><span class="line">        <span class="keyword">if</span> ( left != <span class="number">-1</span> ) <span class="keyword">return</span> left;</span><br><span class="line">        <span class="keyword">return</span> right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
 </search>
