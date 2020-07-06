@@ -4661,13 +4661,31 @@ table th:nth-of-type(2) {
     <title>LeetCode#701--二叉搜索树中的插入操作</title>
     <url>/2020/07/05/leetcode701/</url>
     <content><![CDATA[<blockquote>
-<p>LeetCode#700–二叉搜索树中的插入操作</p>
+<p>LeetCode#701–二叉搜索树中的插入操作</p>
 </blockquote>
 <a id="more"></a>
 
 <h3 id="1-题目：二叉搜索树中的插入操作（中等）"><a href="#1-题目：二叉搜索树中的插入操作（中等）" class="headerlink" title="1.题目：二叉搜索树中的插入操作（中等）"></a>1.题目：二叉搜索树中的插入操作（中等）</h3><p>给定二叉搜索树（BST）的根节点和要插入树中的值，将值插入二叉搜索树。 返回插入后二叉搜索树的根节点。 保证原始二叉搜索树中不存在新值。</p>
 <p>注意，可能存在多种有效的插入方式，只要树在插入后仍保持为二叉搜索树即可。 你可以返回任意有效的结果。</p>
 <h3 id="2-题解-递归"><a href="#2-题解-递归" class="headerlink" title="2.题解(递归)"></a>2.题解(递归)</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">insertIntoBST</span><span class="params">(TreeNode* root, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        TreeNode* node = <span class="keyword">new</span> TreeNode(val);</span><br><span class="line">        <span class="keyword">return</span> insertIntoBST(root, node);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">insertIntoBST</span><span class="params">(TreeNode* root, TreeNode* node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> node;</span><br><span class="line">        <span class="keyword">if</span> ( node-&gt;val &lt; root-&gt;val ) root-&gt;left = insertIntoBST(root-&gt;left, node);</span><br><span class="line">        <span class="keyword">if</span> ( node-&gt;val &gt; root-&gt;val ) root-&gt;right = insertIntoBST(root-&gt;right, node);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode#783--二叉搜索树节点最小距离</title>
+    <url>/2020/07/06/leetcode783/</url>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#783–二叉搜索树节点最小距离</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：二叉搜索树节点最小距离（简单）"><a href="#1-题目：二叉搜索树节点最小距离（简单）" class="headerlink" title="1.题目：二叉搜索树节点最小距离（简单）"></a>1.题目：二叉搜索树节点最小距离（简单）</h3><p>给定一个二叉搜索树的根节点 root，返回树中任意两节点的差的最小值。</p>
+<h3 id="2-题解-中序遍历"><a href="#2-题解-中序遍历" class="headerlink" title="2.题解(中序遍历)"></a>2.题解(中序遍历)</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minDiffInBST</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">stack</span>&lt;TreeNode*&gt; stk;</span><br><span class="line">        <span class="keyword">int</span> minDiff = INT32_MAX, diff = <span class="number">0</span>;</span><br><span class="line">        TreeNode* pre = <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">while</span> ( root != <span class="literal">nullptr</span> || !stk.empty() ) &#123;</span><br><span class="line">            <span class="keyword">while</span> ( root != <span class="literal">nullptr</span> ) &#123;</span><br><span class="line">                stk.push(root);</span><br><span class="line">                root = root-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line">            root = stk.top();</span><br><span class="line">            stk.pop();</span><br><span class="line">            <span class="keyword">if</span> ( pre != <span class="literal">nullptr</span> ) &#123;</span><br><span class="line">                diff = root-&gt;val - pre-&gt;val;</span><br><span class="line">                minDiff = diff &lt; minDiff ? diff : minDiff;</span><br><span class="line">            &#125;</span><br><span class="line">            pre = root;</span><br><span class="line">            root = root-&gt;right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> minDiff;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>LeetCode</category>
       </categories>
