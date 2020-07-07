@@ -4694,4 +4694,25 @@ table th:nth-of-type(2) {
         <tag>LeetCode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>LeetCode#814--二叉树剪枝</title>
+    <url>/2020/07/07/leetcode814/</url>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#814–二叉树剪枝</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：二叉树剪枝（中等）"><a href="#1-题目：二叉树剪枝（中等）" class="headerlink" title="1.题目：二叉树剪枝（中等）"></a>1.题目：二叉树剪枝（中等）</h3><p>给定二叉树根结点 root ，此外树的每个结点的值要么是 0，要么是 1。</p>
+<p>返回移除了所有不包含 1 的子树的原二叉树。</p>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><h4 id="1-自底向上"><a href="#1-自底向上" class="headerlink" title="(1) 自底向上"></a>(1) 自底向上</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">pruneTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        root-&gt;left = pruneTree(root-&gt;left);</span><br><span class="line">        root-&gt;right = pruneTree(root-&gt;right);</span><br><span class="line">        <span class="keyword">if</span> ( root-&gt;val == <span class="number">0</span> &amp;&amp; root-&gt;left == <span class="literal">nullptr</span> &amp;&amp; root-&gt;right == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-自顶向下"><a href="#2-自顶向下" class="headerlink" title="(2) 自顶向下"></a>(2) 自顶向下</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">pruneTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">if</span> ( isAllZero(root) ) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        root-&gt;left = pruneTree(root-&gt;left);</span><br><span class="line">        root-&gt;right = pruneTree(root-&gt;right);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isAllZero</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> ( root-&gt;val != <span class="number">0</span> ) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> isAllZero(root-&gt;left) &amp;&amp; isAllZero(root-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
 </search>
