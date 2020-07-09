@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="C/C++,LeetCode," />
+  <meta name="keywords" content="LeetCode," />
 
 
 
@@ -86,9 +86,8 @@
 <meta property="og:site_name" content="朔朔の博客">
 <meta property="og:description" content="LeetCode#6–Z字形变换">
 <meta property="article:published_time" content="2020-03-22T12:57:32.000Z">
-<meta property="article:modified_time" content="2020-03-22T13:00:17.268Z">
+<meta property="article:modified_time" content="2020-07-09T01:25:37.754Z">
 <meta property="article:author" content="shuoshuo">
-<meta property="article:tag" content="C&#x2F;C++">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
 
@@ -349,8 +348,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-22T21:00:17+08:00">
-                2020-03-22
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-09T09:25:37+08:00">
+                2020-07-09
               </time>
             
           </span>
@@ -416,8 +415,7 @@
 <p>输入: s = “LEETCODEISHIRING”, numRows = 4<br>输出: “LDREOEIIECIHNTSG”<br>解释:</p>
 <p>L     D     R<br>E   O E   I I<br>E C   I H   N<br>T     S     G</p>
 </blockquote>
-<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">convert</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> numRows)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( numRows &lt; <span class="number">2</span> ) <span class="keyword">return</span> s;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; save(numRows);</span><br><span class="line">        <span class="keyword">int</span> i&#123;<span class="number">0</span>&#125;, flag&#123;<span class="number">-1</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">auto</span> c : s ) &#123;</span><br><span class="line">            <span class="keyword">if</span> ( i == <span class="number">0</span> || i == numRows - <span class="number">1</span> ) flag = -flag;</span><br><span class="line">            save[i].push_back(c);</span><br><span class="line">            i = i + flag;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">string</span> res;</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">auto</span> s : save ) &#123;</span><br><span class="line">            res += s;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">convert</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> numRows)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( numRows &lt; <span class="number">2</span> ) <span class="keyword">return</span> s;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; <span class="title">save</span><span class="params">(numRows)</span></span>;</span><br><span class="line">        <span class="keyword">int</span> i&#123;<span class="number">0</span>&#125;, flag&#123;<span class="number">-1</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">auto</span> c : s ) &#123;</span><br><span class="line">            <span class="keyword">if</span> ( i == <span class="number">0</span> || i == numRows - <span class="number">1</span> ) flag = -flag;</span><br><span class="line">            save[i].push_back(c);</span><br><span class="line">            i = i + flag;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">string</span> res;</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">auto</span> s : save ) &#123;</span><br><span class="line">            res += s;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -434,8 +432,6 @@
     <footer class="post-footer">
       
         <div class="post-tags">
-          
-            <a href="/tags/C-C/" <i class="fa fa-tag"></i> C/C++</a>
           
             <a href="/tags/LeetCode/" <i class="fa fa-tag"></i> LeetCode</a>
           
@@ -561,7 +557,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

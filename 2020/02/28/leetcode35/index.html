@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="二分法,C/C++,LeetCode," />
+  <meta name="keywords" content="二分法,LeetCode," />
 
 
 
@@ -86,10 +86,9 @@
 <meta property="og:site_name" content="朔朔の博客">
 <meta property="og:description" content="LeetCode#35–搜索插入位置">
 <meta property="article:published_time" content="2020-02-28T03:30:48.000Z">
-<meta property="article:modified_time" content="2020-05-01T09:17:03.787Z">
+<meta property="article:modified_time" content="2020-07-09T01:28:11.065Z">
 <meta property="article:author" content="shuoshuo">
 <meta property="article:tag" content="二分法">
-<meta property="article:tag" content="C&#x2F;C++">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
 
@@ -350,8 +349,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-01T17:17:03+08:00">
-                2020-05-01
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-09T09:28:11+08:00">
+                2020-07-09
               </time>
             
           </span>
@@ -420,8 +419,7 @@
 <p>输入: [1,3,5,6], 7<br>输出: 4</p>
 <p>输入: [1,3,5,6], 0<br>输出: 0</p>
 </blockquote>
-<h3 id="2-题解-二分法"><a href="#2-题解-二分法" class="headerlink" title="2.题解(二分法)"></a>2.题解(二分法)</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.size() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> ( left &lt;= right ) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> ( target == nums[mid] ) <span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> ( target &lt; nums[mid] ) right = mid - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> ( nums[mid] &lt; target ) left = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
+<h3 id="2-题解-二分法"><a href="#2-题解-二分法" class="headerlink" title="2.题解(二分法)"></a>2.题解(二分法)</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> ( left &lt;= right ) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> ( target == nums[mid] ) <span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> ( target &lt; nums[mid] ) right = mid - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> ( nums[mid] &lt; target ) left = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -440,8 +438,6 @@
         <div class="post-tags">
           
             <a href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" <i class="fa fa-tag"></i> 二分法</a>
-          
-            <a href="/tags/C-C/" <i class="fa fa-tag"></i> C/C++</a>
           
             <a href="/tags/LeetCode/" <i class="fa fa-tag"></i> LeetCode</a>
           
@@ -567,7 +563,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

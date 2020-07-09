@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="C/C++,LeetCode," />
+  <meta name="keywords" content="LeetCode," />
 
 
 
@@ -86,9 +86,8 @@
 <meta property="og:site_name" content="朔朔の博客">
 <meta property="og:description" content="LeetCode#54–螺旋矩阵">
 <meta property="article:published_time" content="2020-04-12T11:03:44.000Z">
-<meta property="article:modified_time" content="2020-04-12T11:05:48.954Z">
+<meta property="article:modified_time" content="2020-07-09T01:29:19.286Z">
 <meta property="article:author" content="shuoshuo">
-<meta property="article:tag" content="C&#x2F;C++">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
 
@@ -349,8 +348,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-12T19:05:48+08:00">
-                2020-04-12
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-09T09:29:19+08:00">
+                2020-07-09
               </time>
             
           </span>
@@ -413,8 +412,7 @@
 <h3 id="1-题目：螺旋矩阵（中等）"><a href="#1-题目：螺旋矩阵（中等）" class="headerlink" title="1.题目：螺旋矩阵（中等）"></a>1.题目：螺旋矩阵（中等）</h3><p>给定一个包含 m x n 个元素的矩阵（m 行, n 列），请按照顺时针螺旋顺序，返回矩阵中的所有元素。</p>
 <p><strong>示例:</strong></p>
 <p>输入:<br>[<br> [ 1, 2, 3 ],<br> [ 4, 5, 6 ],<br> [ 7, 8, 9 ]<br>]<br>输出: [1,2,3,6,9,8,7,4,5]</p>
-<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; spiralOrder(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix) &#123;</span><br><span class="line">        <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">if</span>(matrix.empty()) <span class="keyword">return</span> ans; <span class="comment">//若数组为空，直接返回答案</span></span><br><span class="line">        <span class="keyword">int</span> u = <span class="number">0</span>; <span class="comment">//赋值上下左右边界</span></span><br><span class="line">        <span class="keyword">int</span> d = matrix.size() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> r = matrix[<span class="number">0</span>].size() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = l; i &lt;= r; ++i) ans.push_back(matrix[u][i]); <span class="comment">//向右移动直到最右</span></span><br><span class="line">            <span class="keyword">if</span>(++ u &gt; d) <span class="keyword">break</span>; <span class="comment">//重新设定上边界，若上边界大于下边界，则遍历遍历完成，下同</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = u; i &lt;= d; ++i) ans.push_back(matrix[i][r]); <span class="comment">//向下</span></span><br><span class="line">            <span class="keyword">if</span>(-- r &lt; l) <span class="keyword">break</span>; <span class="comment">//重新设定有边界</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = r; i &gt;= l; --i) ans.push_back(matrix[d][i]); <span class="comment">//向左</span></span><br><span class="line">            <span class="keyword">if</span>(-- d &lt; u) <span class="keyword">break</span>; <span class="comment">//重新设定下边界</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = d; i &gt;= u; --i) ans.push_back(matrix[i][l]); <span class="comment">//向上</span></span><br><span class="line">            <span class="keyword">if</span>(++ l &gt; r) <span class="keyword">break</span>; <span class="comment">//重新设定左边界</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">spiralOrder</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">if</span>(matrix.empty()) <span class="keyword">return</span> ans; <span class="comment">//若数组为空，直接返回答案</span></span><br><span class="line">        <span class="keyword">int</span> u = <span class="number">0</span>; <span class="comment">//赋值上下左右边界</span></span><br><span class="line">        <span class="keyword">int</span> d = matrix.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> r = matrix[<span class="number">0</span>].<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = l; i &lt;= r; ++i) ans.push_back(matrix[u][i]); <span class="comment">//向右移动直到最右</span></span><br><span class="line">            <span class="keyword">if</span>(++ u &gt; d) <span class="keyword">break</span>; <span class="comment">//重新设定上边界，若上边界大于下边界，则遍历遍历完成，下同</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = u; i &lt;= d; ++i) ans.push_back(matrix[i][r]); <span class="comment">//向下</span></span><br><span class="line">            <span class="keyword">if</span>(-- r &lt; l) <span class="keyword">break</span>; <span class="comment">//重新设定有边界</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = r; i &gt;= l; --i) ans.push_back(matrix[d][i]); <span class="comment">//向左</span></span><br><span class="line">            <span class="keyword">if</span>(-- d &lt; u) <span class="keyword">break</span>; <span class="comment">//重新设定下边界</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = d; i &gt;= u; --i) ans.push_back(matrix[i][l]); <span class="comment">//向上</span></span><br><span class="line">            <span class="keyword">if</span>(++ l &gt; r) <span class="keyword">break</span>; <span class="comment">//重新设定左边界</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -431,8 +429,6 @@
     <footer class="post-footer">
       
         <div class="post-tags">
-          
-            <a href="/tags/C-C/" <i class="fa fa-tag"></i> C/C++</a>
           
             <a href="/tags/LeetCode/" <i class="fa fa-tag"></i> LeetCode</a>
           
@@ -558,7 +554,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

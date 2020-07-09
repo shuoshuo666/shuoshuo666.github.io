@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="C/C++,LeetCode," />
+  <meta name="keywords" content="LeetCode,树," />
 
 
 
@@ -86,10 +86,10 @@
 <meta property="og:site_name" content="朔朔の博客">
 <meta property="og:description" content="LeetCode#98–验证二叉搜索树">
 <meta property="article:published_time" content="2020-04-30T08:51:19.000Z">
-<meta property="article:modified_time" content="2020-04-30T09:23:49.420Z">
+<meta property="article:modified_time" content="2020-07-09T01:32:28.797Z">
 <meta property="article:author" content="shuoshuo">
-<meta property="article:tag" content="C&#x2F;C++">
 <meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="树">
 <meta name="twitter:card" content="summary">
 
 
@@ -349,8 +349,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-30T17:23:49+08:00">
-                2020-04-30
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-09T09:32:28+08:00">
+                2020-07-09
               </time>
             
           </span>
@@ -416,7 +416,6 @@
 
 <h4 id="2-中序遍历-迭代"><a href="#2-中序遍历-迭代" class="headerlink" title="(2) 中序遍历(迭代)"></a>(2) 中序遍历(迭代)</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//利用二叉搜索树中序遍历的结果是一个递增序列来判断</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValidBST</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">stack</span>&lt;TreeNode*&gt; auxStack;</span><br><span class="line">        TreeNode* node = root;</span><br><span class="line">        <span class="keyword">long</span> order = INT64_MIN;</span><br><span class="line">        <span class="keyword">while</span> ( node != <span class="literal">nullptr</span> || !auxStack.empty() ) &#123;</span><br><span class="line">            <span class="keyword">if</span> ( node != <span class="literal">nullptr</span> ) &#123;</span><br><span class="line">                auxStack.push(node);</span><br><span class="line">                node = node-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                node = auxStack.top();</span><br><span class="line">                auxStack.pop();</span><br><span class="line">                <span class="keyword">if</span> ( node-&gt;val &lt;= order ) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                order = node-&gt;val;</span><br><span class="line">                node = node-&gt;right;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-
       
     </div>
     
@@ -433,9 +432,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C-C/" <i class="fa fa-tag"></i> C/C++</a>
-          
             <a href="/tags/LeetCode/" <i class="fa fa-tag"></i> LeetCode</a>
+          
+            <a href="/tags/%E6%A0%91/" <i class="fa fa-tag"></i> 树</a>
           
         </div>
       
@@ -559,7 +558,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

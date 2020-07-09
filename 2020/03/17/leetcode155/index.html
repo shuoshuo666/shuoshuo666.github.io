@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="C/C++,LeetCode," />
+  <meta name="keywords" content="LeetCode," />
 
 
 
@@ -86,9 +86,8 @@
 <meta property="og:site_name" content="朔朔の博客">
 <meta property="og:description" content="LeetCode#155–最小栈">
 <meta property="article:published_time" content="2020-03-17T08:49:07.000Z">
-<meta property="article:modified_time" content="2020-03-17T08:55:56.378Z">
+<meta property="article:modified_time" content="2020-07-09T01:35:27.168Z">
 <meta property="article:author" content="shuoshuo">
-<meta property="article:tag" content="C&#x2F;C++">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
 
@@ -349,8 +348,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-17T16:55:56+08:00">
-                2020-03-17
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-09T09:35:27+08:00">
+                2020-07-09
               </time>
             
           </span>
@@ -416,7 +415,6 @@
 
 <h4 id="2-两栈不同步"><a href="#2-两栈不同步" class="headerlink" title="(2)两栈不同步"></a>(2)两栈不同步</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinStack</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    MinStack() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">stack</span>.push_back(x);</span><br><span class="line">        <span class="keyword">if</span> ( minNums.empty() ) minNums.push_back(x);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ( x &lt;= minNums.back() ) minNums.push_back(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( !<span class="built_in">stack</span>.empty() ) &#123;</span><br><span class="line">            <span class="keyword">if</span> ( <span class="built_in">stack</span>.back() == minNums.back() ) minNums.pop_back();</span><br><span class="line">            <span class="built_in">stack</span>.pop_back();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">stack</span>.back();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> minNums.back();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="built_in">stack</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; minNums;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-
       
     </div>
     
@@ -432,8 +430,6 @@
     <footer class="post-footer">
       
         <div class="post-tags">
-          
-            <a href="/tags/C-C/" <i class="fa fa-tag"></i> C/C++</a>
           
             <a href="/tags/LeetCode/" <i class="fa fa-tag"></i> LeetCode</a>
           
@@ -559,7 +555,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
