@@ -3366,6 +3366,31 @@ table th:nth-of-type(2) {
 <td><a href="https://shuoshuo666.github.io/2020/03/13/leetcode111/">二叉树的最小深度</a></td>
 <td>简单</td>
 </tr>
+<tr>
+<td>199</td>
+<td><a href="https://shuoshuo666.github.io/2020/05/16/leetcode199/">二叉树的右视图</a></td>
+<td>中等</td>
+</tr>
+<tr>
+<td>429</td>
+<td><a href="https://shuoshuo666.github.io/2020/05/27/leetcode429/">N叉树的层序遍历</a></td>
+<td>中等</td>
+</tr>
+<tr>
+<td>513</td>
+<td><a href="https://shuoshuo666.github.io/2020/06/02/leetcode513/">找树左下角的值</a></td>
+<td>中等</td>
+</tr>
+<tr>
+<td>515</td>
+<td><a href="https://shuoshuo666.github.io/2020/06/03/leetcode515/">在每个树行中找最大值</a></td>
+<td>中等</td>
+</tr>
+<tr>
+<td>559</td>
+<td><a href="https://shuoshuo666.github.io/2020/06/07/leetcode559/">N叉树的最大深度</a></td>
+<td>简单</td>
+</tr>
 </tbody></table>
 ]]></content>
       <categories>
@@ -3646,7 +3671,9 @@ table th:nth-of-type(2) {
       </categories>
       <tags>
         <tag>LeetCode</tag>
+        <tag>BFS</tag>
         <tag>树</tag>
+        <tag>DFS</tag>
       </tags>
   </entry>
   <entry>
@@ -4116,14 +4143,18 @@ table th:nth-of-type(2) {
 <a id="more"></a>
 
 <h3 id="1-题目：找树左下角的值（中等）"><a href="#1-题目：找树左下角的值（中等）" class="headerlink" title="1.题目：找树左下角的值（中等）"></a>1.题目：找树左下角的值（中等）</h3><p>给定一个二叉树，在树的最后一行找到最左边的值。</p>
-<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findBottomLeftValue</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> level = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> maxLevel = <span class="number">0</span>;</span><br><span class="line">        helper(root, level, maxLevel, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(TreeNode* root, <span class="keyword">int</span> level, <span class="keyword">int</span>&amp; maxLevel, <span class="keyword">int</span>&amp; res)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span>;</span><br><span class="line">        ++level;</span><br><span class="line">        <span class="keyword">if</span> ( level &gt; maxLevel ) &#123;</span><br><span class="line">            maxLevel = level;</span><br><span class="line">            res = root-&gt;val;</span><br><span class="line">        &#125;</span><br><span class="line">        helper(root-&gt;left, level, maxLevel, res);</span><br><span class="line">        helper(root-&gt;right, level, maxLevel, res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><h4 id="1-DFS"><a href="#1-DFS" class="headerlink" title="(1) DFS"></a>(1) DFS</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findBottomLeftValue</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> level = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> maxLevel = <span class="number">0</span>;</span><br><span class="line">        helper(root, level, maxLevel, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(TreeNode* root, <span class="keyword">int</span> level, <span class="keyword">int</span>&amp; maxLevel, <span class="keyword">int</span>&amp; res)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span>;</span><br><span class="line">        ++level;</span><br><span class="line">        <span class="keyword">if</span> ( level &gt; maxLevel ) &#123;</span><br><span class="line">            maxLevel = level;</span><br><span class="line">            res = root-&gt;val;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 先左后右</span></span><br><span class="line">        helper(root-&gt;left, level, maxLevel, res);</span><br><span class="line">        helper(root-&gt;right, level, maxLevel, res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-BFS"><a href="#2-BFS" class="headerlink" title="(2) BFS"></a>(2) BFS</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findBottomLeftValue</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeNode*&gt; q;</span><br><span class="line">        q.push(root);</span><br><span class="line">        TreeNode* p = <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">while</span> ( !q.empty() ) &#123;</span><br><span class="line">            p = q.front();</span><br><span class="line">            q.pop();</span><br><span class="line">            <span class="comment">// 先右后左</span></span><br><span class="line">            <span class="keyword">if</span>(p-&gt;right) q.push(p-&gt;right);</span><br><span class="line">            <span class="keyword">if</span>(p-&gt;left) q.push(p-&gt;left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> p-&gt;val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>LeetCode</category>
         <category>树</category>
       </categories>
       <tags>
         <tag>LeetCode</tag>
+        <tag>BFS</tag>
         <tag>树</tag>
+        <tag>DFS</tag>
       </tags>
   </entry>
   <entry>
@@ -4212,14 +4243,18 @@ table th:nth-of-type(2) {
 
 <h3 id="1-题目：N叉树的最大深度（简单）"><a href="#1-题目：N叉树的最大深度（简单）" class="headerlink" title="1.题目：N叉树的最大深度（简单）"></a>1.题目：N叉树的最大深度（简单）</h3><p>给定一个 N 叉树，找到其最大深度。</p>
 <p>最大深度是指从根节点到最远叶子节点的最长路径上的节点总数。</p>
-<h3 id="2-题解-回溯"><a href="#2-题解-回溯" class="headerlink" title="2.题解(回溯)"></a>2.题解(回溯)</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(Node* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> maxDepthValue = <span class="number">0</span>;</span><br><span class="line">        dfs(root, maxDepthValue, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> maxDepthValue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Node* root, <span class="keyword">int</span>&amp; maxDepthValue, <span class="keyword">int</span> depth)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root-&gt;children.empty() ) &#123;</span><br><span class="line">            ++depth;</span><br><span class="line">            <span class="keyword">if</span> ( depth &gt; maxDepthValue ) maxDepthValue = depth;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> ( Node* node : root-&gt;children ) &#123;</span><br><span class="line">            dfs(node, maxDepthValue, depth + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+<h3 id="2-题解"><a href="#2-题解" class="headerlink" title="2.题解"></a>2.题解</h3><h4 id="1-回溯"><a href="#1-回溯" class="headerlink" title="(1) 回溯"></a>(1) 回溯</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(Node* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> maxDepthValue = <span class="number">0</span>;</span><br><span class="line">        dfs(root, maxDepthValue, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> maxDepthValue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(Node* root, <span class="keyword">int</span>&amp; maxDepthValue, <span class="keyword">int</span> depth)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root-&gt;children.empty() ) &#123;</span><br><span class="line">            ++depth;</span><br><span class="line">            <span class="keyword">if</span> ( depth &gt; maxDepthValue ) maxDepthValue = depth;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> ( Node* node : root-&gt;children ) &#123;</span><br><span class="line">            dfs(node, maxDepthValue, depth + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-BFS"><a href="#2-BFS" class="headerlink" title="(2) BFS"></a>(2) BFS</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(Node* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( root == <span class="literal">nullptr</span> ) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">queue</span>&lt;Node*&gt; q;</span><br><span class="line">        q.push(root);</span><br><span class="line">        <span class="keyword">int</span> max_depth = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> ( !q.empty() ) &#123;</span><br><span class="line">            max_depth++;</span><br><span class="line">            <span class="keyword">int</span> sz = q.<span class="built_in">size</span>();		</span><br><span class="line">            <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sz; ++i ) &#123;</span><br><span class="line">                Node* curr = q.front();</span><br><span class="line">                q.pop();</span><br><span class="line">                <span class="keyword">for</span> ( Node* it : curr-&gt;children ) q.push(it);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max_depth;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>LeetCode</category>
         <category>树</category>
       </categories>
       <tags>
         <tag>LeetCode</tag>
+        <tag>BFS</tag>
         <tag>树</tag>
+        <tag>DFS</tag>
       </tags>
   </entry>
   <entry>
