@@ -4807,7 +4807,7 @@ table th:nth-of-type(2) {
         <td>是</td>
     </tr>
     <tr>
-        <td>拉链法散列表(链表数组)</td>
+        <td>拉链法散列表<br>(链表数组)</td>
         <td>&#60lgN</td>
         <td>&#60lgN</td>
         <td>N/(2M)</td>
@@ -4815,7 +4815,7 @@ table th:nth-of-type(2) {
         <td>否</td>
     </tr>
     <tr>
-        <td>线性探测法散列表(并行数组)</td>
+        <td>线性探测法散列表<br>(并行数组)</td>
         <td>clgN</td>
         <td>clgN</td>
         <td>&#60 1.5</td>
