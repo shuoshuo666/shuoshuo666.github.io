@@ -4833,14 +4833,4 @@ table th:nth-of-type(2) {
         <tag>查找</tag>
       </tags>
   </entry>
-  <entry>
-    <title>测试测试</title>
-    <url>/2020/07/17/test/</url>
-    <content><![CDATA[<blockquote>
-<p>测试测试</p>
-</blockquote>
-<a id="more"></a>
-
-<h3 id="测试4"><a href="#测试4" class="headerlink" title="测试4"></a>测试4</h3>]]></content>
-  </entry>
 </search>
