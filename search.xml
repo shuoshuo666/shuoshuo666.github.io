@@ -3192,6 +3192,11 @@ table th:nth-of-type(2) {
 <td>困难</td>
 </tr>
 <tr>
+<td>42</td>
+<td><a href="https://shuoshuo666.github.io/2020/07/24/leetcode42/">接雨水</a></td>
+<td>困难</td>
+</tr>
+<tr>
 <td>53</td>
 <td><a href="https://shuoshuo666.github.io/2020/03/02/leetcode53/">最大子序和</a></td>
 <td>简单</td>
@@ -4936,6 +4941,25 @@ table th:nth-of-type(2) {
       <categories>
         <category>LeetCode</category>
         <category>字符串</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode#42--接雨水</title>
+    <url>/2020/07/24/leetcode42/</url>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#42–接雨水</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：接雨水（困难）"><a href="#1-题目：接雨水（困难）" class="headerlink" title="1.题目：接雨水（困难）"></a>1.题目：接雨水（困难）</h3><p>给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。</p>
+<h3 id="2-题解-动态规划"><a href="#2-题解-动态规划" class="headerlink" title="2.题解(动态规划)"></a>2.题解(动态规划)</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">trap</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; <span class="built_in">height</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( <span class="built_in">height</span>.empty() ) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">max_left</span><span class="params">(<span class="built_in">height</span>.<span class="built_in">size</span>())</span></span>;   <span class="comment">// 左侧最高的板</span></span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">max_right</span><span class="params">(<span class="built_in">height</span>.<span class="built_in">size</span>())</span></span>;  <span class="comment">// 右侧最高的板</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="built_in">height</span>.<span class="built_in">size</span>() - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            max_left[i] = <span class="built_in">max</span>(max_left[i - <span class="number">1</span>], <span class="built_in">height</span>[i - <span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="built_in">height</span>.<span class="built_in">size</span>() - <span class="number">2</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            max_right[i] = <span class="built_in">max</span>(max_right[i + <span class="number">1</span>], <span class="built_in">height</span>[i + <span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="built_in">height</span>.<span class="built_in">size</span>() - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> less = <span class="built_in">min</span>(max_left[i], max_right[i]);</span><br><span class="line">            <span class="keyword">if</span> (less &gt; <span class="built_in">height</span>[i]) &#123;</span><br><span class="line">                sum = sum + (less - <span class="built_in">height</span>[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
       </categories>
       <tags>
         <tag>LeetCode</tag>
