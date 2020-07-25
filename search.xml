@@ -4967,8 +4967,25 @@ table th:nth-of-type(2) {
       </tags>
   </entry>
   <entry>
-    <title>leetcode72</title>
+    <title>LeetCode#72--编辑距离</title>
     <url>/2020/07/25/leetcode72/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#72–编辑距离</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：编辑距离（困难）"><a href="#1-题目：编辑距离（困难）" class="headerlink" title="1.题目：编辑距离（困难）"></a>1.题目：编辑距离（困难）</h3><p>给你两个单词 word1 和 word2，请你计算出将 word1 转换成 word2 所使用的最少操作数 。</p>
+<p>你可以对一个单词进行如下三种操作：</p>
+<p>插入一个字符<br>删除一个字符<br>替换一个字符</p>
+<h3 id="2-题解-动态规划"><a href="#2-题解-动态规划" class="headerlink" title="2.题解(动态规划)"></a>2.题解(动态规划)</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minDistance</span><span class="params">(String word1, String word2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n1 = word1.length();</span><br><span class="line">        <span class="keyword">int</span> n2 = word2.length();</span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n1 + <span class="number">1</span>][n2 + <span class="number">1</span>];</span><br><span class="line">        <span class="comment">// 第一行</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n2; j++) dp[<span class="number">0</span>][j] = dp[<span class="number">0</span>][j - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 第一列</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n1; i++) dp[i][<span class="number">0</span>] = dp[i - <span class="number">1</span>][<span class="number">0</span>] + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n1; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n2; j++) &#123;</span><br><span class="line">                <span class="comment">// 状态转移方程</span></span><br><span class="line">                <span class="keyword">if</span> (word1.charAt(i - <span class="number">1</span>) == word2.charAt(j - <span class="number">1</span>)) dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">                <span class="keyword">else</span> dp[i][j] = Math.min(Math.min(dp[i - <span class="number">1</span>][j - <span class="number">1</span>], dp[i][j - <span class="number">1</span>]), dp[i - <span class="number">1</span>][j]) + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n1][n2];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>字符串</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>动态规划</tag>
+      </tags>
   </entry>
 </search>
