@@ -79,14 +79,14 @@
 
 
 
-<meta name="description" content="LeetCode#125–验证回文串">
+<meta name="description" content="LeetCode#84–柱状图中的最大矩形">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode#125--验证回文串">
-<meta property="og:url" content="http://shuoshuo666.github.io/2020/03/15/leetcode125/index.html">
+<meta property="og:title" content="LeetCode#84--柱状图中的最大矩形">
+<meta property="og:url" content="http://shuoshuo666.github.io/2020/07/28/leetcode84/index.html">
 <meta property="og:site_name" content="朔朔の博客">
-<meta property="og:description" content="LeetCode#125–验证回文串">
-<meta property="article:published_time" content="2020-03-15T11:20:03.000Z">
-<meta property="article:modified_time" content="2020-07-09T02:22:19.783Z">
+<meta property="og:description" content="LeetCode#84–柱状图中的最大矩形">
+<meta property="article:published_time" content="2020-07-28T02:08:37.000Z">
+<meta property="article:modified_time" content="2020-07-28T02:10:19.331Z">
 <meta property="article:author" content="shuoshuo">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
@@ -119,7 +119,7 @@
 
 
 
-  <link rel="canonical" href="http://shuoshuo666.github.io/2020/03/15/leetcode125/"/>
+  <link rel="canonical" href="http://shuoshuo666.github.io/2020/07/28/leetcode84/"/>
 
 
 
@@ -142,7 +142,7 @@
 </script>
 
 
-  <title>LeetCode#125--验证回文串 | 朔朔の博客</title>
+  <title>LeetCode#84--柱状图中的最大矩形 | 朔朔の博客</title>
   
 
 
@@ -303,7 +303,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2020/03/15/leetcode125/">
+    <link itemprop="mainEntityOfPage" href="http://shuoshuo666.github.io/2020/07/28/leetcode84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shuoshuo">
@@ -320,7 +320,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LeetCode#125--验证回文串</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode#84--柱状图中的最大矩形</h1>
         
 
         <div class="post-meta">
@@ -332,8 +332,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-15T19:20:03+08:00">
-                2020-03-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-28T10:08:37+08:00">
+                2020-07-28
               </time>
             
 
@@ -348,8 +348,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-09T10:22:19+08:00">
-                2020-07-09
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-28T10:10:19+08:00">
+                2020-07-28
               </time>
             
           </span>
@@ -369,17 +369,6 @@
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/LeetCode/" itemprop="url" rel="index">
                     <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/%E5%AD%97%E7%AC%A6%E4%B8%B2/" itemprop="url" rel="index">
-                    <span itemprop="name">字符串</span>
                   </a>
                 </span>
 
@@ -416,13 +405,13 @@
 
       
         <blockquote>
-<p>LeetCode#125–验证回文串</p>
+<p>LeetCode#84–柱状图中的最大矩形</p>
 </blockquote>
 <a id="more"></a>
 
-<h3 id="1-题目：验证回文串（简单）"><a href="#1-题目：验证回文串（简单）" class="headerlink" title="1.题目：验证回文串（简单）"></a>1.题目：验证回文串（简单）</h3><p>给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。</p>
-<p>说明：本题中，我们将空字符串定义为有效的回文串。</p>
-<h3 id="2-题解-双指针"><a href="#2-题解-双指针" class="headerlink" title="2.题解(双指针)"></a>2.题解(双指针)</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> left = <span class="number">0</span>, right = s.<span class="built_in">size</span>() - <span class="number">1</span>; left &lt; right; ++left, --right ) &#123;</span><br><span class="line">            <span class="keyword">while</span>( !<span class="built_in">isalnum</span>(s[left]) &amp;&amp; left &lt; right ) ++left;</span><br><span class="line">            <span class="keyword">while</span>( !<span class="built_in">isalnum</span>(s[right]) &amp;&amp; left &lt; right ) --right;</span><br><span class="line">            <span class="keyword">if</span>( <span class="built_in">toupper</span>(s[left]) != <span class="built_in">toupper</span>(s[right]) ) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="1-题目：柱状图中的最大矩形（困难）"><a href="#1-题目：柱状图中的最大矩形（困难）" class="headerlink" title="1.题目：柱状图中的最大矩形（困难）"></a>1.题目：柱状图中的最大矩形（困难）</h3><p>给定 n 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。</p>
+<p>求在该柱状图中，能够勾勒出来的矩形的最大面积。</p>
+<h3 id="2-题解-单调栈"><a href="#2-题解-单调栈" class="headerlink" title="2.题解(单调栈)"></a>2.题解(单调栈)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">largestRectangleArea</span><span class="params">(<span class="keyword">int</span>[] heights)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 处理特殊情况</span></span><br><span class="line">        <span class="keyword">int</span> len = heights.length;</span><br><span class="line">        <span class="keyword">if</span> ( len == <span class="number">0</span> ) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> ( len == <span class="number">1</span> ) <span class="keyword">return</span> heights[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 添加哨兵，重新构造柱状图</span></span><br><span class="line">        <span class="keyword">int</span> area = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[] newHeights = <span class="keyword">new</span> <span class="keyword">int</span>[len + <span class="number">2</span>];</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++i ) &#123;</span><br><span class="line">            newHeights[i + <span class="number">1</span>] = heights[i];</span><br><span class="line">        &#125;</span><br><span class="line">        len += <span class="number">2</span>;</span><br><span class="line">        heights = newHeights;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 构造单调栈</span></span><br><span class="line">        Deque&lt;Integer&gt; stack = <span class="keyword">new</span> ArrayDeque&lt;&gt;();</span><br><span class="line">        stack.addLast(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; ++i ) &#123;</span><br><span class="line">            <span class="keyword">while</span> ( heights[stack.peekLast()] &gt; heights[i] ) &#123;</span><br><span class="line">                <span class="keyword">int</span> height = heights[stack.removeLast()];</span><br><span class="line">                <span class="keyword">int</span> width = i - stack.peekLast() - <span class="number">1</span>;</span><br><span class="line">                area = Math.max(area, width * height);</span><br><span class="line">            &#125;</span><br><span class="line">            stack.addLast(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> area;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -453,8 +442,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/15/leetcode122/" rel="next" title="LeetCode#122--买卖股票的最佳时机2">
-                <i class="fa fa-chevron-left"></i> LeetCode#122--买卖股票的最佳时机2
+              <a href="/2020/07/27/leetcode76/" rel="next" title="LeetCode#76--最小覆盖子串">
+                <i class="fa fa-chevron-left"></i> LeetCode#76--最小覆盖子串
               </a>
             
           </div>
@@ -462,10 +451,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/16/leetcode136/" rel="prev" title="LeetCode#136--只出现一次的数字">
-                LeetCode#136--只出现一次的数字 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -614,7 +599,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目：验证回文串（简单）"><span class="nav-text">1.题目：验证回文串（简单）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-题解-双指针"><span class="nav-text">2.题解(双指针)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目：柱状图中的最大矩形（困难）"><span class="nav-text">1.题目：柱状图中的最大矩形（困难）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-题解-单调栈"><span class="nav-text">2.题解(单调栈)</span></a></li></ol></div>
             
 
           </div>

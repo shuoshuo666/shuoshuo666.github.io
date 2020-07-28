@@ -5008,4 +5008,23 @@ table th:nth-of-type(2) {
         <tag>动态规划</tag>
       </tags>
   </entry>
+  <entry>
+    <title>LeetCode#84--柱状图中的最大矩形</title>
+    <url>/2020/07/28/leetcode84/</url>
+    <content><![CDATA[<blockquote>
+<p>LeetCode#84–柱状图中的最大矩形</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-题目：柱状图中的最大矩形（困难）"><a href="#1-题目：柱状图中的最大矩形（困难）" class="headerlink" title="1.题目：柱状图中的最大矩形（困难）"></a>1.题目：柱状图中的最大矩形（困难）</h3><p>给定 n 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。</p>
+<p>求在该柱状图中，能够勾勒出来的矩形的最大面积。</p>
+<h3 id="2-题解-单调栈"><a href="#2-题解-单调栈" class="headerlink" title="2.题解(单调栈)"></a>2.题解(单调栈)</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">largestRectangleArea</span><span class="params">(<span class="keyword">int</span>[] heights)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 处理特殊情况</span></span><br><span class="line">        <span class="keyword">int</span> len = heights.length;</span><br><span class="line">        <span class="keyword">if</span> ( len == <span class="number">0</span> ) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> ( len == <span class="number">1</span> ) <span class="keyword">return</span> heights[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 添加哨兵，重新构造柱状图</span></span><br><span class="line">        <span class="keyword">int</span> area = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[] newHeights = <span class="keyword">new</span> <span class="keyword">int</span>[len + <span class="number">2</span>];</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++i ) &#123;</span><br><span class="line">            newHeights[i + <span class="number">1</span>] = heights[i];</span><br><span class="line">        &#125;</span><br><span class="line">        len += <span class="number">2</span>;</span><br><span class="line">        heights = newHeights;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 构造单调栈</span></span><br><span class="line">        Deque&lt;Integer&gt; stack = <span class="keyword">new</span> ArrayDeque&lt;&gt;();</span><br><span class="line">        stack.addLast(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; ++i ) &#123;</span><br><span class="line">            <span class="keyword">while</span> ( heights[stack.peekLast()] &gt; heights[i] ) &#123;</span><br><span class="line">                <span class="keyword">int</span> height = heights[stack.removeLast()];</span><br><span class="line">                <span class="keyword">int</span> width = i - stack.peekLast() - <span class="number">1</span>;</span><br><span class="line">                area = Math.max(area, width * height);</span><br><span class="line">            &#125;</span><br><span class="line">            stack.addLast(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> area;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
 </search>
