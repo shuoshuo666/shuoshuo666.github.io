@@ -5049,7 +5049,7 @@ table th:nth-of-type(2) {
     <title>fastJSON常用方法</title>
     <url>/2020/10/10/fastjson/</url>
     <content><![CDATA[<blockquote>
-<p>本文总结了fastJSON中的常用方法</p>
+<p>fastJSON是阿里巴巴开源的一个JSON解析库<br>本文总结了fastJSON中的常用方法</p>
 </blockquote>
 <a id="more"></a>
 
@@ -5060,6 +5060,21 @@ table th:nth-of-type(2) {
 <h3 id="3-判断是否是有效的JSON字符串-JSON对象-JSON数组"><a href="#3-判断是否是有效的JSON字符串-JSON对象-JSON数组" class="headerlink" title="(3) 判断是否是有效的JSON字符串/JSON对象/JSON数组"></a>(3) 判断是否是有效的JSON字符串/JSON对象/JSON数组</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">JSON.isValid(String str);</span><br><span class="line">JSON.isValidObject(String str);</span><br><span class="line">JSON.isValidArray(String str);</span><br></pre></td></tr></table></figure>
 
 <h3 id="4-JSONObject-的常用方法"><a href="#4-JSONObject-的常用方法" class="headerlink" title="(4) JSONObject 的常用方法"></a>(4) JSONObject 的常用方法</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 1.添加/删除 一个键值对</span></span><br><span class="line">Object obj = jsonObject.put(String key, Object value);</span><br><span class="line">Object obj = jsonObject.remove(Object key);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.根据key值获取JSONObject对象中对应的value值</span></span><br><span class="line">Object obj = jsonObject.get(String key);</span><br><span class="line">String str = jsonObject.getString(String key);</span><br><span class="line">JSONObject obj = jsonObject.getJSONObject(String key);</span><br><span class="line">JSONArray obj = jsonObject.getJSONArray(String key);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3.其它常用方法</span></span><br><span class="line"><span class="keyword">int</span> size = jsonObject.size();  <span class="comment">// 获取JSONObject对象中键值对的数量</span></span><br><span class="line"><span class="keyword">boolean</span> empty = jsonObject.isEmpty();  <span class="comment">// 判断该JSONObject对象是否为空</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">boolean</span> containsKey = jsonObject.containsKey(Object key);  <span class="comment">// 判断是否有需要的key值</span></span><br><span class="line"><span class="keyword">boolean</span> containsValue = jsonObject.containsValue(Object val);  <span class="comment">// 判断是否有需要的value值</span></span><br><span class="line"></span><br><span class="line">Set&lt;String&gt; keySet = jsonObject.keySet();  <span class="comment">// 获取JSONObject中的key，并将其放入Set集合中</span></span><br><span class="line">Set&lt;Map.Entry&lt;String, Object&gt;&gt; entries = jsonObject.entrySet();  <span class="comment">// 取得键和值的映射关系</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>JAVA</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>common-csv常用方法</title>
+    <url>/2020/10/15/common-csv/</url>
+    <content><![CDATA[<blockquote>
+<p>common-csv是Apache开源组织提供的用于读写CSV文件的工具包<br>本文总结了common-csv中的常用方法</p>
+</blockquote>
+<a id="more"></a>
 ]]></content>
       <categories>
         <category>JAVA</category>
