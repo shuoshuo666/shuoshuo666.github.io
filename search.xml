@@ -5119,6 +5119,13 @@ table th:nth-of-type(2) {
 <h3 id="7-当前工程目录"><a href="#7-当前工程目录" class="headerlink" title="(7) 当前工程目录"></a>(7) 当前工程目录</h3><img src="/2020/11/18/springboot-mybatis-druid/springboot_mybatis_project.png" class>
 
 <h3 id="8-单元测试"><a href="#8-单元测试" class="headerlink" title="(8) 单元测试"></a>(8) 单元测试</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserMapperTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        UserInfo userInfo = <span class="keyword">new</span> UserInfo(<span class="keyword">null</span>, <span class="string">"admin"</span>, <span class="string">"123456"</span>);</span><br><span class="line"></span><br><span class="line">        userMapper.addUser(userInfo);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-其它"><a href="#9-其它" class="headerlink" title="(9) 其它"></a>(9) 其它</h3><h4 id="9-1-idea中Mapper自动注入警告"><a href="#9-1-idea中Mapper自动注入警告" class="headerlink" title="9.1 idea中Mapper自动注入警告"></a>9.1 idea中Mapper自动注入警告</h4><img src="/2020/11/18/springboot-mybatis-druid/mapper_autowired_error.png" class>
+
+<p><strong>解决方法：</strong>可以在···Mapper接口上加 @Repository 注解</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addUser</span><span class="params">(UserInfo userInfo)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="9-2-插件"><a href="#9-2-插件" class="headerlink" title="9.2 插件"></a>9.2 插件</h4><p>Free Mybatis plugin</p>
 ]]></content>
       <categories>
         <category>JAVA</category>
