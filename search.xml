@@ -5190,7 +5190,7 @@ table th:nth-of-type(2) {
 <h3 id="2-拉取合适的pytorch镜像"><a href="#2-拉取合适的pytorch镜像" class="headerlink" title="(2) 拉取合适的pytorch镜像"></a>(2) 拉取合适的pytorch镜像</h3><p>从 DockerHub 中拉取版本合适的，集成了 anaconda 的 python 环境、pytorch、cuda 和 cudnn 的 docker <a href="https://registry.hub.docker.com/r/pytorch/pytorch/tags?page=1&ordering=last_updated" target="_blank" rel="noopener">镜像</a></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo docker pull pytorch/pytorch:1.6.0-cuda10.1-cudnn7-runtime</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-通过nvidia-docker启动容器"><a href="#3-通过nvidia-docker启动容器" class="headerlink" title="(3) 通过nvidia-docker启动容器"></a>(3) 通过nvidia-docker启动容器</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 通过 nvidia-docker 启动容器，而不是通过 docker 启动容器</span></span><br><span class="line"><span class="comment"># 2. 端口15732(随遍写的)是 docker 中的服务映射出来的端口号</span></span><br><span class="line"><span class="comment"># 3. 端口23是 docker 中的 ssh 的服务端口 22 映射出来的端口号，用于在 PyCharm 通过 ssh 远程连接使用 docker 中的 python环境(不是必要的)</span></span><br><span class="line"><span class="comment"># 4. docker 中的目录 /workspace 是用来放置待运行的 python 程序的目录，最好挂载到本机上，方便查看与修改 docker 中运行的 python 程序</span></span><br><span class="line">sudo nvidia-docker run -it -d --name=<span class="string">'[容器名称]'</span> -p 15732:15732 -p :23:22 -v [服务器中的目录]:/workspace [镜像名称/镜像id]</span><br></pre></td></tr></table></figure>
+<h3 id="3-通过nvidia-docker启动容器"><a href="#3-通过nvidia-docker启动容器" class="headerlink" title="(3) 通过nvidia-docker启动容器"></a>(3) 通过nvidia-docker启动容器</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 通过 nvidia-docker 启动容器，而不是通过 docker 启动容器</span></span><br><span class="line"><span class="comment"># 2. 端口15732(随便写的)是 docker 中的服务映射出来的端口号</span></span><br><span class="line"><span class="comment"># 3. 端口23是 docker 中的 ssh 的服务端口 22 映射出来的端口号，用于在 PyCharm 通过 ssh 远程连接使用 docker 中的 python环境(不是必要的)</span></span><br><span class="line"><span class="comment"># 4. docker 中的目录 /workspace 是用来放置待运行的 python 程序的目录，最好挂载到本机上，方便查看与修改 docker 中运行的 python 程序</span></span><br><span class="line">sudo nvidia-docker run -it -d --name=<span class="string">'[容器名称]'</span> -p 15732:15732 -p :23:22 -v [服务器中的目录]:/workspace [镜像名称/镜像id]</span><br></pre></td></tr></table></figure>
 
 <h3 id="4-测试在-docker-是否可以使用-nvidia-显卡"><a href="#4-测试在-docker-是否可以使用-nvidia-显卡" class="headerlink" title="(4) 测试在 docker 是否可以使用 nvidia 显卡"></a>(4) 测试在 docker 是否可以使用 nvidia 显卡</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 进入容器，其中 qa 是容器名称</span></span><br><span class="line">sudo docker <span class="built_in">exec</span> -it qa bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 进入 python 环境</span></span><br><span class="line">python</span><br></pre></td></tr></table></figure>
 
@@ -5199,21 +5199,21 @@ table th:nth-of-type(2) {
 <img src="/2021/01/08/pytorch-gpu-docker/test_docker_available.png" class>
 
 <p><strong>注</strong>：可能出现由于版本问题导致 nvidia 驱动不可用的情况，这时需要调整 pytorch 镜像的版本，重新拉取版本合适的镜像</p>
-<h3 id="5-配置-docker-容器中的-ssh-服务-不是必要的"><a href="#5-配置-docker-容器中的-ssh-服务-不是必要的" class="headerlink" title="(5) 配置 docker 容器中的 ssh 服务(不是必要的)"></a>(5) 配置 docker 容器中的 ssh 服务(不是必要的)</h3><p>为了开发和调试的方便，我们希望在 PyCharm 中能够通过 ssh 远程连接的方式直接使用 docker 中的 python 环境，这时就需要在 docker 中配置 ssh 服务<a href="https://zhuanlan.zhihu.com/p/76469329" target="_blank" rel="noopener">参考</a></p>
+<h3 id="5-配置-docker-容器中的-ssh-服务-不是必要的"><a href="#5-配置-docker-容器中的-ssh-服务-不是必要的" class="headerlink" title="(5) 配置 docker 容器中的 ssh 服务(不是必要的)"></a>(5) 配置 docker 容器中的 ssh 服务(不是必要的)</h3><p>为了开发和调试的方便，我们希望在 PyCharm 中能够通过 ssh 远程连接的方式直接使用 docker 中的 python 环境，这时就需要在 docker 中配置 ssh 服务，配置过程<a href="https://zhuanlan.zhihu.com/p/76469329" target="_blank" rel="noopener">参考</a></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 进入容器，其中 qa 是容器名称</span></span><br><span class="line">sudo docker <span class="built_in">exec</span> -it qa bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 更新容器的apt源，安装ssh和vim</span></span><br><span class="line">apt-get update</span><br><span class="line">apt-get install openssh-server</span><br><span class="line">apt-get install vim</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 使用vim打开并修改配置文件</span></span><br><span class="line"><span class="comment">#    找到PermitRootLogin prohibit-password这一行，修改为PermitRootLogin yes，允许通过ssh远程访问docker</span></span><br><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 创建docker中root用户的密码</span></span><br><span class="line">passwd root</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 启动ssh服务，至此，服务器端配置完毕</span></span><br><span class="line">service ssh restart</span><br></pre></td></tr></table></figure>
 
 <p>然后，在 PyCharm 中配置 ssh 远程访问即可</p>
-<p>在每次启动该 docker 容器的时候，都要开启 ssh 服务</p>
+<p>以后在每次启动该 docker 容器的时候，都要开启 ssh 服务</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 启动容器</span></span><br><span class="line">sudo docker start qa</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 启动容器中的 ssh 服务</span></span><br><span class="line">sudo docker <span class="built_in">exec</span> -it qa service ssh start</span><br></pre></td></tr></table></figure>
 
 <h3 id="6-将容器提交为镜像"><a href="#6-将容器提交为镜像" class="headerlink" title="(6) 将容器提交为镜像"></a>(6) 将容器提交为镜像</h3><p>在实际运行的过程中，难免会在 docker 中安装一些其它的 python 库，如果希望将这个 docker 中的 python 环境保存下来，则需要将配置好的容器提交为本地镜像，以便于迁移或复用</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo docker commit [容器名] [镜像名]</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>JAVA</category>
+        <category>Docker</category>
       </categories>
       <tags>
-        <tag>JAVA</tag>
+        <tag>Docker</tag>
       </tags>
   </entry>
 </search>
