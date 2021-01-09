@@ -5125,7 +5125,7 @@ table th:nth-of-type(2) {
 <p><strong>解决方法：</strong>可以在···Mapper接口上加 @Repository 注解</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addUser</span><span class="params">(UserInfo userInfo)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="9-2-插件"><a href="#9-2-插件" class="headerlink" title="9.2 插件"></a>9.2 插件</h4><p>Free Mybatis plugin</p>
+<h4 id="9-2-插件"><a href="#9-2-插件" class="headerlink" title="9.2 插件"></a>9.2 插件</h4><p>MyBatisCodeHelperPro<br>MyBatis Log Plugin</p>
 ]]></content>
       <categories>
         <category>JAVA</category>
