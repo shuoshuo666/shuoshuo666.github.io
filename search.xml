@@ -5135,7 +5135,7 @@ table th:nth-of-type(2) {
       </tags>
   </entry>
   <entry>
-    <title>Springboot + SpringSession + Redis 实现唯一登录和过期重新登录</title>
+    <title>Springboot 实现唯一登录和过期重新登录</title>
     <url>/2020/12/20/springboot-session/</url>
     <content><![CDATA[<blockquote>
 <p>本文总结了Springboot + SpringSession + Redis 实现唯一登录和过期重新登录的方法，并针对其中的跨域问题做出说明。</p>
