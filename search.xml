@@ -5287,7 +5287,7 @@ table th:nth-of-type(2) {
 <img src="/2021/01/31/centos-firewall/firewall_info.png" class>
 
 <p>如果是新的服务器，应该只有 22 端口</p>
-<h3 id="2-开放新的端口-以-es-需要的-9200-和-9300-端口为例"><a href="#2-开放新的端口-以-es-需要的-9200-和-9300-端口为例" class="headerlink" title="2. 开放新的端口(以 es 需要的 9200 和 9300 端口为例)"></a>2. 开放新的端口(以 es 需要的 9200 和 9300 端口为例)</h3><h4 id="2-1-若有-etc-sysconfig-iptables-文件，则通过修改该文件的方式，配置端口信息"><a href="#2-1-若有-etc-sysconfig-iptables-文件，则通过修改该文件的方式，配置端口信息" class="headerlink" title="2.1 若有 /etc/sysconfig/iptables 文件，则通过修改该文件的方式，配置端口信息"></a>2.1 若有 /etc/sysconfig/iptables 文件，则通过修改该文件的方式，配置端口信息</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 修改防火墙配置文件，增加相应的端口配置</span></span><br><span class="line">sudo vim /etc/sysconfig/iptables</span><br></pre></td></tr></table></figure>
+<h3 id="2-开放新的端口-以-es-需要的-9200-和-9300-端口为例"><a href="#2-开放新的端口-以-es-需要的-9200-和-9300-端口为例" class="headerlink" title="2. 开放新的端口(以 es 需要的 9200 和 9300 端口为例)"></a>2. 开放新的端口(以 es 需要的 9200 和 9300 端口为例)</h3><h4 id="2-1-若有-etc-sysconfig-iptables-文件"><a href="#2-1-若有-etc-sysconfig-iptables-文件" class="headerlink" title="2.1 若有 /etc/sysconfig/iptables 文件"></a>2.1 若有 /etc/sysconfig/iptables 文件</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1. 修改防火墙配置文件，增加相应的端口配置</span></span><br><span class="line">sudo vim /etc/sysconfig/iptables</span><br></pre></td></tr></table></figure>
 
 <img src="/2021/01/31/centos-firewall/iptables_update.png" class>
 
@@ -5297,7 +5297,8 @@ table th:nth-of-type(2) {
 
 <img src="/2021/01/31/centos-firewall/success.png" class>
 
-<h4 id="2-2-若没有-etc-sysconfig-iptables-文件"><a href="#2-2-若没有-etc-sysconfig-iptables-文件" class="headerlink" title="2.2 若没有 /etc/sysconfig/iptables 文件"></a>2.2 若没有 /etc/sysconfig/iptables 文件</h4><h5 id="1-停止并屏蔽-firewalld-服务"><a href="#1-停止并屏蔽-firewalld-服务" class="headerlink" title="(1) 停止并屏蔽 firewalld 服务"></a>(1) 停止并屏蔽 firewalld 服务</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl stop firewalld</span><br><span class="line"></span><br><span class="line">sudo systemctl mask firewalld</span><br></pre></td></tr></table></figure>
+<p>配置成功！</p>
+<h4 id="2-2-若没有-etc-sysconfig-iptables-文件"><a href="#2-2-若没有-etc-sysconfig-iptables-文件" class="headerlink" title="2.2 若没有 /etc/sysconfig/iptables 文件"></a>2.2 若没有 /etc/sysconfig/iptables 文件</h4><h5 id="1-停止并屏蔽-firewalld-服务"><a href="#1-停止并屏蔽-firewalld-服务" class="headerlink" title="(1) 停止并屏蔽 firewalld 服务"></a>(1) 停止并屏蔽 firewalld 服务</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl stop firewalld</span><br><span class="line">sudo systemctl mask firewalld</span><br></pre></td></tr></table></figure>
 
 <h5 id="2-安装-iptables-services-软件包"><a href="#2-安装-iptables-services-软件包" class="headerlink" title="(2) 安装 iptables-services 软件包"></a>(2) 安装 iptables-services 软件包</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install iptables-services</span><br></pre></td></tr></table></figure>
 
