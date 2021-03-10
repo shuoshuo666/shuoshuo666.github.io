@@ -5358,9 +5358,7 @@ table th:nth-of-type(2) {
 <li><a href="https://www.oracle.com/java/technologies/javase-jdk11-downloads.html" target="_blank" rel="noopener">https://www.oracle.com/java/technologies/javase-jdk11-downloads.html</a></li>
 <li><a href="http://java.sousou88.com/" target="_blank" rel="noopener">http://java.sousou88.com/</a></li>
 </ul>
-<h4 id="3-下载-gradle-5-5-1"><a href="#3-下载-gradle-5-5-1" class="headerlink" title="(3) 下载 gradle-5.5.1"></a>(3) 下载 gradle-5.5.1</h4><p>下载地址：<a href="https://gradle.org/releases/" target="_blank" rel="noopener">https://gradle.org/releases/</a><br>选择：complete</p>
-<img src="/2021/03/10/es-source/gradle_download.png" class>
-
+<h4 id="3-下载-gradle-5-1-1"><a href="#3-下载-gradle-5-1-1" class="headerlink" title="(3) 下载 gradle-5.1.1"></a>(3) 下载 gradle-5.1.1</h4><p>下载地址：<a href="https://gradle.org/releases/" target="_blank" rel="noopener">https://gradle.org/releases/</a><br>选择：complete</p>
 <h3 id="4-为工程指定-gradle-依赖"><a href="#4-为工程指定-gradle-依赖" class="headerlink" title="4. 为工程指定 gradle 依赖"></a>4. 为工程指定 gradle 依赖</h3><p>将下载的 gradle-5.1.1-all.zip 包放到 elasticsearch/gradle/wrapper 目录下<br>确保和 elasticsearch/gradle/wrapper/gradle-wrapper.properties 在同级目录<br>然后修改 elasticsearch/gradle/wrapper/gradle-wrapper.properties 配置如下：</p>
 <figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">distributionUrl</span>=<span class="string">gradle-5.1.1-all.zip</span></span><br></pre></td></tr></table></figure>
 
@@ -5377,7 +5375,7 @@ table th:nth-of-type(2) {
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./gradlew idea</span><br></pre></td></tr></table></figure>
 
 <p>编译成功后打印日志：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">BUILD SUCCESSFUL <span class="keyword">in</span> 1m 23s</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">BUILD SUCCESSFUL <span class="keyword">in</span> 1m 57s</span><br></pre></td></tr></table></figure>
 
 <h3 id="7-elasticsearch-源码导入-Idea"><a href="#7-elasticsearch-源码导入-Idea" class="headerlink" title="7. elasticsearch 源码导入 Idea"></a>7. elasticsearch 源码导入 Idea</h3><p>File -&gt; New -&gt; Project From Existing Sources -&gt; 选择 ElasticSearch 源码的根目录 -&gt; open -&gt; Import project from external model -&gt; Gradle -&gt; OK</p>
 <p>注意:<br>(1) 在 Project Structure 中设置工程的 JDK 版本为 JDK 11<br>(2) 在 Gradle Settings 中指定 Gradle JVM 为 JDK 11</p>
