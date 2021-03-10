@@ -5320,4 +5320,81 @@ table th:nth-of-type(2) {
         <tag>Linux</tag>
       </tags>
   </entry>
+  <entry>
+    <title>ElasticSearch源码启动</title>
+    <url>/2021/03/10/es-source/</url>
+    <content><![CDATA[<blockquote>
+<p>本文总结了 elasticsearch 6.6.1 源码在 Idea 中构建并启动的过程</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="1-软件环境"><a href="#1-软件环境" class="headerlink" title="1. 软件环境"></a>1. 软件环境</h3><ul>
+<li>操作系统：macOS Catalina</li>
+<li>Intellij Idea版本：Ultimate 2020.2</li>
+<li>ElasticSearch源码版本：6.6.1</li>
+<li>JDK版本：jdk11</li>
+<li>Gradle版本：gradle-5.1.1</li>
+</ul>
+<h3 id="2-版本号对应关系"><a href="#2-版本号对应关系" class="headerlink" title="2. 版本号对应关系"></a>2. 版本号对应关系</h3><h4 id="1-首先，确定-ElasticSearch-源码的版本号："><a href="#1-首先，确定-ElasticSearch-源码的版本号：" class="headerlink" title="(1) 首先，确定 ElasticSearch 源码的版本号："></a>(1) 首先，确定 ElasticSearch 源码的版本号：</h4><p>由于公司使用的是 6.6.1 版本，所以这里确定为：ElasticSearch v6.6.1</p>
+<h4 id="2-然后，确定-JDK-的版本号："><a href="#2-然后，确定-JDK-的版本号：" class="headerlink" title="(2) 然后，确定 JDK 的版本号："></a>(2) 然后，确定 JDK 的版本号：</h4><p>查看 ES v6.6 源码中的 elasticsearch/CONTRIBUTING.md 文件，其中</p>
+<blockquote>
+<p>JDK 11 is required to build Elasticsearch. You must have a JDK 11 installation with the environment variable JAVA_HOME referencing the path to Java home for your JDK 11 installation. By default, tests use the same runtime as JAVA_HOME. However, since Elasticsearch supports JDK 8, the build supports compiling with JDK 11 and testing on a JDK 8 runtime; to do this, set RUNTIME_JAVA_HOME pointing to the Java home of a JDK 8 installation. Note that this mechanism can be used to test against other JDKs as well, this is not only limited to JDK 8.</p>
+</blockquote>
+<p>可知，需要的 JDK 版本号为：JDK 11</p>
+<h4 id="3-然后，确定-gradle-的版本号："><a href="#3-然后，确定-gradle-的版本号：" class="headerlink" title="(3) 然后，确定 gradle 的版本号："></a>(3) 然后，确定 gradle 的版本号：</h4><p>查看 ES v6.6 源码中的 elasticsearch/gradle/wrapper/gradle-wrapper.properties 文件，其中</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">distributionUrl</span>=<span class="string">https\://services.gradle.org/distributions/gradle-5.1.1-all.zip</span></span><br></pre></td></tr></table></figure>
+
+<p>可知，需要的 gradle 版本号为 gradle-5.1.1</p>
+<h3 id="3-下载需要的软件"><a href="#3-下载需要的软件" class="headerlink" title="3. 下载需要的软件"></a>3. 下载需要的软件</h3><h4 id="1-下载-ElasticSearch-源码"><a href="#1-下载-ElasticSearch-源码" class="headerlink" title="(1) 下载 ElasticSearch 源码"></a>(1) 下载 ElasticSearch 源码</h4><p>下载地址：</p>
+<ul>
+<li>github: <a href="https://github.com/elastic/elasticsearch.git" target="_blank" rel="noopener">https://github.com/elastic/elasticsearch.git</a> (比较慢)</li>
+<li>gitee: <a href="https://gitee.com/mirrors/elasticsearch.git" target="_blank" rel="noopener">https://gitee.com/mirrors/elasticsearch.git</a> (比较快)</li>
+</ul>
+<p>建议使用 git 下载，便于切换各个版本号，即</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1.克隆项目代码到本地</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/elastic/elasticsearch.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.切换分支为 v6.6.1</span></span><br><span class="line">git checkout v6.6.1</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-下载-JDK-11"><a href="#2-下载-JDK-11" class="headerlink" title="(2) 下载 JDK 11"></a>(2) 下载 JDK 11</h4><p>下载地址：</p>
+<ul>
+<li><a href="https://www.oracle.com/java/technologies/javase-jdk11-downloads.html" target="_blank" rel="noopener">https://www.oracle.com/java/technologies/javase-jdk11-downloads.html</a> (需要注册Oracle账号)</li>
+<li><a href="http://java.sousou88.com/" target="_blank" rel="noopener">http://java.sousou88.com/</a></li>
+</ul>
+<h4 id="3-下载-gradle-5-5-1"><a href="#3-下载-gradle-5-5-1" class="headerlink" title="(3) 下载 gradle-5.5.1"></a>(3) 下载 gradle-5.5.1</h4><p>下载地址：<a href="https://gradle.org/releases/" target="_blank" rel="noopener">https://gradle.org/releases/</a><br>选择：complete</p>
+<img src="/2021/03/10/es-source/gradle_download.png" class>
+
+<h3 id="4-为工程指定-gradle-依赖"><a href="#4-为工程指定-gradle-依赖" class="headerlink" title="4. 为工程指定 gradle 依赖"></a>4. 为工程指定 gradle 依赖</h3><p>将下载的 gradle-5.1.1-all.zip 包放到 elasticsearch/gradle/wrapper 目录下<br>确保和 elasticsearch/gradle/wrapper/gradle-wrapper.properties 在同级目录<br>然后修改 elasticsearch/gradle/wrapper/gradle-wrapper.properties 配置如下：</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">distributionUrl</span>=<span class="string">gradle-5.1.1-all.zip</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-修改-maven-仓库地址"><a href="#5-修改-maven-仓库地址" class="headerlink" title="5. 修改 maven 仓库地址"></a>5. 修改 maven 仓库地址</h3><p>国内下载国外仓库的jar包速度慢，需要替换 Maven 地址，设置为本地或者国内可用的Maven仓库</p>
+<h4 id="1-修改源码-Maven-仓库地址"><a href="#1-修改源码-Maven-仓库地址" class="headerlink" title="(1) 修改源码 Maven 仓库地址"></a>(1) 修改源码 Maven 仓库地址</h4><p>需要修改下列文件的 maven URL 配置：</p>
+<ul>
+<li>elasticsearch/benchmarks/build.gradle</li>
+<li>elasticsearch/client/benchmark/build.gradle</li>
+</ul>
+<p>在这个文件后加入：</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="keyword">buildscript</span> &#123;</span><br><span class="line">    <span class="keyword">repositories</span> &#123;</span><br><span class="line">        maven &#123;</span><br><span class="line">            url <span class="string">'http://maven.aliyun.com/nexus/content/groups/public/'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">dependencies</span> &#123;</span><br><span class="line">        <span class="keyword">classpath</span> <span class="string">'com.github.jengelman.gradle.plugins:shadow:2.0.2'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-修改全局-Maven-仓库地址"><a href="#2-修改全局-Maven-仓库地址" class="headerlink" title="(2) 修改全局 Maven 仓库地址"></a>(2) 修改全局 Maven 仓库地址</h4><p>在 USER_HOME/.gradle/ 下面创建新文件 init.gradle，输入下面的内容并保存</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="keyword">allprojects</span>&#123;</span><br><span class="line">    <span class="keyword">repositories</span> &#123;</span><br><span class="line">        <span class="keyword">def</span> REPOSITORY_URL = <span class="string">'http://maven.aliyun.com/nexus/content/groups/public/'</span></span><br><span class="line">        all &#123;</span><br><span class="line">            ArtifactRepository repo -&gt;</span><br><span class="line">    <span class="keyword">if</span> (repo <span class="keyword">instanceof</span> MavenArtifactRepository) &#123;</span><br><span class="line">                <span class="keyword">def</span> url = repo.url.toString()</span><br><span class="line">                <span class="keyword">if</span> (url.startsWith(<span class="string">'https://repo.maven.org/maven2'</span>) || url.startsWith(<span class="string">'https://jcenter.bintray.com/'</span>)) &#123;</span><br><span class="line">                    <span class="keyword">project</span>.logger.lifecycle <span class="string">"Repository $&#123;repo.url&#125; replaced by $REPOSITORY_URL."</span></span><br><span class="line">                    remove repo</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        maven &#123;</span><br><span class="line">            url REPOSITORY_URL</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面脚本把 url 匹配到的仓库都替换成了阿里云的仓库<br>如果没有 .gradle 目录，可以自己创建，或者先执行第 6 步，等 gradle 安装后再回来修改</p>
+<h3 id="6-gradle-编译源码"><a href="#6-gradle-编译源码" class="headerlink" title="6. gradle 编译源码"></a>6. gradle 编译源码</h3><p>在命令行中切换到 elasticsearch 源码的根目录，执行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./gradlew idea</span><br></pre></td></tr></table></figure>
+
+<p>编译成功后打印日志：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">BUILD SUCCESSFUL <span class="keyword">in</span> 1m 23s</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-elasticsearch-源码导入-Idea"><a href="#7-elasticsearch-源码导入-Idea" class="headerlink" title="7. elasticsearch 源码导入 Idea"></a>7. elasticsearch 源码导入 Idea</h3><p>File -&gt; New -&gt; Project From Existing Sources -&gt; 选择你下载的 Elasticsearch 根目录 -&gt; open -&gt; Import project from external model -&gt; Gradle -&gt; OK</p>
+<p>注意:</p>
+<ul>
+<li>在 Project Structure 中设置工程的 JDK 版本为 JDK 11</li>
+<li>在 Gradle Settings 中指定 Gradle JVM 为 JDK 11</li>
+</ul>
+]]></content>
+      <categories>
+        <category>ElasticSearch</category>
+      </categories>
+      <tags>
+        <tag>elasticsearch</tag>
+      </tags>
+  </entry>
 </search>
