@@ -5355,7 +5355,7 @@ table th:nth-of-type(2) {
 
 <h4 id="2-下载-JDK-11"><a href="#2-下载-JDK-11" class="headerlink" title="(2) 下载 JDK 11"></a>(2) 下载 JDK 11</h4><p>下载地址：</p>
 <ul>
-<li><a href="https://www.oracle.com/java/technologies/javase-jdk11-downloads.html" target="_blank" rel="noopener">https://www.oracle.com/java/technologies/javase-jdk11-downloads.html</a> (需要注册Oracle账号)</li>
+<li><a href="https://www.oracle.com/java/technologies/javase-jdk11-downloads.html" target="_blank" rel="noopener">https://www.oracle.com/java/technologies/javase-jdk11-downloads.html</a></li>
 <li><a href="http://java.sousou88.com/" target="_blank" rel="noopener">http://java.sousou88.com/</a></li>
 </ul>
 <h4 id="3-下载-gradle-5-5-1"><a href="#3-下载-gradle-5-5-1" class="headerlink" title="(3) 下载 gradle-5.5.1"></a>(3) 下载 gradle-5.5.1</h4><p>下载地址：<a href="https://gradle.org/releases/" target="_blank" rel="noopener">https://gradle.org/releases/</a><br>选择：complete</p>
@@ -5364,13 +5364,9 @@ table th:nth-of-type(2) {
 <h3 id="4-为工程指定-gradle-依赖"><a href="#4-为工程指定-gradle-依赖" class="headerlink" title="4. 为工程指定 gradle 依赖"></a>4. 为工程指定 gradle 依赖</h3><p>将下载的 gradle-5.1.1-all.zip 包放到 elasticsearch/gradle/wrapper 目录下<br>确保和 elasticsearch/gradle/wrapper/gradle-wrapper.properties 在同级目录<br>然后修改 elasticsearch/gradle/wrapper/gradle-wrapper.properties 配置如下：</p>
 <figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">distributionUrl</span>=<span class="string">gradle-5.1.1-all.zip</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="5-修改-maven-仓库地址"><a href="#5-修改-maven-仓库地址" class="headerlink" title="5. 修改 maven 仓库地址"></a>5. 修改 maven 仓库地址</h3><p>国内下载国外仓库的jar包速度慢，需要替换 Maven 地址，设置为本地或者国内可用的Maven仓库</p>
-<h4 id="1-修改源码-Maven-仓库地址"><a href="#1-修改源码-Maven-仓库地址" class="headerlink" title="(1) 修改源码 Maven 仓库地址"></a>(1) 修改源码 Maven 仓库地址</h4><p>需要修改下列文件的 maven URL 配置：</p>
-<ul>
-<li>elasticsearch/benchmarks/build.gradle</li>
-<li>elasticsearch/client/benchmark/build.gradle</li>
-</ul>
-<p>在这个文件后加入：</p>
+<h3 id="5-修改-maven-仓库地址"><a href="#5-修改-maven-仓库地址" class="headerlink" title="5. 修改 maven 仓库地址"></a>5. 修改 maven 仓库地址</h3><p>国内下载国外仓库的 jar 包速度慢，需要替换 Maven 地址，设置为本地或者国内可用的 Maven 仓库</p>
+<h4 id="1-修改源码-Maven-仓库地址"><a href="#1-修改源码-Maven-仓库地址" class="headerlink" title="(1) 修改源码 Maven 仓库地址"></a>(1) 修改源码 Maven 仓库地址</h4><p>需要修改下列文件的 maven URL 配置：<br>(1) elasticsearch/benchmarks/build.gradle<br>(2) elasticsearch/client/benchmark/build.gradle</p>
+<p>在这两个文件后加入：</p>
 <figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="keyword">buildscript</span> &#123;</span><br><span class="line">    <span class="keyword">repositories</span> &#123;</span><br><span class="line">        maven &#123;</span><br><span class="line">            url <span class="string">'http://maven.aliyun.com/nexus/content/groups/public/'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">dependencies</span> &#123;</span><br><span class="line">        <span class="keyword">classpath</span> <span class="string">'com.github.jengelman.gradle.plugins:shadow:2.0.2'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="2-修改全局-Maven-仓库地址"><a href="#2-修改全局-Maven-仓库地址" class="headerlink" title="(2) 修改全局 Maven 仓库地址"></a>(2) 修改全局 Maven 仓库地址</h4><p>在 USER_HOME/.gradle/ 下面创建新文件 init.gradle，输入下面的内容并保存</p>
@@ -5383,12 +5379,8 @@ table th:nth-of-type(2) {
 <p>编译成功后打印日志：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">BUILD SUCCESSFUL <span class="keyword">in</span> 1m 23s</span><br></pre></td></tr></table></figure>
 
-<h3 id="7-elasticsearch-源码导入-Idea"><a href="#7-elasticsearch-源码导入-Idea" class="headerlink" title="7. elasticsearch 源码导入 Idea"></a>7. elasticsearch 源码导入 Idea</h3><p>File -&gt; New -&gt; Project From Existing Sources -&gt; 选择你下载的 Elasticsearch 根目录 -&gt; open -&gt; Import project from external model -&gt; Gradle -&gt; OK</p>
-<p>注意:</p>
-<ul>
-<li>在 Project Structure 中设置工程的 JDK 版本为 JDK 11</li>
-<li>在 Gradle Settings 中指定 Gradle JVM 为 JDK 11</li>
-</ul>
+<h3 id="7-elasticsearch-源码导入-Idea"><a href="#7-elasticsearch-源码导入-Idea" class="headerlink" title="7. elasticsearch 源码导入 Idea"></a>7. elasticsearch 源码导入 Idea</h3><p>File -&gt; New -&gt; Project From Existing Sources -&gt; 选择 ElasticSearch 源码的根目录 -&gt; open -&gt; Import project from external model -&gt; Gradle -&gt; OK</p>
+<p>注意:<br>(1) 在 Project Structure 中设置工程的 JDK 版本为 JDK 11<br>(2) 在 Gradle Settings 中指定 Gradle JVM 为 JDK 11</p>
 ]]></content>
       <categories>
         <category>ElasticSearch</category>
